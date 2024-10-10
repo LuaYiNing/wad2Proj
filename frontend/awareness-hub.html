@@ -117,21 +117,25 @@
     <!--display info on impacts of food insecurity: -->
     <h4>Impacts of food insecurity</h4>
     <div id="impact1">
+        <h4>Health Issues:</h4>
         <span v-if="showText"><h5>Food insecurity can lead to malnutrition, which can cause slower growth in children, weakened immune systems, and increased susceptibility to diseases. Chronic hunger can also contribute to conditions such as anemia, heart disease, and diabetes.<br><br></h5>
         </span>
         <button v-else v-on:click="showText=true"><img src="../images/malnutrition.png"></button>
     </div>
     <div id="impact2">
+        <h4>Social Inequality:</h4>
         <span v-if="showText"><h5>Food insecurity often disproportionately affects marginalized communities, worsening existing inequalities in society and leading to social unrest or migration as people seek more stable sources of food and livelihoods elsewhere.<br><br></h5>
         </span>
         <button v-else v-on:click="showText=true"><img src="../images/social.png"></button>
     </div>
     <div id="impact3">
+        <h4>Climate Change Effects:</h4>
         <span v-if="showText"><h5>As climate change intensifies, extreme weather events like droughts, floods, and heatwaves become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on unsustainable agricultural practices (like slash-and-burn) that contribute to greenhouse gas emissions, further worsening climate change and the environment we live in.<br><br></h5>
         </span>
         <button v-else v-on:click="showText=true"><img src="../images/climate-chg.png"></button>
     </div>
     <div id="impact4">
+        <h4>Biodiversity Loss:</h4>
         <span v-if="showText"><h5>The conversion of forests, wetlands, and grasslands into agricultural land due to the pressure to grow more food can severely disrupt ecosystems and lead to the extinction of species.<br><br></h5>
         </span>
         <button v-else v-on:click="showText=true"><img src="../images/biodiversity-loss.png"></button>
