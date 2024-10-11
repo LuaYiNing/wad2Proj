@@ -15,25 +15,6 @@
 </head>
 
 <body>
-    <!-- nav bar to recipe finder and educational resources -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./awareness-hub.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Recipe finder</a> <!-- chg link and naming ltr -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Educational</a> <!-- chg link and naming ltr -->
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <script>
         //get data from api:
 
@@ -52,13 +33,16 @@
                     let country = data.country;
                     if (period == "C") {
                         if (overallPhase == 3) {
-                            acutePhase3Arr.push(country);
+                            let worstPopPhase3 = data.phase3_worse_population;
+                            acutePhase3Arr.push([country, worstPopPhase3]);
                         }
                         else if (overallPhase == 4) {
-                            acutePhase4Arr.push(country);
+                            let worstPopPhase4 = data.phase4_worse_population;
+                            acutePhase4Arr.push([country, worstPopPhase4]);
                         }
                         else if (overallPhase == 5 || overallPhase == 6) {
-                            acutePhase5Arr.push(country);
+                            let worstPopPhase5 = data.phase5_worse_population;
+                            acutePhase5Arr.push([country, worstPopPhase5]);
                         }
                     }
                 }
@@ -66,111 +50,132 @@
             .catch(error => {
                 console.log(error.message);
             })
-
-        //arr of countries w chronic,current food insecurity(phase 3)
-        const chronicPhase3Arr = [];
-        //arr of countries w chronic,current food insecurity(phase 4)
-        const chronicPhase4Arr = [];
-        //arr of countries w chronic,current food insecurity(phase 5)
-        const chronicPhase5Arr = [];
-        axios.get("https://api.ipcinfo.org/areas?type=C&key=") //put in API key
-            .then(response => {
-                let datas = response.data;
-                for (data of datas) {
-                    let period = data.period;
-                    let overallPhase = data.overall_phase;
-                    let country = data.country;
-                    if (period == "C") {
-                        if (overallPhase == 3) {
-                            chronicPhase3Arr.push(country);
-                        }
-                        else if (overallPhase == 4) {
-                            chronicPhase4Arr.push(country);
-                        }
-                        else if (overallPhase == 5 || overallPhase == 6) {
-                            chronicPhase5Arr.push(country);
-                        }
-                    }
-                }
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
-
     </script>
 
-    <!-- display data visualisations of food insecurity from api: -->
+    <div class="container-fluid">
+        <!-- nav bar to recipe finder and educational resources -->
+        <nav class="navbar navbar-expand bg-body-tertiary">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./awareness-hub.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Recipe finder</a> <!-- chg link and naming ltr -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Educational</a> <!-- chg link and naming ltr -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    <div>
-        <h4>Countries with severe acute food insecurity</h4>
+        <!-- display data visualisations of food insecurity from api: -->
+        <div>
+            <h3 style="text-decoration: underline;">Countries with severe acute food insecurity</h3>
+        </div>
+        <!-- display acute data in chart-->
+
+
+        <!--display info on impacts of food insecurity: -->
+        <h3 style="text-decoration: underline;">Impacts of food insecurity</h3>
+        <div class="row">
+            <div class="col-6">
+                <div id="impact1">
+                    <h5>Health Issues:</h5>
+                    <span v-if="showText">
+                        <h5>Food insecurity can lead to malnutrition, which can cause slower growth in children,
+                            weakened immune systems, and increased susceptibility to diseases. Chronic hunger can also contribute to
+                            conditions such as anemia, heart disease, and diabetes.<br><br></h5>
+                    </span>
+                    <button v-else v-on:click="showText=true"><img v-bind:src="malnutritionPic" v-bind:width="width"
+                            v-bind:height="height"></img></button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div id="impact2">
+                    <h5>Social Inequality:</h5>
+                    <span v-if="showText">
+                        <h5>Food insecurity often disproportionately affects marginalized communities, worsening
+                            existing inequalities in society and leading to social unrest or migration as people seek more stable
+                            sources of food and livelihoods elsewhere.<br><br></h5>
+                    </span>
+                    <button v-else v-on:click="showText=true"><img v-bind:src="socialPic" v-bind:width="width"
+                            v-bind:height="height"></img></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div id="impact3">
+                    <h5>Climate Change Effects:</h5>
+                    <span v-if="showText">
+                        <h5>As climate change intensifies, extreme weather events like droughts, floods, and heatwaves
+                            become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on
+                            unsustainable agricultural practices (like slash-and-burn) that contribute to greenhouse gas
+                            emissions, further worsening climate change and the environment we live in.<br><br></h5>
+                    </span>
+                    <button v-else v-on:click="showText=true"><img v-bind:src="climateChgPic" v-bind:width="width"
+                            v-bind:height="height"></img></button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div id="impact4">
+                    <h5>Biodiversity Loss:</h5>
+                    <span v-if="showText">
+                        <h5>The conversion of forests, wetlands, and grasslands into agricultural land due to the
+                            pressure to grow more food can severely disrupt ecosystems and lead to the extinction of species.<br><br>
+                        </h5>
+                    </span>
+                    <button v-else v-on:click="showText=true"><img v-bind:src="biodiversityPic" v-bind:width="width"
+                            v-bind:height="height"></img></button>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- display acute data in chart-->
-
-    <div>
-        <h4>Countries with severe chronic food insecurity</h4>
-    </div>
-    <!-- display chronic data in chart-->
-
-
-
-
-    <!--display info on impacts of food insecurity: -->
-    <h4>Impacts of food insecurity</h4>
-    <div id="impact1">
-        <h4>Health Issues:</h4>
-        <span v-if="showText"><h5>Food insecurity can lead to malnutrition, which can cause slower growth in children, weakened immune systems, and increased susceptibility to diseases. Chronic hunger can also contribute to conditions such as anemia, heart disease, and diabetes.<br><br></h5>
-        </span>
-        <button v-else v-on:click="showText=true"><img src="../images/malnutrition.png"></button>
-    </div>
-    <div id="impact2">
-        <h4>Social Inequality:</h4>
-        <span v-if="showText"><h5>Food insecurity often disproportionately affects marginalized communities, worsening existing inequalities in society and leading to social unrest or migration as people seek more stable sources of food and livelihoods elsewhere.<br><br></h5>
-        </span>
-        <button v-else v-on:click="showText=true"><img src="../images/social.png"></button>
-    </div>
-    <div id="impact3">
-        <h4>Climate Change Effects:</h4>
-        <span v-if="showText"><h5>As climate change intensifies, extreme weather events like droughts, floods, and heatwaves become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on unsustainable agricultural practices (like slash-and-burn) that contribute to greenhouse gas emissions, further worsening climate change and the environment we live in.<br><br></h5>
-        </span>
-        <button v-else v-on:click="showText=true"><img src="../images/climate-chg.png"></button>
-    </div>
-    <div id="impact4">
-        <h4>Biodiversity Loss:</h4>
-        <span v-if="showText"><h5>The conversion of forests, wetlands, and grasslands into agricultural land due to the pressure to grow more food can severely disrupt ecosystems and lead to the extinction of species.<br><br></h5>
-        </span>
-        <button v-else v-on:click="showText=true"><img src="../images/biodiversity-loss.png"></button>
-    </div>
-
 
     <script>
         Vue.createApp({
             data() {
                 return {
-                    showText:false
+                    showText: false,
+                    malnutritionPic: "../images/malnutrition.png",
+                    width: 500,
+                    height: 300
                 }
             }
-        }).mount('#impact1') 
-        
-        Vue.createApp({
-            data() {
-                return {
-                    showText:false
-                }
-            }
-        }).mount('#impact2') 
+        }).mount('#impact1')
 
         Vue.createApp({
             data() {
                 return {
-                    showText:false
+                    showText: false,
+                    socialPic: "../images/social.png",
+                    width: 500,
+                    height: 300
                 }
             }
-        }).mount('#impact3') 
+        }).mount('#impact2')
 
         Vue.createApp({
             data() {
                 return {
-                    showText:false
+                    showText: false,
+                    climateChgPic: "../images/climate-chg.png",
+                    width: 500,
+                    height: 300
+                }
+            }
+        }).mount('#impact3')
+
+        Vue.createApp({
+            data() {
+                return {
+                    showText: false,
+                    biodiversityPic: "../images/biodiversity-loss.png",
+                    width: 500,
+                    height: 300
                 }
             }
         }).mount('#impact4') 
