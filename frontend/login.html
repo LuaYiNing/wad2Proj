@@ -3,23 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Register</title>
-  <link rel="stylesheet" href="login-register.css">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
-  <div class="auth-container">
-    <h2>Login</h2>
-    <form id="login-form">
-      <input type="email" id="login-email" placeholder="Email" required />
-      <input type="password" id="login-password" placeholder="Password" required />
-      <button type="submit">Login</button>
-      <div id="login-message"></div>
-    </form>
-
-    <button id="google-signin">Sign in with Google</button>
-    <div id="google-signin-message"></div>
+  <div class="container">
+    <!-- CHARACTER PART -->
+    <div class="image-container">
+      <img src="../images/food-element.png" alt="Food Element" class="food-element">
+    </div>
+    <!-- LOGIN PART -->
+    <div class="login-container">
+      <h1>Are you ready to be a Food Hero?</h1>
+      <form id="login-form">
+        <div class="input-group">
+          <input type="text" id="login-email" placeholder="Enter your Username" required>
+        </div>
+        <div class="input-group">
+          <input type="password" id="login-password" placeholder="Enter your Password" required>
+        </div>
+        <button type="submit" class="btn">Take me there!</button>
+        <button id="google-signin" class="btn google-btn">Login with Google</button>
+      </form>
+      <p id="login-message"></p>
+      <p>No Account? <a href="./register.html">Register here</a></p>
+    </div>
   </div>
-
   <script type="module" src="../backend/firebase/firebase.js"></script>
   <script type="module" src="../backend/user/login.js"></script>
 </body>

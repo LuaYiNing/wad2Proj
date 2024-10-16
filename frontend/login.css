@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+
+body,
+html {
+    font-family: 'Lustria', serif;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('../images/bg-image.png');
+}
+
+.container {
+    display: flex;
+    height: 80vh;
+}
+
+.image-container {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: floatInFromBottom 2s ease-out forwards;
+}
+@keyframes floatInFromBottom {
+    from {
+        transform: translateY(100%); /* Start from below the viewport */
+    }
+    to {
+        transform: translateY(0); /* Move to the original position */
+    }
+}
+
+.food-element {
+    width: 150%;
+    height: auto;
+    object-fit: cover;
+}
+
+.login-container {
+    font-family: 'Lustria', serif;
+    color: #436A4D;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    animation: floatInFromRight 2s ease-out forwards; 
+}
+@keyframes floatInFromRight {
+    from {
+        transform: translateX(100%); 
+    }
+    to {
+        transform: translateX(0); 
+    }
+}
+
+
+
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #436A4D;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 2px solid #436A4D;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background: #fff;
+    width: 100%;
+    max-width: 300px;
+}
+
+input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #436A4D;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    color: #436A4D
+}
+
+.google-btn {
+    background-color: #db4437;
+    /* Google Red */
+}
+
+.google-btn:hover {
+    background-color: #ffffff;
+    color: #436A4D;
+}
+
+a {
+    color: black;
+    text-decoration: none; 
+    transition: color 0.3s ease, border-bottom 0.3s ease; 
+    border-bottom: 2px solid transparent;
+}
+
+a:hover {
+    color: #35593B;
+    border-bottom: 2px solid #35593B; 
+    text-decoration: none; 
+}
