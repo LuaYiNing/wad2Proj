@@ -18,15 +18,17 @@ h3,h5{
 
 .impactText{
     background-color:#436A4D;
+    border: lightgreen solid 5px;
+    border-radius: 10%;
     color: azure;
     width: 500px;
     height: 300px;
     text-align: center;
     display: flex;
     align-items: center;
+    padding: 40px;
 }
 
 .heading{
     font-weight: bold;
 }
-
