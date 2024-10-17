@@ -1,0 +1,32 @@
+body{
+    background-color:beige
+}
+
+h1,h4{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3,h5{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: darkblue;
+}
+
+.issue{
+    color: black;
+}
+
+.impactText{
+    background-color:#436A4D;
+    color: azure;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.heading{
+    font-weight: bold;
+}
+
