@@ -10,22 +10,22 @@
   <div class="container">
     <!-- CHARACTER PART -->
     <div class="image-container">
-      <img src="../images/food-element.png" alt="Food Element" class="food-element">
+      <img src="images/food-element.png" alt="Food Element" class="food-element">
     </div>
     <!-- LOGIN PART -->
     <div class="login-container">
       <h1>Are you ready to be a Food Hero?</h1>
       <form id="login-form">
         <div class="input-group">
-          <input type="text" id="login-email" placeholder="Enter your Username" required>
+          <input type="text" id="login-email" placeholder="Enter your Email" required>
         </div>
         <div class="input-group">
           <input type="password" id="login-password" placeholder="Enter your Password" required>
         </div>
+        <p id="login-message" style="color: red;"></p>
         <button type="submit" class="btn">Take me there!</button>
-        <button id="google-signin" class="btn google-btn">Login with Google</button>
+        <button id="google-signin" type="button" class="btn google-btn">Login with Google</button>
       </form>
-      <p id="login-message"></p>
       <p>No Account? <a href="./register.html">Register here</a></p>
     </div>
   </div>

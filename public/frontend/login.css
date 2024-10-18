@@ -7,7 +7,7 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image: url('../images/bg-image.png');
+    background-image: url('images/bg-image.png');
 }
 
 .container {
@@ -50,6 +50,7 @@ html {
     text-align: center;
     border-radius: 0 10px 10px 0;
     animation: floatInFromRight 2s ease-out forwards; 
+
 }
 @keyframes floatInFromRight {
     from {
