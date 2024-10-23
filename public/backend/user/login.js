@@ -22,6 +22,7 @@ loginForm.addEventListener('submit', (event) => {
       const user = userCredential.user;
       console.log("Email login success:", user);
       window.location.href = '../frontend/landing-page.html';
+      localStorage.setItem('userName', user.displayName || 'User');
     })
     .catch((error) => {
       // Handle Errors
@@ -45,6 +46,7 @@ googleSignInBtn.addEventListener('click', (event) => {
       const user = result.user;
       console.log("Google login success:", user);
       window.location.href = '../frontend/awareness-hub.html';
+      localStorage.setItem('userName', user.displayName || 'User');
     })
     .catch((error) => {
       // Handle Errors
