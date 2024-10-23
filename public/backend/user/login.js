@@ -44,7 +44,7 @@ googleSignInBtn.addEventListener('click', (event) => {
       // User signed in successfully with Google
       const user = result.user;
       console.log("Google login success:", user);
-      window.location.href = '../frontend/landing-page.html';
+      window.location.href = '../frontend/awareness-hub.html';
     })
     .catch((error) => {
       // Handle Errors
