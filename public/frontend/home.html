@@ -96,8 +96,15 @@
 
             </div>
             <div class="col-8">
-                Insert Bar Graph Here
-
+                <div>
+                    <canvas id="barChart"></canvas>
+                    <br>
+                    <h5>From 2023 peak to mid 2024, there has been an increase of at least 1 million people facing high
+                        levels
+                        of acute food insecurity in countries like Yemen, Ethiopia, Myanmar, Sudan, Nigeria, Malawi,
+                        Zimbabwe, and Chad.
+                    </h5>
+                </div>
             </div>
         </div>
     </div>
@@ -187,7 +194,7 @@
                     Global Food Insecurity: Populations in Crisis
                 </p>
                 <p class="Text-2">
-                    Explore the alarming numbers of people enduring high levels of acute food insecurity 
+                    Explore the alarming numbers of people enduring high levels of acute food insecurity
                     (Phase 3 and above) in countries around the world
                 </p>
 
@@ -196,14 +203,24 @@
                         href="https://www.fsinplatform.org/sites/default/files/resources/files/GRFC2023-In-Brief-EN.pdf">
                         2023 Global Report on Food Crises</a>
                 </span>
-
             </div>
             <div class="col-4">
-                Insert Yemen Graph Here
+                <h6># of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                    equivalent) in 2022 <br>( Millions )</h6>
+                <br>
+                <canvas id="doughnutChartYemen"></canvas>
+                <br>
+                <h5>In 2022, IPC/CH phase3+ took up 55% of the whole population of Yemen.</h5>
             </div>
             <div class="col-4">
-                Insert Afghanistan Graph Here
+                <h6># of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                    equivalent) in 2022 <br>( Millions )</h6>
+                <br>
+                <canvas id="doughnutChartAfghan"></canvas>
+                <br>
+                <h5> In 2022, IPC/CH phase3+ took up 46% of the whole population of Afghanistan.</h5>
             </div>
+            
         </div>
     </div>
 
@@ -220,7 +237,7 @@
         </div>
     </div>
 
-    
+
 
 
 
@@ -297,47 +314,7 @@
 
         <br><br>
 
-        <div>
-            <canvas id="barChart"></canvas>
-            <br>
-            <h5>From 2023 peak to mid 2024, there has been an increase of at least 1 million people facing high
-                levels
-                of acute food insecurity in countries like Yemen, Ethiopia, Myanmar, Sudan, Nigeria, Malawi,
-                Zimbabwe, and Chad.
-            </h5>
-            <br>
-            <small>
-                Source: <a
-                    href="https://www.fsinplatform.org/sites/default/files/resources/files/GRFC2024-MYU-en.pdf">https://www.fsinplatform.org/sites/default/files/resources/files/GRFC2024-MYU-en.pdf</a>
-            </small>
-        </div>
-
         <br><br>
-
-        <div class="row">
-            <div class="col-6">
-                <h4># of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
-                    equivalent) in 2022 <br>( Millions )</h4>
-                <br>
-                <canvas id="doughnutChartYemen"></canvas>
-                <br>
-                <h5>In 2022, IPC/CH phase3+ took up 55% of the whole population of Yemen.</h5>
-            </div>
-            <div class="col-6">
-                <h4># of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
-                    equivalent) in 2022 <br>( Millions )</h4>
-                <br>
-                <canvas id="doughnutChartAfghan"></canvas>
-                <br>
-                <h5> In 2022, IPC/CH phase3+ took up 46% of the whole population of Afghanistan.</h5>
-            </div>
-            <br>
-            <small>
-                Source: <a
-                    href="https://www.fsinplatform.org/sites/default/files/resources/files/GRFC2023-In-Brief-EN.pdf">https://www.fsinplatform.org/sites/default/files/resources/files/GRFC2023-In-Brief-EN.pdf</a>
-            </small>
-        </div>
-    </div>
 
     <script>
         const bar = document.getElementById('barChart');
