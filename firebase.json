@@ -1,7 +1,4 @@
 {
-  "dataconnect": {
-    "source": "dataconnect"
-  },
   "hosting": {
     "public": "public",
     "ignore": [
