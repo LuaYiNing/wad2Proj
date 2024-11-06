@@ -44,7 +44,7 @@
 
 
 .section {
-    height: 80vh;
+    height: 90vh;
     width: 100%;
     background-color: #f1ead1;
     background-size: cover;
@@ -57,7 +57,7 @@
 
 }
 .section2 {
-    height: 80vh;
+    height: 90vh;
     width: 100%;
     background-color: #ffffff;
     background-size: cover;
@@ -85,14 +85,43 @@
     font-style: italic;
 }
 
-.impactText{
+.impact-container {
     background-color: rgba(0, 100, 0, 0.403);
-    border-radius: 20%;
-    color: azure;
-    width: 500px;
-    height: 300px;
+    height: 80vh;
+    padding: 20px;
+    text-align: center;
+    justify-content:center ;
+    margin: auto;
+    height: 100%;
+    border: solid 1px black;
+}
+
+.impactText {
+    font-family: 'Lustria', serif;
+    color: white;
+    width: 100%;
     text-align: center;
     display: flex;
     align-items: center;
-    padding: 40px;
+    justify-content: center;
+}
+
+.impact-element {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+/* 
+Animations */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px); 
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
