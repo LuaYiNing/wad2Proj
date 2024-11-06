@@ -125,7 +125,7 @@
     </div>
 
     <!-- chart -->
-    <div class="container-fluid section">
+    <div class="container-fluid section fade-in">
         <div class="row">
             <div class="col-4 p-5">
                 <p class="Heading-2">
@@ -160,7 +160,7 @@
     </div>
 
     <!-- Understanding IPC Scale -->
-    <div class="container-fluid section2">
+    <div class="container-fluid section2 fade-in">
         <div class="row">
             <div class="col-8 p-5">
                 <p class="Heading-2 justify-content-center">
@@ -237,7 +237,7 @@
 
 
     <!-- ipc phase 3 and above doughnut graphs -->
-    <div class="container-fluid section">
+    <div class="container-fluid section fade-in">
         <div class="row">
             <div class="col-4 p-5">
                 <p class="Heading-2">
@@ -304,7 +304,7 @@
     </div>
 
     <!-- display 3 latest food insecurity news using data retrieved frm api: -->
-    <div class="container-fluid section">
+    <div class="container-fluid section fade-in">
         <h1 class="Heading-2 p-2">Latest food waste news</h1>
         <!-- display news links, title, desc and img-->
         <div class="row p-1">
@@ -345,16 +345,16 @@
 
 
     <script>
-        const hoverValue={
-            id:'hoverValue',
-            afterDatasetsDraw(chart,args,pluginOptions){
-                const{ctx,data}=chart;
-                chart.getActiveElements().forEach((active)=>{
-                    const value=data.datasets[active.datasetIndex].data[active.index];
+        const hoverValue = {
+            id: 'hoverValue',
+            afterDatasetsDraw(chart, args, pluginOptions) {
+                const { ctx, data } = chart;
+                chart.getActiveElements().forEach((active) => {
+                    const value = data.datasets[active.datasetIndex].data[active.index];
                     ctx.save();
 
-                    ctx.textAlign='center';
-                    ctx.fillText(value,active.element.x,active.element.y);
+                    ctx.textAlign = 'center';
+                    ctx.fillText(value, active.element.x, active.element.y);
                     ctx.restore();
                 });
             }
@@ -417,14 +417,14 @@
                         beginAtZero: true
                     }
                 },
-                plugins:{
-                    tooltip:{
-                        enabled:false
+                plugins: {
+                    tooltip: {
+                        enabled: false
                     }
-                    }
-                },
-                plugins:[hoverValue]
-            }
+                }
+            },
+            plugins: [hoverValue]
+        }
         );
 
         const doughnutYemen = document.getElementById('doughnutChartYemen');
@@ -434,18 +434,18 @@
                 labels: ['Phase 3', 'Phase 4', 'Phase 5'],
                 datasets: [{
                     data: [11.7, 5.6, 0.031],
-                    backgroundColor: ['rgba(153, 102, 255, 0.3)','rgba(54, 162, 235, 0.3)','rgba(255, 205, 86, 0.3)'],
+                    backgroundColor: ['rgba(153, 102, 255, 0.3)', 'rgba(54, 162, 235, 0.3)', 'rgba(255, 205, 86, 0.3)'],
                     hoverBackgroundColor: ['white', 'white', 'white']
                 }]
             },
-            options:{
-                plugins:{
-                    tooltip:{
-                        enabled:false
+            options: {
+                plugins: {
+                    tooltip: {
+                        enabled: false
                     }
                 }
             },
-            plugins:[hoverValue]
+            plugins: [hoverValue]
         });
 
         const doughnutAfghan = document.getElementById('doughnutChartAfghan');
@@ -455,62 +455,83 @@
                 labels: ['Phase 3', 'Phase 4'],
                 datasets: [{
                     data: [13.8, 6.1],
-                    backgroundColor: ['rgba(255, 99, 132, 0.3)','rgba(255, 159, 64, 0.3)'],
+                    backgroundColor: ['rgba(255, 99, 132, 0.3)', 'rgba(255, 159, 64, 0.3)'],
                     hoverBackgroundColor: ['white', 'white']
                 }]
             },
-            options:{
-                plugins:{
-                    tooltip:{
-                        enabled:false
+            options: {
+                plugins: {
+                    tooltip: {
+                        enabled: false
                     }
                 }
             },
-            plugins:[hoverValue]
+            plugins: [hoverValue]
         });
     </script>
 
-<!-- Impacts of food insecurity     -->
-<script>
-    Vue.createApp({
-        data() {
-            return {
-                impacts: [
-                    {
-                        title: "Health Issue",
-                        image: "./images/health-issue.png",
-                        description: "Food insecurity can lead to malnutrition, which can cause slower growth in children, weakened immune systems, and increased susceptibility to diseases. Chronic hunger can also contribute to conditions such as anemia, heart disease, and diabetes.",
-                        showPic: true
-                    },
-                    {
-                        title: "Social Inequality",
-                        image: "./images/social inequality.png",
-                        description: "Food insecurity often disproportionately affects marginalized communities, worsening existing inequalities in society and leading to social unrest or migration as people seek more stable sources of food and livelihoods elsewhere.",
-                        showPic: true
-                    },
-                    {
-                        title: "Climate Change",
-                        image: "./images/climate-changee.png",
-                        description: "As climate change intensifies, extreme weather events like droughts, floods, and heatwaves become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on unsustainable agricultural practices that contribute to greenhouse gas emissions, further worsening climate change and the environment we live in.",
-                        showPic: true
-                    },
-                    {
-                        title: "Loss of Biodiversity",
-                        image: "./images/bio-loss.png",
-                        description: "The conversion of forests, wetlands, and grasslands into agricultural land due to the pressure to grow more food can severely disrupt ecosystems and lead to the extinction of species.",
-                        showPic: true
-                    }
-                ]
+    <!-- Impacts of food insecurity     -->
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    impacts: [
+                        {
+                            title: "Health Issue",
+                            image: "./images/health-issue.png",
+                            description: "Food insecurity can lead to malnutrition, which can cause slower growth in children, weakened immune systems, and increased susceptibility to diseases. Chronic hunger can also contribute to conditions such as anemia, heart disease, and diabetes.",
+                            showPic: true
+                        },
+                        {
+                            title: "Social Inequality",
+                            image: "./images/social inequality.png",
+                            description: "Food insecurity often disproportionately affects marginalized communities, worsening existing inequalities in society and leading to social unrest or migration as people seek more stable sources of food and livelihoods elsewhere.",
+                            showPic: true
+                        },
+                        {
+                            title: "Climate Change",
+                            image: "./images/climate-changee.png",
+                            description: "As climate change intensifies, extreme weather events like droughts, floods, and heatwaves become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on unsustainable agricultural practices that contribute to greenhouse gas emissions, further worsening climate change and the environment we live in.",
+                            showPic: true
+                        },
+                        {
+                            title: "Loss of Biodiversity",
+                            image: "./images/bio-loss.png",
+                            description: "The conversion of forests, wetlands, and grasslands into agricultural land due to the pressure to grow more food can severely disrupt ecosystems and lead to the extinction of species.",
+                            showPic: true
+                        }
+                    ]
+                }
             }
-        }
-    }).mount('#app')
-</script>
+        }).mount('#app')
+    </script>
 
 
     <script> //passing username to the nav bar 
         const userName = localStorage.getItem('userName') || 'User';
         document.getElementById('userName').innerText = userName;
     </script>
+
+    <script> // to handle scolling animation
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeInSections = document.querySelectorAll(".fade-in");
+            const handleScroll = () => {
+                fadeInSections.forEach((section) => {
+                    const rect = section.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    if (rect.top <= windowHeight - 150) { 
+                        section.classList.add("fade-in-visible");
+                    }
+                });
+            };
+
+            window.addEventListener("scroll", handleScroll);
+            handleScroll();
+        });
+
+    </script>
+
 
 
     <!-- bootstrap js-->
