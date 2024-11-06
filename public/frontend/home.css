@@ -84,3 +84,15 @@
     font-size: x-small;
     font-style: italic;
 }
+
+.impactText{
+    background-color: rgba(0, 100, 0, 0.403);
+    border-radius: 20%;
+    color: azure;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+}
