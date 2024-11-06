@@ -21,7 +21,8 @@ loginForm.addEventListener('submit', (event) => {
       // User signed in successfully with email and password
       const user = userCredential.user;
       console.log("Email login success:", user);
-      window.location.href = '../frontend/landing-page.html';
+      window.location.href = '../frontend/home.html';
+      localStorage.setItem('userName', user.displayName || 'User');
     })
     .catch((error) => {
       // Handle Errors
@@ -44,7 +45,8 @@ googleSignInBtn.addEventListener('click', (event) => {
       // User signed in successfully with Google
       const user = result.user;
       console.log("Google login success:", user);
-      window.location.href = '../frontend/landing-page.html';
+      window.location.href = '../frontend/home.html';
+      localStorage.setItem('userName', user.displayName || 'User');
     })
     .catch((error) => {
       // Handle Errors

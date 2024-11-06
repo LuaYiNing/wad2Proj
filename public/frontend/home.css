@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+
+.header {
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+}
+
+.fullscreen {
+    height: 90vh;
+    width: 100%;
+    background-color: rgba(0, 100, 0, 0.403);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+}
+
+
+.navbar{
+    height: 100px;
+    font-family: 'Lustria', serif;
+    font-size: large;
+    padding: 5px;
+}
+
+
+.Heading {
+    font-size: xx-large;
+    font-weight: 800;
+}
+.Title{
+    font-size: large;
+    font-weight: 300;
+}
+
+#important{
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+
+.section {
+    height: 80vh;
+    width: 100%;
+    background-color: #f1ead1;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+
+}
+.section2 {
+    height: 80vh;
+    width: 100%;
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.Heading-2{
+    font-size: x-large;
+    font-weight: 600;
+}
+.Text-2{
+    font-size: medium;
+    font-weight: 300;
+
+}
+
+#source{
+    font-size: x-small;
+    font-style: italic;
+}
+
+.impactText{
+    background-color: rgba(0, 100, 0, 0.403);
+    border-radius: 20%;
+    color: azure;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+}

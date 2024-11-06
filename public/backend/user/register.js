@@ -26,7 +26,9 @@ registerForm.addEventListener('submit', (event) => {
       }).then(() => {
         console.log("User profile updated with name:", name);
         //registerMessage.innerText = `Welcome, ${name}! Your account has been created.`;
-        window.location.href = '../frontend/landing-page.html';
+        window.location.href = '../frontend/awareness-hub.html';
+                // Store user's display name in localStorage
+                localStorage.setItem('userName', name);
 
       }).catch((error) => {
         console.log(error.message);
