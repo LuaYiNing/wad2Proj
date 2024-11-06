@@ -1,0 +1,31 @@
+body {
+  background-color: antiquewhite;
+}
+
+h1 {
+  color: palevioletred;
+  font-family: cursive;
+  margin: 20px;
+}
+
+.recipe-card {
+  margin-bottom: 20px;
+}
+
+.modal img {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+#searchRecipeBtn {
+  color: black;
+  background-color: lightpink;
+  border: none;
+  font-family:cursive;
+}
+
+#fullRecipeBtn {
+  background-color:lavenderblush;
+  color: black;
+  border:none;
+}
