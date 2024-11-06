@@ -148,7 +148,8 @@
                 <div>
                     <canvas id="barChart"></canvas>
                     <br>
-                    <h5 class="Text-2">From 2023 peak to mid 2024, there has been an increase of at least 1 million people facing high
+                    <h5 class="Text-2">From 2023 peak to mid 2024, there has been an increase of at least 1 million
+                        people facing high
                         levels
                         of acute food insecurity in countries like Yemen, Ethiopia, Myanmar, Sudan, Nigeria, Malawi,
                         Zimbabwe, and Chad.
@@ -254,7 +255,7 @@
                 </span>
             </div>
             <div class="col-4 p-5">
-                <h6># of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                <h6>Number of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
                     equivalent) in 2022 <br>( Millions )</h6>
                 <br>
                 <canvas id="doughnutChartYemen"></canvas>
@@ -262,103 +263,44 @@
                 <h5 class="Text-2">In 2022, IPC/CH phase3+ took up 55% of the whole population of Yemen.</h5>
             </div>
             <div class="col-4 p-5">
-                <h6># of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                <h6>Number of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
                     equivalent) in 2022 <br>( Millions )</h6>
                 <br>
                 <canvas id="doughnutChartAfghan"></canvas>
                 <br>
                 <h5 class="Text-2"> In 2022, IPC/CH phase3+ took up 46% of the whole population of Afghanistan.</h5>
             </div>
-            
+
         </div>
     </div>
 
+    <!-- impacts of food insecurity - redo -->
 
-    <br><br><br><br>
-
-    <!-- impacts of food insecurity -->
-    <div class="container-fluid section2">
-        <h1 class="Heading-2 p-2">Impacts of food insecurity</h1>
-        <div class="row p-2">
-            <div class="col-lg-5">
-                <div id="impact1">
-                    <h5 class="Text-2">Health Issues:</h5>
-                    <div v-if="showPic" v-on:mouseover="showPic=false">
-                        <img src="./images/malnutrition.png" width="500" height="300"></img>
-                    </div>
-                    <div v-else v-on:mouseout="showPic=true">
-                        <h5 class="impactText">Food insecurity can lead to malnutrition, which can cause slower
-                            growth in children,
-                            weakened immune systems, and increased susceptibility to diseases. Chronic hunger can
-                            also
-                            contribute to
-                            conditions such as anemia, heart disease, and diabetes.
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-5">
-                <div id="impact2">
-                    <h5 class="Text-2">Social Inequality:</h5>
-                    <div v-if="showPic" v-on:mouseover="showPic=false">
-                        <img src="./images/social.png" width="500" height="300"></img>
-                    </div>
-                    <div v-else v-on:mouseout="showPic=true">
-                        <h5 class="impactText">
-                            Food insecurity often disproportionately affects marginalized
-                            communities, worsening
-                            existing inequalities in society and leading to social unrest or migration as people
-                            seek
-                            more stable
-                            sources of food and livelihoods elsewhere.
-                        </h5>
-                    </div>
-                </div>
+    <div id="app" class="container-fluid section2">
+        <div class="row">
+            <div class="col align-items-center">
+                <p class="Heading-2">
+                    Beyond Empty Plates
+                </p>
+                <p class="Text-2">
+                    Learn how food insecurity impacts our planet, our communities, and our future.
+                </p>
             </div>
         </div>
 
-        <div class="row p-2">
-            <div class="col-lg-5">
-                <div id="impact3">
-                    <h5 class="Text-2">Climate Change Effects:</h5>
-                    <div v-if="showPic" v-on:mouseover="showPic=false">
-                        <img src="./images/climate-chg.png" width="500" height="300"></img>
-                    </div>
-                    <div v-else v-on:mouseout="showPic=true">
-                        <h5 class="impactText">As climate change intensifies, extreme weather events like droughts,
-                            floods, and
-                            heatwaves
-                            become more frequent, exacerbating food shortages. At the same time, food-insecure
-                            regions
-                            often rely on
-                            unsustainable agricultural practices (like slash-and-burn) that contribute to greenhouse
-                            gas
-                            emissions, further worsening climate change and the environment we live in.</h5>
-                    </div>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div v-for="(impact, index) in impacts" :key="index" class="col-lg-3 col-md-6 col-sm-12 impact-container"
+                @mouseover="impact.showPic = false" @mouseout="impact.showPic = true">
+                <div v-if="impact.showPic">
+                    <p class="Heading-2">{{ impact.title }}</p>
+                    <img class="impact-element" :src="impact.image" :alt="impact.title">
                 </div>
-            </div>
-
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-5">
-                <div id="impact4">
-                    <h5 class="Text-2">Biodiversity Loss:</h5>
-                    <div v-if="showPic" v-on:mouseover="showPic=false">
-                        <img src="./images/biodiversity-loss.png" width="500" height="300"></img>
-                    </div>
-                    <div v-else v-on:mouseout="showPic=true">
-                        <h5 class="impactText">The conversion of forests, wetlands, and grasslands into agricultural
-                            land due to the
-                            pressure to grow more food can severely disrupt ecosystems and lead to the extinction of
-                            species.
-                        </h5>
-                    </div>
+                <div v-else>
+                    <h5 class="impactText">{{ impact.description }}</h5>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- display 3 latest food insecurity news using data retrieved frm api: -->
@@ -400,7 +342,7 @@
     </div>
 
 
-    
+
 
     <script>
         const bar = document.getElementById('barChart');
@@ -489,39 +431,42 @@
         });
     </script>
 
-    <script>
-        Vue.createApp({
-            data() {
-                return {
-                    showPic: true
-                }
+<!-- Impacts of food insecurity     -->
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                impacts: [
+                    {
+                        title: "Health Issue",
+                        image: "./images/health-issue.png",
+                        description: "Food insecurity can lead to malnutrition, which can cause slower growth in children, weakened immune systems, and increased susceptibility to diseases. Chronic hunger can also contribute to conditions such as anemia, heart disease, and diabetes.",
+                        showPic: true
+                    },
+                    {
+                        title: "Social Inequality",
+                        image: "./images/social inequality.png",
+                        description: "Food insecurity often disproportionately affects marginalized communities, worsening existing inequalities in society and leading to social unrest or migration as people seek more stable sources of food and livelihoods elsewhere.",
+                        showPic: true
+                    },
+                    {
+                        title: "Climate Change",
+                        image: "./images/climate-changee.png",
+                        description: "As climate change intensifies, extreme weather events like droughts, floods, and heatwaves become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on unsustainable agricultural practices that contribute to greenhouse gas emissions, further worsening climate change and the environment we live in.",
+                        showPic: true
+                    },
+                    {
+                        title: "Loss of Biodiversity",
+                        image: "./images/bio-loss.png",
+                        description: "The conversion of forests, wetlands, and grasslands into agricultural land due to the pressure to grow more food can severely disrupt ecosystems and lead to the extinction of species.",
+                        showPic: true
+                    }
+                ]
             }
-        }).mount('#impact1')
+        }
+    }).mount('#app')
+</script>
 
-        Vue.createApp({
-            data() {
-                return {
-                    showPic: true
-                }
-            }
-        }).mount('#impact2')
-
-        Vue.createApp({
-            data() {
-                return {
-                    showPic: true
-                }
-            }
-        }).mount('#impact3')
-
-        Vue.createApp({
-            data() {
-                return {
-                    showPic: true,
-                }
-            }
-        }).mount('#impact4') 
-    </script>
 
     <script> //passing username to the nav bar 
         const userName = localStorage.getItem('userName') || 'User';
