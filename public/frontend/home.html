@@ -345,6 +345,21 @@
 
 
     <script>
+        const hoverValue={
+            id:'hoverValue',
+            afterDatasetsDraw(chart,args,pluginOptions){
+                const{ctx,data}=chart;
+                chart.getActiveElements().forEach((active)=>{
+                    const value=data.datasets[active.datasetIndex].data[active.index];
+                    ctx.save();
+
+                    ctx.textAlign='center';
+                    ctx.fillText(value,active.element.x,active.element.y);
+                    ctx.restore();
+                });
+            }
+        }
+
         const bar = document.getElementById('barChart');
         new Chart(bar, {
             type: 'bar',
@@ -401,9 +416,16 @@
                     y: {
                         beginAtZero: true
                     }
-                }
+                },
+                plugins:{
+                    tooltip:{
+                        enabled:false
+                    }
+                    }
+                },
+                plugins:[hoverValue]
             }
-        });
+        );
 
         const doughnutYemen = document.getElementById('doughnutChartYemen');
         new Chart(doughnutYemen, {
@@ -412,9 +434,18 @@
                 labels: ['Phase 3', 'Phase 4', 'Phase 5'],
                 datasets: [{
                     data: [11.7, 5.6, 0.031],
+                    backgroundColor: ['rgba(153, 102, 255, 0.3)','rgba(54, 162, 235, 0.3)','rgba(255, 205, 86, 0.3)'],
                     hoverBackgroundColor: ['white', 'white', 'white']
                 }]
-            }
+            },
+            options:{
+                plugins:{
+                    tooltip:{
+                        enabled:false
+                    }
+                }
+            },
+            plugins:[hoverValue]
         });
 
         const doughnutAfghan = document.getElementById('doughnutChartAfghan');
@@ -424,10 +455,18 @@
                 labels: ['Phase 3', 'Phase 4'],
                 datasets: [{
                     data: [13.8, 6.1],
-                    backgroundColor: ['purple', 'grey'],
+                    backgroundColor: ['rgba(255, 99, 132, 0.3)','rgba(255, 159, 64, 0.3)'],
                     hoverBackgroundColor: ['white', 'white']
                 }]
-            }
+            },
+            options:{
+                plugins:{
+                    tooltip:{
+                        enabled:false
+                    }
+                }
+            },
+            plugins:[hoverValue]
         });
     </script>
 
