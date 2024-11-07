@@ -73,6 +73,7 @@
 .Heading-2{
     font-size: x-large;
     font-weight: 600;
+    text-align: center;
 }
 .Text-2{
     font-size: medium;
@@ -85,33 +86,29 @@
     font-style: italic;
 }
 
-.impact-container {
+.impact-container{
     background-color: rgba(0, 100, 0, 0.403);
-    height: 80vh;
-    padding: 20px;
-    text-align: center;
-    justify-content:center ;
-    margin: auto;
-    height: 100%;
     border: solid 1px black;
+    width: 300px;
+    height: 260px;
 }
 
-.impactText {
-    font-family: 'Lustria', serif;
-    color: white;
+.impact-element{
     width: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.impact-element {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
+    height: 100%;
+    max-height: 200px;
     object-fit: cover;
 }
+
+.impact-text {
+    font-family: 'Lustria', serif;
+    font-size:18px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
 /* 
 Animations */
 
