@@ -1,2 +1,3 @@
 node_modules
-backend/firebase
+firebase-debug.log
+public/backend/firebase/firebase.js
