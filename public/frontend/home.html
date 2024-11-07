@@ -72,7 +72,8 @@
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="login.html">Food Hero</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -80,7 +81,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="home.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="home.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="recipe-finder.html">Recipe Finder</a>
@@ -127,7 +128,7 @@
     <!-- chart -->
     <div class="container-fluid section fade-in">
         <div class="row">
-            <div class="col-4 p-5">
+            <div class="col-4">
                 <p class="Heading-2">
                     A Glimpse into Global Hunger Crisis
                 </p>
@@ -146,6 +147,8 @@
             </div>
             <div class="col-8">
                 <div>
+                    <h6>Increase in # of people facing high levels of acute food insecurity between peak 2023 and mid 2024<br>( Millions )</h6>
+                    <br>
                     <canvas id="barChart"></canvas>
                     <br>
                     <h5 class="Text-2">From 2023 peak to mid 2024, there has been an increase of at least 1 million
@@ -239,13 +242,13 @@
     <!-- ipc phase 3 and above doughnut graphs -->
     <div class="container-fluid section fade-in">
         <div class="row">
-            <div class="col-4 p-5">
+            <div class="col-4">
                 <p class="Heading-2">
                     Global Food Insecurity: Populations in Crisis
                 </p>
                 <p class="Text-2">
                     Explore the alarming numbers of people enduring high levels of acute food insecurity
-                    (Phase 3 and above) in countries around the world
+                    (Phase 3 and above) in countries around the world.
                 </p>
 
                 <span id="source">
@@ -254,7 +257,7 @@
                         2023 Global Report on Food Crises</a>
                 </span>
             </div>
-            <div class="col-4 p-5">
+            <div class="col-4">
                 <h6>Number of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
                     equivalent) in 2022 <br>( Millions )</h6>
                 <br>
@@ -262,7 +265,7 @@
                 <br>
                 <h5 class="Text-2">In 2022, IPC/CH phase3+ took up 55% of the whole population of Yemen.</h5>
             </div>
-            <div class="col-4 p-5">
+            <div class="col-4">
                 <h6>Number of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
                     equivalent) in 2022 <br>( Millions )</h6>
                 <br>
@@ -276,40 +279,47 @@
 
     <!-- impacts of food insecurity - redo -->
 
-    <div id="app" class="container-fluid section2">
+    <div id="app" class="container-fluid section2 fade-in">
         <div class="row">
-            <div class="col align-items-center">
+            <div class="col-12 align-items-center">
                 <p class="Heading-2">
                     Beyond Empty Plates
                 </p>
                 <p class="Text-2">
-                    Learn how food insecurity impacts our planet, our communities, and our future.
+                    Interact with our cards to learn how food insecurity impacts our planet, our communities, and our future.
                 </p>
             </div>
         </div>
-
+        
         <div class="row d-flex align-items-center justify-content-center">
-            <div v-for="(impact, index) in impacts" :key="index" class="col-lg-3 col-md-6 col-sm-12 impact-container"
-                @mouseover="impact.showPic = false" @mouseout="impact.showPic = true">
-                <div v-if="impact.showPic">
+            <div v-for="impact in impacts" class="col-sm-12 col-md-6 col-lg-3 impact-container">
+                <div v-if="impact.showPic" @mouseover="impact.showPic=false">
                     <p class="Heading-2">{{ impact.title }}</p>
                     <img class="impact-element" :src="impact.image" :alt="impact.title">
                 </div>
-                <div v-else>
-                    <h5 class="impactText">{{ impact.description }}</h5>
+                <div v-else @mouseout="impact.showPic = true">
+                    <h5 class="impact-text">{{ impact.description }}</h5>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- display 3 latest food insecurity news using data retrieved frm api: -->
     <div class="container-fluid section fade-in">
-        <h1 class="Heading-2 p-2">Latest food waste news</h1>
-        <!-- display news links, title, desc and img-->
-        <div class="row p-1">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-3">
+        <div class="row">
+            <div class="col-12 align-items-center">
+                <p class="Heading-2">
+                    Fresh Updates on Food Waste: What's happening now
+                </p>
+                <p class="Text-2">
+                    Read up on the latest news on food wastage and food insecurity around the world.
+                </p>
+            </div>
+        </div>
+        
+        <!-- display news links, title, desc and img -->
+        <div class="row d-flex align-items-center justify-content-center justify-content-between">
+            <div class="col-md-6 col-lg-3">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" id="news1Img">
                     <div class="card-body">
@@ -318,8 +328,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" id="news2Img">
                     <div class="card-body">
@@ -328,8 +337,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" id="news3Img">
                     <div class="card-body">
@@ -340,6 +348,7 @@
             </div>
         </div>
     </div>
+
 
 
 
@@ -420,6 +429,9 @@
                 plugins: {
                     tooltip: {
                         enabled: false
+                    },
+                    legend:{
+                        display:false
                     }
                 }
             },
@@ -491,7 +503,7 @@
                         {
                             title: "Climate Change",
                             image: "./images/climate-changee.png",
-                            description: "As climate change intensifies, extreme weather events like droughts, floods, and heatwaves become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on unsustainable agricultural practices that contribute to greenhouse gas emissions, further worsening climate change and the environment we live in.",
+                            description: "As climate change intensifies, extreme weather events like droughts, floods, and heatwaves become more frequent, exacerbating food shortages. At the same time, food-insecure regions often rely on unsustainable agricultural practices that contribute to greenhouse gas emissions, further worsening climate change and our environment.",
                             showPic: true
                         },
                         {
@@ -531,8 +543,6 @@
         });
 
     </script>
-
-
 
     <!-- bootstrap js-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
