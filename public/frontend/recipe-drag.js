@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     instructionsModal.show();
 });
 
+//passing in username
+const userName = localStorage.getItem('userName') || 'User';
+document.getElementById('userName').innerText = userName;
+
 // For recipe search
 const app = Vue.createApp({
     data() {
