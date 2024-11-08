@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+
+body {
+  background-color: #f1ead1;
+}
+
+.navbar {
+  height: 100px;
+  font-family: 'Lustria', serif;
+  font-size: large;
+  padding: 5px;
+}
+
+h1 {
+  font-size: xx-large;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  margin: 20px;
+}
+
+
+.shelf {
+  background-color: #6e3c0bb7;
+  border: solid black 1px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; 
+}
+
+.ingredient {
+  flex: 1 1 80px; 
+  min-width: 60px;
+  max-width: 120px;
+  aspect-ratio: 1 / 1; 
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .ingredient {
+    flex-basis: 100px;
+    min-width: 80px;
+    max-width: 150px;
+  }
+}
+
+@media (min-width: 992px) {
+  .ingredient {
+    flex-basis: 120px;
+    min-width: 100px;
+  }
+}
+
+.search-area {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px; 
+}
+
+.search-box {
+  width: 100%;
+  max-width: 400px;
+  height: 150px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 1.5em;
+  color: #555;
+}
+
+.recipe-card {
+  margin-bottom: 20px;
+}
+
+#searchRecipeBtn, #fullRecipeBtn {
+  color: white;
+  background-color: rgba(0, 100, 0, 0.403);
+  font-family: 'Poppins', sans-serif;
+  border: none;
+}
+
+.modal img {
+  max-height: 300px;
+  object-fit: cover;
+}
