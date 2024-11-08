@@ -20,7 +20,7 @@
 
     <!-- get newest food insecurity news data from news api: -->
     <script>
-        axios.get("https://api.thenewsapi.com/v1/news/all?language=en&search=food+wastage|food+insecurity&api_token=") //key in api key here
+        axios.get("https://api.thenewsapi.com/v1/news/all?language=en&search=food+wastage|food+insecurity&api_token=m4BloEFuNj1BwjjqNzYmOUm0iIHUPyh5ztuZJcLc") //key in api key here
             .then(response => {
                 console.log(response.data);
                 let newsArr = response.data.data;
@@ -147,7 +147,7 @@
             </div>
             <div class="col-8">
                 <div>
-                    <h6>Increase in # of people facing high levels of acute food insecurity between peak 2023 and mid 2024<br>( Millions )</h6>
+                    <h6 class="text-center">Increase in # of people facing high levels of acute food insecurity between peak 2023 and mid 2024 ( Millions )</h6>
                     <br>
                     <canvas id="barChart"></canvas>
                     <br>
@@ -258,16 +258,16 @@
                 </span>
             </div>
             <div class="col-4">
-                <h6>Number of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
-                    equivalent) in 2022 <br>( Millions )</h6>
+                <h6 class="text-center">Number of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                    equivalent) in 2022 ( Millions )</h6>
                 <br>
                 <canvas id="doughnutChartYemen"></canvas>
                 <br>
                 <h5 class="Text-2">In 2022, IPC/CH phase3+ took up 55% of the whole population of Yemen.</h5>
             </div>
             <div class="col-4">
-                <h6>Number of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
-                    equivalent) in 2022 <br>( Millions )</h6>
+                <h6 class="text-center">Number of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                    equivalent) in 2022 ( Millions )</h6>
                 <br>
                 <canvas id="doughnutChartAfghan"></canvas>
                 <br>
@@ -305,7 +305,7 @@
     </div>
 
     <!-- display 3 latest food insecurity news using data retrieved frm api: -->
-    <div class="container-fluid section fade-in">
+    <div class="container-fluid news-section fade-in">
         <div class="row">
             <div class="col-12 align-items-center">
                 <p class="Heading-2">
@@ -318,9 +318,9 @@
         </div>
         
         <!-- display news links, title, desc and img -->
-        <div class="row d-flex align-items-center justify-content-center justify-content-between">
-            <div class="col-md-6 col-lg-3">
-                <div class="card" style="width: 18rem;">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-6 col-lg-3 m-auto">
+                <div class="card text-center" style="width: 18rem;">
                     <img class="card-img-top" id="news1Img">
                     <div class="card-body">
                         <h5 class="card-title" id="news1Title"></h5>
@@ -328,8 +328,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card" style="width: 18rem;">
+            <div class="col-md-6 col-lg-3 m-auto">
+                <div class="card text-center" style="width: 18rem;">
                     <img class="card-img-top" id="news2Img">
                     <div class="card-body">
                         <h5 class="card-title" id="news2Title"></h5>
@@ -337,8 +337,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card" style="width: 18rem;">
+            <div class="col-md-6 col-lg-3 m-auto">
+                <div class="card text-center" style="width: 18rem;">
                     <img class="card-img-top" id="news3Img">
                     <div class="card-body">
                         <h5 class="card-title" id="news3Title"></h5>
