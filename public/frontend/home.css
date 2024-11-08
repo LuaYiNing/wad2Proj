@@ -7,7 +7,7 @@
 }
 
 .fullscreen {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     background-color: rgba(0, 100, 0, 0.403);
     background-size: cover;
@@ -44,7 +44,7 @@
 
 
 .section {
-    height: 90vh;
+    height: 200vh;
     width: 100%;
     background-color: #f1ead1;
     background-size: cover;
@@ -57,7 +57,7 @@
 
 }
 .section2 {
-    height: 90vh;
+    height: 200vh;
     width: 100%;
     background-color: #ffffff;
     background-size: cover;
@@ -70,10 +70,22 @@
 
 }
 
+.news-section{
+    height: 250vh;
+    width: 100%;
+    background-color: #f1ead1;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+}
+
 .Heading-2{
     font-size: x-large;
     font-weight: 600;
-    text-align: center;
 }
 .Text-2{
     font-size: medium;
