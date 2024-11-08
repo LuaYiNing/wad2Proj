@@ -20,7 +20,10 @@
 
     <!-- get newest food insecurity news data from news api: -->
     <script>
-        axios.get("https://api.thenewsapi.com/v1/news/all?language=en&search=food+wastage|food+insecurity&api_token=") //key in api key here
+
+        const apiKey = ''; // Replace with your actual API key
+
+        axios.get("https://api.thenewsapi.com/v1/news/all?language=en&search=food+wastage|food+insecurity&api_token=" + apiKey)
             .then(response => {
                 console.log(response.data);
                 let newsArr = response.data.data;
