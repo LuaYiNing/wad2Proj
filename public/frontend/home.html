@@ -75,7 +75,7 @@
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="login.html">Food Hero</a>
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -150,7 +150,8 @@
             </div>
             <div class="col-8">
                 <div>
-                    <h6 class="text-center">Increase in # of people facing high levels of acute food insecurity between peak 2023 and mid 2024 ( Millions )</h6>
+                    <h6 class="text-center">Increase in # of people facing high levels of acute food insecurity between
+                        peak 2023 and mid 2024 ( Millions )</h6>
                     <br>
                     <canvas id="barChart"></canvas>
                     <br>
@@ -261,7 +262,8 @@
                 </span>
             </div>
             <div class="col-4">
-                <h6 class="text-center">Number of people in Yemen with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                <h6 class="text-center">Number of people in Yemen with high levels of acute food insecurity(IPC/CH phase
+                    3 or above or
                     equivalent) in 2022 ( Millions )</h6>
                 <br>
                 <canvas id="doughnutChartYemen"></canvas>
@@ -269,7 +271,8 @@
                 <h5 class="Text-2">In 2022, IPC/CH phase3+ took up 55% of the whole population of Yemen.</h5>
             </div>
             <div class="col-4">
-                <h6 class="text-center">Number of people in Afghanistan with high levels of acute food insecurity(IPC/CH phase 3 or above or
+                <h6 class="text-center">Number of people in Afghanistan with high levels of acute food insecurity(IPC/CH
+                    phase 3 or above or
                     equivalent) in 2022 ( Millions )</h6>
                 <br>
                 <canvas id="doughnutChartAfghan"></canvas>
@@ -289,11 +292,12 @@
                     Beyond Empty Plates
                 </p>
                 <p class="Text-2">
-                    Interact with our cards to learn how food insecurity impacts our planet, our communities, and our future.
+                    Interact with our cards to learn how food insecurity impacts our planet, our communities, and our
+                    future.
                 </p>
             </div>
         </div>
-        
+
         <div class="row d-flex align-items-center justify-content-center">
             <div v-for="impact in impacts" class="col-sm-12 col-md-6 col-lg-3 impact-container">
                 <div v-if="impact.showPic" @mouseover="impact.showPic=false">
@@ -319,7 +323,7 @@
                 </p>
             </div>
         </div>
-        
+
         <!-- display news links, title, desc and img -->
         <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-6 col-lg-3 m-auto">
@@ -351,6 +355,20 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="py-3 my-4">
+        <hr>
+        <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
+        <ul class="nav justify-content-center mb-3">
+            <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
+            <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted">Play</a></li>
+            <li class="nav-item"><a href="marketplace.html" class="nav-link px-2 text-muted">Food Donation Drives</a>
+            </li>
+        </ul>
+    </footer>
+
 
 
 
@@ -433,8 +451,8 @@
                     tooltip: {
                         enabled: false
                     },
-                    legend:{
-                        display:false
+                    legend: {
+                        display: false
                     }
                 }
             },
@@ -535,7 +553,7 @@
                 fadeInSections.forEach((section) => {
                     const rect = section.getBoundingClientRect();
                     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                    if (rect.top <= windowHeight - 150) { 
+                    if (rect.top <= windowHeight - 150) {
                         section.classList.add("fade-in-visible");
                     }
                 });
