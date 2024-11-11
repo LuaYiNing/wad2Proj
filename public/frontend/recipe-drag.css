@@ -187,6 +187,29 @@ body {
   background-color: #8b634d;
 }
 
+/* Soft Alert Popup */
+#softAlert {
+  display: none;
+  position: relative;
+  top: 10px;
+  margin-top: 8px;
+  background-color:crimson;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#softAlert.show {
+  display: block;
+  opacity: 1;
+}
+
+
 
 
 /* Footer Styling */

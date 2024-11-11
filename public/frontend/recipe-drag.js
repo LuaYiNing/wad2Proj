@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Show the instructions modal again when the info button is clicked
     infoButton.addEventListener('click', () => {
-        tooltip.hide(); // Hide the tooltip before showing the modal
+        tooltip.hide();
         setTimeout(() => {
             instructionsModal.show();
-        }, 100); // Small delay for smoother transition
+        }, 100);
     });
 });
 
@@ -34,34 +34,56 @@ const app = Vue.createApp({
         };
     },
     mounted() {
-        // Enable dragging for ingredients
         document.querySelectorAll('.ingredient').forEach(item => {
             item.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('text/plain', e.target.getAttribute('data-name'));
             });
         });
+
+        // Listen for Enter key press on the input field to trigger search
+        document.getElementById('searchBox').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                this.findRecipes();
+            }
+        });
     },
     methods: {
         handleDrop(event) {
-            const ingredient = event.dataTransfer.getData('text/plain');
-            if (!this.inputIngredients.includes(ingredient)) {
-                this.inputIngredients += (this.inputIngredients ? ', ' : '') + ingredient;
+            const ingredient = event.dataTransfer.getData('text/plain').trim();
+        
+            // Check if the ingredient is already in the list
+            if (this.inputIngredients.toLowerCase().includes(ingredient.toLowerCase())) {
+                this.showSoftAlert(`${ingredient} is already added.`);
+            } else {
+                // Add the ingredient, with a comma if it's not the first one
+                this.inputIngredients += this.inputIngredients ? `, ${ingredient}` : ingredient;
             }
         },
+        
+        // Function to show a soft alert
+        showSoftAlert(message) {
+            const alertElement = document.getElementById('softAlert');
+            alertElement.innerText = message;
+            alertElement.classList.add('show');
+            setTimeout(() => {
+                alertElement.classList.remove('show');
+            }, 2000); // Hide alert after 2 seconds
+        },
+        
+        
         handleDragOver(event) {
             event.preventDefault();
         },
         async findRecipes() {
-            const ingredients = this.inputIngredients.split(',').map(ingredient => ingredient.trim()).join(',');
             if (this.inputIngredients.trim() === '') {
                 const emptyInputModal = new bootstrap.Modal(document.getElementById('emptyInputModal'));
                 emptyInputModal.show();
                 return;
             }
 
-            const apiKey = ''; // Replace with your API key
+            const apiKey = ''; // Replace with your actual API key
             try {
-                // Fetch recipes based on input ingredients
+                const ingredients = this.inputIngredients.split(',').map(ingredient => ingredient.trim()).join(',');
                 const response = await axios.get('https://api.spoonacular.com/recipes/findByIngredients', {
                     params: {
                         ingredients: ingredients,
@@ -69,7 +91,6 @@ const app = Vue.createApp({
                     }
                 });
 
-                // Fetch additional recipe details
                 const detailedRecipes = await Promise.all(
                     response.data.map(async (recipe) => {
                         const detailsResponse = await axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information`, {
@@ -89,21 +110,15 @@ const app = Vue.createApp({
 
                 this.recipes = detailedRecipes;
 
-                // Show "No Recipes Found" modal if no recipes are returned
                 if (this.recipes.length === 0) {
                     const noRecipesModal = new bootstrap.Modal(document.getElementById('noRecipesModal'));
                     noRecipesModal.show();
                 }
             } catch (error) {
                 console.error("Error fetching recipes:", error);
-                const responseElement = document.getElementById("Response");
-                if (responseElement) {
-                    responseElement.innerText = "Failed to fetch recipes. Please try again later.";
-                }
             }
         },
         viewRecipeDetails(recipeId) {
-            // Navigate to the recipe-details.html with recipe ID as a query parameter
             window.location.href = `recipe-details.html?recipeId=${recipeId}`;
         },
         async getRecipeDetails(recipeId) {
@@ -118,10 +133,6 @@ const app = Vue.createApp({
                 recipeModal.show();
             } catch (error) {
                 console.error("Error fetching recipe details:", error);
-                const responseElement = document.getElementById("Response");
-                if (responseElement) {
-                    responseElement.innerText = "Failed to fetch recipe details. Please try again later.";
-                }
             }
         }
     }
@@ -129,3 +140,4 @@ const app = Vue.createApp({
 
 // Mount the Vue app
 app.mount('#app');
+

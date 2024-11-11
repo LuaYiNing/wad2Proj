@@ -74,25 +74,28 @@
         </div>
     </div>
 
-    <!-- Recipe searching -->
-        <div id="app" class="container mt-5">
-            <!-- Header Section -->
-            <div class="text-center mb-4">
-                <h1 class="main-title">
-                    Find Recipes For Your Ingredients 
-                    <button id="info-button" class="btn btn-link p-0 info-icon" data-bs-toggle="tooltip" title="How to use?">
-                        <i class="fas fa-info-circle"></i>
-                    </button>
-                </h1>
-            </div>
-
-            <!-- Search Box Section -->
-            <div class="search-box-container">
-                <input type="text" id="searchBox" v-model="inputIngredients" class="search-input" placeholder="Enter ingredients or drag from below">
-                <button class="btn btn-search" @click="findRecipes">
-                    <i class="fas fa-search"></i>
+     <!-- Recipe searching -->
+     <div id="app" class="container mt-5">
+        <!-- Header Section -->
+        <div class="text-center mb-4">
+            <h1 class="main-title">
+                Find Recipes For Your Ingredients 
+                <button id="info-button" class="btn btn-link p-0 info-icon" data-bs-toggle="tooltip" title="How to use?">
+                    <i class="fas fa-info-circle"></i>
                 </button>
-            </div>
+            </h1>
+        </div>
+
+        <!-- Search Box Section -->
+        <div class="search-box-container">
+            <input type="text" id="searchBox" v-model="inputIngredients" class="search-input" placeholder="Enter ingredients or drag from below"
+                   @drop.prevent="handleDrop" @dragover.prevent="handleDragOver">
+            <button class="btn btn-search" @click="findRecipes">
+                <i class="fas fa-search"></i>
+            </button>
+            
+        </div>
+        
 
             <!-- Ingredient Shelves Section -->
             <div class="ingredient-shelves mb-4">
@@ -126,6 +129,9 @@
                     <div class="ingredient col-3" style="background-image: url('images/carrot.png');" draggable="true" data-name="Carrot"></div>
                 </div>
             </div>
+
+            <!-- Soft Alert Element for duplicate ingredients -->
+            <div id="softAlert"></div>
 
             <!-- Recipe Results Section -->
             <div class="recipe-results mt-5">
