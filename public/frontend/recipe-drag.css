@@ -6,10 +6,9 @@ body {
 }
 
 .navbar {
-  height: 100px;
   font-family: 'Lustria', serif;
   font-size: large;
-  padding: 5px;
+  padding: 20px;
 }
 
 h1 {
