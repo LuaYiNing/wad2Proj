@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+
 /* Hero Section */
 .hero-section {
     text-align: center;
@@ -6,6 +9,12 @@
     padding-bottom: 3rem;
     z-index: 1;
 }
+
+.navbar {
+    font-family: 'Lustria', serif;
+    font-size: large;
+    padding: 20px;
+  }
 
 /* Blurred Background */
 .blurred-background {
