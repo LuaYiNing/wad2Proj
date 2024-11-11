@@ -3,8 +3,14 @@
 
 /* === Global Styles === */
 body {
-  background-color: #f9f5f0;
+  background-color: #f1ead1;
   font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  font-family: 'Lustria', serif;
+  font-size: large;
+  padding: 20px;
 }
 
 /* === Main Title Styles === */
