@@ -18,13 +18,11 @@
     flex-direction: column;
 }
 
-
-.navbar{
-    height: 100px;
+.navbar {
     font-family: 'Lustria', serif;
     font-size: large;
-    padding: 5px;
-}
+    padding: 20px;
+  }
 
 
 .Heading {

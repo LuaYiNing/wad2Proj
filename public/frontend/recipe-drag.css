@@ -7,51 +7,25 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* === Main Title Styles === */
-.main-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #4a4a4a;
+.navbar {
+  height: 100px;
+  font-family: 'Lustria', serif;
+  font-size: large;
+  padding: 5px;
 }
 
-/* === Info Icon Styling === */
-.info-icon {
-  font-size: 1.2rem;
-  color: #8b634d;
-  cursor: pointer;
+h1 {
+  font-size: xx-large;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  margin: 20px;
 }
 
-/* === Search Box Section === */
-.search-box-container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  align-items: stretch; /* Ensure input and button have the same height */
-  gap: 0;
-}
 
-/* Search Input Styling */
-.search-input {
-  flex: 1;
-  padding: 15px;
-  border: 2px solid #c49b66;
-  border-radius: 30px 0 0 30px;
-  font-size: 1rem;
-  color: #8b634d;
-  outline: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 56px; /* Explicit height to match the button */
-}
-
-/* Search Button Styling */
-.btn-search {
-  padding: 0 20px;
-  background-color: #c49b66;
-  color: #fff;
-  border: 2px solid #c49b66;
-  border-radius: 0 30px 30px 0;
-  font-size: 1.2rem;
+.shelf {
+  background-color: #6e3c0bb7;
+  border: solid black 1px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
