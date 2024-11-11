@@ -1,10 +1,27 @@
-// For instruction modal
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+    const infoButton = document.getElementById('info-button');
     const instructionsModal = new bootstrap.Modal(document.getElementById('instructionsModal'));
+
+    // Initialize Bootstrap tooltip
+    const tooltip = new bootstrap.Tooltip(infoButton, {
+        trigger: 'hover focus',
+        placement: 'top',
+        title: 'Click to view instructions on how to use Recipe Finder!'
+    });
+
+    // Show the instructions modal on first page load
     instructionsModal.show();
+
+    // Show the instructions modal again when the info button is clicked
+    infoButton.addEventListener('click', () => {
+        tooltip.hide(); // Hide the tooltip before showing the modal
+        setTimeout(() => {
+            instructionsModal.show();
+        }, 100); // Small delay for smoother transition
+    });
 });
 
-// Passing in username
+// Set the username from localStorage or default to 'User'
 const userName = localStorage.getItem('userName') || 'User';
 document.getElementById('userName').innerText = userName;
 
@@ -17,6 +34,7 @@ const app = Vue.createApp({
         };
     },
     mounted() {
+        // Enable dragging for ingredients
         document.querySelectorAll('.ingredient').forEach(item => {
             item.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('text/plain', e.target.getAttribute('data-name'));
@@ -43,7 +61,7 @@ const app = Vue.createApp({
 
             const apiKey = ''; // Replace with your API key
             try {
-                // Fetch recipes without limiting the number of results
+                // Fetch recipes based on input ingredients
                 const response = await axios.get('https://api.spoonacular.com/recipes/findByIngredients', {
                     params: {
                         ingredients: ingredients,
@@ -51,7 +69,7 @@ const app = Vue.createApp({
                     }
                 });
 
-                // Fetch additional recipe details for each result
+                // Fetch additional recipe details
                 const detailedRecipes = await Promise.all(
                     response.data.map(async (recipe) => {
                         const detailsResponse = await axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information`, {
@@ -59,7 +77,6 @@ const app = Vue.createApp({
                         });
                         const details = detailsResponse.data;
 
-                        // Return the recipe with high-resolution image and additional details
                         return {
                             id: recipe.id,
                             title: recipe.title,
@@ -72,6 +89,7 @@ const app = Vue.createApp({
 
                 this.recipes = detailedRecipes;
 
+                // Show "No Recipes Found" modal if no recipes are returned
                 if (this.recipes.length === 0) {
                     const noRecipesModal = new bootstrap.Modal(document.getElementById('noRecipesModal'));
                     noRecipesModal.show();
@@ -85,19 +103,19 @@ const app = Vue.createApp({
             }
         },
         viewRecipeDetails(recipeId) {
-            // Navigate to the recipe-details.html page with the recipe ID as a query parameter
+            // Navigate to the recipe-details.html with recipe ID as a query parameter
             window.location.href = `recipe-details.html?recipeId=${recipeId}`;
         },
         async getRecipeDetails(recipeId) {
-            const apiKey = '';
+            const apiKey = ''; // Replace with actual API key
             try {
                 const response = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information`, {
                     params: { apiKey: apiKey }
                 });
                 this.selectedRecipe = response.data;
 
-                const modal = new bootstrap.Modal(document.getElementById('recipeModal'));
-                modal.show();
+                const recipeModal = new bootstrap.Modal(document.getElementById('recipeModal'));
+                recipeModal.show();
             } catch (error) {
                 console.error("Error fetching recipe details:", error);
                 const responseElement = document.getElementById("Response");
@@ -109,6 +127,5 @@ const app = Vue.createApp({
     }
 });
 
+// Mount the Vue app
 app.mount('#app');
-
-

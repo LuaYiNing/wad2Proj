@@ -34,11 +34,10 @@ body {
   max-width: 900px;
   margin: 0 auto;
   display: flex;
-  align-items: stretch; /* Ensure input and button have the same height */
+  align-items: stretch;
   gap: 0;
 }
 
-/* Search Input Styling */
 .search-input {
   flex: 1;
   padding: 15px;
@@ -48,10 +47,9 @@ body {
   color: #8b634d;
   outline: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 56px; /* Explicit height to match the button */
+  height: 56px;
 }
 
-/* Search Button Styling */
 .btn-search {
   padding: 0 20px;
   background-color: #c49b66 !important;
@@ -64,41 +62,26 @@ body {
   align-items: center;
   cursor: pointer;
   height: 56px;
-  transition: none;
 }
 
-/* Disable hover, focus, and active effects */
-.btn-search:hover,
-.btn-search:focus,
-.btn-search:active {
-  background-color: #c49b66 !important;
-  color: #fff !important;
-  border-color: #c49b66 !important;
-  box-shadow: none;
-  outline: none;
-}
-
-
-/* === Ingredient Shelves Section === */
+/* Ingredient Shelves Section */
 .ingredient-shelves {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Space between ingredient shelves */
+  gap: 20px;
   justify-content: center;
 }
 
-/* Ingredient Box Styling */
 .shelf {
   display: flex;
   justify-content: space-around;
   gap: 10px;
 }
 
-/* Ingredient Item Styling */
 .ingredient {
-  width: 70px; /* Reduced width for smaller size */
-  height: 70px; /* Reduced height for smaller size */
+  width: 70px;
+  height: 70px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -139,25 +122,53 @@ body {
 /* Card Body with Fixed Height */
 .card-body {
   padding: 15px;
-  flex: 1; /* Allows the card body to expand to fill space */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: auto;
 }
 
-/* Recipe Title Styling */
+/* Card Title Styling */
 .card-title {
   font-size: 1.3rem;
   font-family: 'Lustria', serif;
-  color: #4a4a4a;
+  color: #82370e;
   margin-bottom: 10px;
+  min-height: 48px; /* Adjust based on the maximum title height (2 lines) */
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Truncate overflow text */
 }
 
-/* Recipe Text Styling */
-.card-text {
+/* Recipe Info Container */
+.recipe-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto; /* Pushes content to the bottom */
+  min-height: 30px;
+  gap: 0; /* Remove gap */
+}
+
+/* Info Item Styling */
+.info-item {
+  flex: 0.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+.info-item i {
+  margin-right: 3px;
+  color: #8b634d;
+}
+
+.info-item span {
   font-size: 1rem;
   color: #6c757d;
-  margin-bottom: auto; /* Pushes the content upwards */
 }
 
 /* View Full Recipe Button */
@@ -168,14 +179,14 @@ body {
   padding: 10px 20px;
   font-size: 1rem;
   width: 100%;
-  margin-top: 10px; /* Add space between the text and button */
+  margin-top: auto; /* Ensures button aligns at the bottom */
   transition: background-color 0.3s ease-in-out;
-  align-self: flex-end; /* Aligns the button at the bottom */
 }
 
 .btn-view-recipe:hover {
   background-color: #8b634d;
 }
+
 
 
 /* Footer Styling */
@@ -186,16 +197,14 @@ footer p {
 
 footer .nav-link {
   color: #6c757d;
-  transition: color 0.2s ease-in-out;
 }
 
 footer .nav-link:hover {
   color: #a17d60;
 }
 
-/* === Responsive Adjustments === */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  /* Adjust search input and button for smaller screens */
   .search-box-container {
     max-width: 90%;
   }
@@ -209,26 +218,17 @@ footer .nav-link:hover {
     font-size: 1rem;
   }
 
-  /* Smaller ingredient size for mobile */
   .ingredient {
     width: 60px;
     height: 60px;
   }
 
-  /* Adjust recipe card spacing */
   .recipe-card {
     margin-bottom: 15px;
   }
 
-  /* Footer font size adjustment */
   footer p {
     font-size: 0.8rem;
-  }
-
-
-  /* Recipe results */
-  .image-container {
-    height: 60%; /* Adjust height for smaller screens */
   }
 
   .card-title {

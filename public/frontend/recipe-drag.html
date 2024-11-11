@@ -78,7 +78,12 @@
         <div id="app" class="container mt-5">
             <!-- Header Section -->
             <div class="text-center mb-4">
-                <h1 class="main-title">Find Recipes For Your Ingredients <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Drag ingredients or type them to search"></h1>
+                <h1 class="main-title">
+                    Find Recipes For Your Ingredients 
+                    <button id="info-button" class="btn btn-link p-0 info-icon" data-bs-toggle="tooltip" title="How to use?">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </h1>
             </div>
 
             <!-- Search Box Section -->
@@ -125,8 +130,8 @@
             <!-- Recipe Results Section -->
             <div class="recipe-results mt-5">
                 <div class="text-center mb-3">
-                    <h4 v-if="recipes.length > 0">{{ recipes.length }} Recipes Found</h4>
-                    <h4 v-else>No Recipes Found</h4>
+                    <!-- <h4 v-if="recipes.length > 0">{{ recipes.length }} Recipes Found</h4> -->
+                    <!-- <h4 v-else>No Recipes Found</h4> -->
                 </div>
 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -135,12 +140,15 @@
                             <div class="image-container">
                                 <img :src="recipe.highResImage" class="card-img-top" :alt="recipe.title">
                             </div>
-                            <div class="card-body text-center">
+                            <div class="card-body d-flex flex-column justify-content-between text-center">
                                 <h5 class="card-title">{{ recipe.title }}</h5>
-                                <p class="card-text">Time: {{ recipe.readyInMinutes }} mins | Servings: {{ recipe.servings }}</p>
+                                <div class="recipe-info d-flex justify-content-center gap-2">
+                                    <span class="info-item"><i class="fas fa-clock"></i> {{ recipe.readyInMinutes }} mins</span>
+                                    <span class="info-item"><i class="fas fa-user-friends"></i> {{ recipe.servings }} Servings</span>
+                                </div>                                
                                 <button class="btn btn-view-recipe mt-3" @click="viewRecipeDetails(recipe.id)">
                                     View Full Recipe
-                                </button>                                
+                                </button>
                             </div>
                         </div>
                     </div>

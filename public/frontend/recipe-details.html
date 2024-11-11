@@ -46,44 +46,47 @@
     </div>
 </nav>
 
-<!-- Recipe Details Section -->
-<div class="container mt-4">
-    <div class="row">
-        <!-- Recipe Image and Details -->
-        <div class="col-md-4">
-            <div class="recipe-image-container">
-                <img id="recipe-image" alt="Recipe Image" class="recipe-image">
-            </div>
+
+<div class="container mt-5">
+    <!-- Back Button -->
+    <button onclick="window.history.back()" class="btn btn-outline-secondary mb-4">
+        <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <!-- Hero Section with Blurred Background Overlay -->
+    <div class="hero-section text-center position-relative">
+        <div class="blurred-background" id="blurred-background" style="background-image: url('');"></div>
+        <div class="thumbnail-container">
+            <img id="recipe-image" class="recipe-image" alt="Recipe Image">
         </div>
-        <div class="col-md-8">
-            <h1 id="recipe-title" class="recipe-title"></h1>
-            <div class="d-flex align-items-center mb-3">
-                <div class="me-4"><i class="fas fa-user-friends"></i> <span id="recipe-servings"></span> Servings</div>
-                <div class="me-4"><i class="fas fa-clock"></i> <span id="recipe-time"></span> Minutes</div>
-                <button id="save-recipe-btn" class="btn btn-save-recipe"><i class="fas fa-heart"></i> Save Recipe</button>
-            </div>
+        <h1 id="recipe-title" class="recipe-title mt-3"></h1>
+        <div class="d-flex justify-content-center align-items-center gap-3 mt-2">
+            <span><i class="fas fa-clock"></i> <span id="recipe-time"></span> Minutes</span>
+            <span><i class="fas fa-user-friends"></i> <span id="recipe-servings"></span> Servings</span>
+            <button id="save-recipe-btn" class="btn btn-save-recipe"><i class="fas fa-heart"></i> Save Recipe</button>
         </div>
     </div>
 
     <!-- Ingredients and Equipment Section -->
-    <div class="row mt-5">
+    <div class="row mt-4">
         <div class="col-md-6">
-            <h3>Ingredients</h3>
+            <h3><i class="fas fa-carrot"></i> Ingredients</h3>
             <ul id="ingredients-list" class="list-group"></ul>
         </div>
         <div class="col-md-6">
-            <h3>Equipment</h3>
+            <h3><i class="fas fa-tools"></i> Equipment</h3>
             <ul id="equipment-list" class="list-group"></ul>
         </div>
     </div>
 
     <!-- Instructions Section -->
-    <div class="container mt-4">
-        <h3>Instructions</h3>
+    <div class="mt-5">
+        <h3><i class="fas fa-list"></i> Instructions</h3>
         <div id="instructions-list"></div>
     </div>
 </div>
 
+        
 
 <!-- Footer -->
 <footer class="py-3 my-4">

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const apiKey = ''; // replace with your api key
+    const apiKey = '';
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipeId');
 
@@ -10,61 +10,68 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information`, {
-            params: { apiKey: apiKey }
+            params: { apiKey }
         });
         const recipe = response.data;
 
-        // Set Image, Title, Servings, and Time
+        // Set the background image and thumbnail
         const imageUrl = recipe.image.replace('312x231', '636x393');
         document.getElementById('recipe-image').src = imageUrl;
+        document.getElementById('blurred-background').style.backgroundImage = `url(${imageUrl})`;
+
+        // Set title, servings, and time
         document.getElementById('recipe-title').innerText = recipe.title;
         document.getElementById('recipe-servings').innerText = recipe.servings;
         document.getElementById('recipe-time').innerText = recipe.readyInMinutes;
 
-        // Display Ingredients
+        // Ingredients
         const ingredientsList = document.getElementById('ingredients-list');
-        ingredientsList.innerHTML = '';
+        ingredientsList.innerHTML = ''; // Clear existing content
         recipe.extendedIngredients.forEach(ingredient => {
             const item = document.createElement('li');
             item.classList.add('list-group-item');
-            item.innerHTML = `
-                <img src="https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}" alt="${ingredient.name}" class="icon-img">
-                <span>${ingredient.original}</span>
-            `;
+            item.innerHTML = `<img src="https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}" class="icon-img"> ${ingredient.original}`;
             ingredientsList.appendChild(item);
         });
 
-        // Display Equipment
+        // Equipment
         const equipmentList = document.getElementById('equipment-list');
+        equipmentList.innerHTML = ''; // Clear existing content
         const equipmentResponse = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/equipmentWidget.json`, {
-            params: { apiKey: apiKey }
+            params: { apiKey }
         });
+
         const equipmentData = equipmentResponse.data.equipment;
-        equipmentList.innerHTML = '';
-        equipmentData.forEach(equipment => {
-            const item = document.createElement('li');
-            item.classList.add('list-group-item');
-            item.innerHTML = `
-                <img src="https://spoonacular.com/cdn/equipment_100x100/${equipment.image}" alt="${equipment.name}" class="icon-img">
-                <span>${equipment.name}</span>
-            `;
-            equipmentList.appendChild(item);
-        });
+        if (equipmentData.length === 0) {
+            const noEquipmentItem = document.createElement('li');
+            noEquipmentItem.classList.add('list-group-item');
+            noEquipmentItem.innerText = "No equipment found.";
+            equipmentList.appendChild(noEquipmentItem);
+        } else {
+            equipmentData.forEach(equipment => {
+                const item = document.createElement('li');
+                item.classList.add('list-group-item');
+                item.innerHTML = `<img src="https://spoonacular.com/cdn/equipment_100x100/${equipment.image}" class="icon-img"> ${equipment.name}`;
+                equipmentList.appendChild(item);
+            });
+        }
 
-        // Display Instructions
+        // Instructions
         const instructionsList = document.getElementById('instructions-list');
-        recipe.analyzedInstructions[0]?.steps.forEach(step => {
-            const stepDiv = document.createElement('div');
-            stepDiv.classList.add('instruction-step');
-            stepDiv.innerHTML = `<strong>Step ${step.number}:</strong> ${step.step}`;
-            instructionsList.appendChild(stepDiv);
-        });
-
-        // Save Recipe Button
-        const saveButton = document.getElementById('save-recipe-btn');
-        saveButton.addEventListener('click', () => {
-            alert("Recipe saved!");
-        });
+        instructionsList.innerHTML = ''; // Clear existing content
+        if (recipe.analyzedInstructions.length === 0 || !recipe.analyzedInstructions[0]?.steps) {
+            const noInstructionsDiv = document.createElement('div');
+            noInstructionsDiv.classList.add('instruction-step');
+            noInstructionsDiv.innerText = "No instructions available.";
+            instructionsList.appendChild(noInstructionsDiv);
+        } else {
+            recipe.analyzedInstructions[0].steps.forEach(step => {
+                const stepDiv = document.createElement('div');
+                stepDiv.classList.add('instruction-step');
+                stepDiv.innerHTML = `<strong>Step ${step.number}:</strong> ${step.step}`;
+                instructionsList.appendChild(stepDiv);
+            });
+        }
     } catch (error) {
         console.error("Error fetching recipe details:", error);
         alert("Failed to fetch recipe details. Please try again later.");
