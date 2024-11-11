@@ -11,7 +11,8 @@ body {
 .main-title {
   font-size: 2rem;
   font-weight: 600;
-  color: #4a4a4a;
+  color: #8b634d;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* === Info Icon Styling === */
@@ -47,21 +48,28 @@ body {
 /* Search Button Styling */
 .btn-search {
   padding: 0 20px;
-  background-color: #c49b66;
-  color: #fff;
-  border: 2px solid #c49b66;
+  background-color: #c49b66 !important;
+  color: #fff !important;
+  border: 2px solid #c49b66 !important;
   border-radius: 0 30px 30px 0;
   font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  height: 56px; /* Match the height of the input box */
-  transition: background-color 0.3s ease-in-out;
+  height: 56px;
+  transition: none;
 }
 
-.btn-search:hover {
-  background-color: #a17d60;
+/* Disable hover, focus, and active effects */
+.btn-search:hover,
+.btn-search:focus,
+.btn-search:active {
+  background-color: #c49b66 !important;
+  color: #fff !important;
+  border-color: #c49b66 !important;
+  box-shadow: none;
+  outline: none;
 }
 
 
@@ -97,30 +105,74 @@ body {
   transform: scale(1.05);
 }
 
-/* === Recipe Card Section === */
+/* Updated Recipe Card Section */
 .recipe-card {
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Recipe Card Title */
+/* Image Container */
+.image-container {
+  height: 220px;
+  overflow: hidden;
+  border-bottom: 2px solid #a17d60;
+}
+
+/* Recipe Image */
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card Body with Fixed Height */
+.card-body {
+  padding: 15px;
+  flex: 1; /* Allows the card body to expand to fill space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Recipe Title Styling */
 .card-title {
-  font-size: 1.1rem;
-  color: #4a4a4a;
-  text-align: center;
+  font-size: 1.3rem;
   font-family: 'Lustria', serif;
+  color: #4a4a4a;
+  margin-bottom: 10px;
 }
 
-/* === Tooltip Styling === */
-[data-bs-toggle="tooltip"] {
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: #8b634d;
+/* Recipe Text Styling */
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: auto; /* Pushes the content upwards */
 }
+
+/* View Full Recipe Button */
+.btn-view-recipe {
+  background-color: #a17d60;
+  color: #fff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 10px; /* Add space between the text and button */
+  transition: background-color 0.3s ease-in-out;
+  align-self: flex-end; /* Aligns the button at the bottom */
+}
+
+.btn-view-recipe:hover {
+  background-color: #8b634d;
+}
+
 
 /* Footer Styling */
-
 footer p {
   font-size: 0.9rem;
   color: #6c757d;
@@ -165,5 +217,20 @@ footer .nav-link:hover {
   /* Footer font size adjustment */
   footer p {
     font-size: 0.8rem;
+  }
+
+
+  /* Recipe results */
+  .image-container {
+    height: 60%; /* Adjust height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .btn-view-recipe {
+    font-size: 0.9rem;
+    padding: 8px 16px;
   }
 }
