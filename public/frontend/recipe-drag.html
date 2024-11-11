@@ -25,7 +25,7 @@
                     <a class="nav-link" href="home.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="recipe-drag.html">Recipe Finder</a>
+                    <a class="nav-link active" aria-current="page" href="recipe-finder.html">Recipe Finder</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href='../folio-2019/src/index.html'>Play</a>
@@ -73,80 +73,67 @@
     </div>
 
     <!-- Recipe searching -->
-    <div id="app" class="container mt-4">
-        <div class="row">
-            <!-- Ingredient Shelves Section -->
-            <div class="col-12 col-lg-6 mb-4">
-                <!-- Carbs and Vegetables -->
-                <div class="shelf">
-                    <div class="ingredient" style="background-image: url('images/pasta.png');" draggable="true"
-                        data-name="Pasta"></div>
-                    <div class="ingredient" style="background-image: url('images/potato.png');" draggable="true"
-                        data-name="Potato"></div>
-                    <div class="ingredient" style="background-image: url('images/rice.png');" draggable="true"
-                        data-name="Rice"></div>
-                    <div class="ingredient" style="background-image: url('images/bread.png');" draggable="true"
-                        data-name="Bread"></div>
+        <div id="app" class="container mt-5">
+            <!-- Header Section -->
+            <div class="text-center mb-4">
+                <h1 class="main-title">Find Recipes For Your Ingredients <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Drag ingredients or type them to search"></h1>
+            </div>
 
-                    <div class="ingredient" style="background-image: url('images/tomato.png');" draggable="true"
-                        data-name="Tomato"></div>
-                    <div class="ingredient" style="background-image: url('images/brocolli.png');" draggable="true"
-                        data-name="Brocolli"></div>
-                    <div class="ingredient" style="background-image: url('images/carrot.png');" draggable="true"
-                        data-name="Carrot"></div>
-                    <div class="ingredient" style="background-image: url('images/bokchoy.png');" draggable="true"
-                        data-name="Bokchoy"></div>
+            <!-- Search Box Section -->
+            <div class="search-box-container">
+                <input type="text" id="searchBox" v-model="inputIngredients" class="search-input" placeholder="Enter ingredients or drag from below">
+                <button class="btn btn-search" @click="findRecipes">🔍</button>
+            </div>
+
+            <!-- Ingredient Shelves Section -->
+            <div class="ingredient-shelves mb-4">
+                <!-- Carbs and Vegetables Shelf -->
+                <div class="shelf row mb-3">
+                    <div class="ingredient col-3" style="background-image: url('images/pasta.png');" draggable="true" data-name="Pasta"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/potato.png');" draggable="true" data-name="Potato"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/rice.png');" draggable="true" data-name="Rice"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/bread.png');" draggable="true" data-name="Bread"></div>
                 </div>
 
-                <!-- Proteins and Dairy -->
-                <div class="shelf mt-3">
-                    <div class="ingredient" style="background-image: url('images/salmon.png');" draggable="true"
-                        data-name="Salmon"></div>
-                    <div class="ingredient" style="background-image: url('images/chicken.png');" draggable="true"
-                        data-name="Chicken"></div>
-                    <div class="ingredient" style="background-image: url('images/pork.png');" draggable="true"
-                        data-name="Pork"></div>
-                    <div class="ingredient" style="background-image: url('images/beef.png');" draggable="true"
-                        data-name="Beef"></div>
+                <!-- Proteins and Dairy Shelf -->
+                <div class="shelf row">
+                    <div class="ingredient col-3" style="background-image: url('images/salmon.png');" draggable="true" data-name="Salmon"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/chicken.png');" draggable="true" data-name="Chicken"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/beef.png');"
+                    draggable="true" data-name="Beef"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/pork.png');"
+                    draggable="true" data-name="Pork"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/egg.png');" draggable="true" data-name="Egg"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/cheese.png');" draggable="true" data-name="Cheese"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/butter.png');" draggable="true" data-name="Butter"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/milk.png');" draggable="true" data-name="Milk"></div>
+                </div>
 
-                    <div class="ingredient" style="background-image: url('images/butter.png');" draggable="true"
-                        data-name="Butter"></div>
-                    <div class="ingredient" style="background-image: url('images/milk.png');" draggable="true"
-                        data-name="Milk"></div>
-                    <div class="ingredient" style="background-image: url('images/egg.png');" draggable="true"
-                        data-name="Egg"></div>
-                    <div class="ingredient" style="background-image: url('images/cheese.png');" draggable="true"
-                        data-name="Cheese"></div>
+                <!-- Vegetable Shelf -->
+                <div class="shelf row">
+                    <div class="ingredient col-3" style="background-image: url('images/bokchoy.png');" draggable="true" data-name=" Bok Choy"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/tomato.png');" draggable="true" data-name="Tomato"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/brocolli.png');" draggable="true" data-name="Brocolli"></div>
+                    <div class="ingredient col-3" style="background-image: url('images/carrot.png');" draggable="true" data-name="Carrot"></div>
                 </div>
             </div>
 
-            <!-- Search Area and Results Section -->
-            <div class="col-12 col-lg-6">
-                <div class="search-area">
-                    <h1 class="text-center">Recipe Finder</h1>
-                    <input type="text" id="searchBox" v-model="inputIngredients"
-                        placeholder="Drop ingredients or type here" @drop.prevent="handleDrop"
-                        @dragover.prevent="handleDragOver" class="search-box">
-                    <button class="btn btn-primary mt-2" @click="findRecipes" id="searchRecipeBtn">Search
-                        Recipes</button>
-                    <p id="Response" style="color: red"></p>
-
-                    <!-- Recipe Results -->
-                    <div class="row mt-4">
-                        <div class="col-md-6 col-lg-4 mb-4" v-for="recipe in recipes" :key="recipe.id">
-                            <div class="card recipe-card">
-                                <img :src="recipe.image" class="card-img-top" :alt="recipe.title">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ recipe.title }}</h5>
-                                    <button class="btn btn-info" @click="getRecipeDetails(recipe.id)"
-                                        id="fullRecipeBtn">View Full Recipe</button>
-                                </div>
+            <!-- Recipe Results Section -->
+            <div class="recipe-results mt-5">
+                <div class="row">
+                    <div class="col-md-4 mb-4" v-for="recipe in recipes" :key="recipe.id">
+                        <div class="card recipe-card">
+                            <img :src="recipe.image" class="card-img-top" :alt="recipe.title">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ recipe.title }}</h5>
+                                <button class="btn btn-info" @click="getRecipeDetails(recipe.id)">View Full Recipe</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
          <!-- No Recipes Found Modal -->
          <div class="modal fade" id="noRecipesModal" tabindex="-1" aria-labelledby="noRecipesModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -183,6 +170,18 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+<footer class="py-3 my-4">
+    <hr>
+    <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
+    <ul class="nav justify-content-center mb-3">
+        <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="recipe-drag.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted">Play</a></li>
+        <li class="nav-item"><a href="marketplace.html" class="nav-link px-2 text-muted">Food Donation Drives</a></li>
+    </ul>
+</footer>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

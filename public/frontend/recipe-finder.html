@@ -6,99 +6,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Finder</title>
     <!-- Import Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Import CSS -->
     <link rel="stylesheet" href="recipe-finder.css">
 </head>
 
 <body>
-    <div id="app" class="container mt-5">
-        <h1 class="text-center">Recipe Finder</h1>
-        <div class="mb-4">
-            <input type="text" v-model="inputIngredients" class="form-control" placeholder="Enter ingredients (comma-separated)">
-            <button class="btn btn-primary mt-2" @click="findRecipes" id="searchRecipeBtn">Search Recipes</button>
+    <!-- Transparent Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="login.html">Food Hero</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="recipe-finder.html">Recipe Finder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../folio-2019/src/index.html">Play</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html" id="userName"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Log Out</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <div class="row mt-4">
-            <div class="col-md-4" v-for="recipe in recipes" :key="recipe.id" class="recipe-card">
-                <div class="card">
-                    <img :src="recipe.image" class="card-img-top" :alt="recipe.title">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ recipe.title }}</h5>
-                        <button class="btn btn-info" @click="getRecipeDetails(recipe.id)" id="fullRecipeBtn">View Full Recipe</button>
-                    </div>
+    <!-- Slideshow (Carousel) with Indicators -->
+    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000" data-bs-pause="false">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-overlay"></div>
+            <!-- Pizza Slide -->
+            <div class="carousel-item active">
+                <img src="images/pizza.png" class="d-block w-100" alt="Pizza">
+                <div class="carousel-caption fade-in">
+                    <h2>Discover New Pizza Recipes</h2>
+                    <p>Got cheese, tomato, and dough? Discover delicious pizza recipes with what you already have!</p>
+                </div>
+            </div>
+
+            <!-- Salad Slide -->
+            <div class="carousel-item">
+                <img src="images/salad.png" class="d-block w-100" alt="Salad">
+                <div class="carousel-caption fade-in">
+                    <h2>Find Fresh Salad Ideas</h2>
+                    <p>Use your fresh veggies and find the perfect salad recipe in seconds.</p>
+                </div>
+            </div>
+
+            <!-- Dessert Slide -->
+            <div class="carousel-item">
+                <img src="images/dessert.png" class="d-block w-100" alt="Dessert">
+                <div class="carousel-caption fade-in">
+                    <h2>Create Tasty Desserts</h2>
+                    <p>Find easy dessert recipes using common pantry ingredients you already have.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+<!-- Enhanced Introduction Section -->
+<section class="container-fluid py-4">
+    <div class="row align-items-center">
+        <!-- Left Section: Brown Background with Animation and Text -->
+        <div class="col-md-6 left-section d-flex flex-column justify-content-start">
+            <div class="text-white text-center mb-3">
+                <h2 class="display-5">Find Recipes Easily</h2>
+                <p class="lead">Find the recipe that best fits your ingredients.</p>
+            </div>
+            <!-- Animation Box with White Border, No Extra Gap -->
+            <div class="animation-wrapper mx-auto mb-0">
+                <div class="animation-container">
+                    <iframe src="https://lottie.host/embed/27eeb957-8749-40d7-9b84-8a8545d3b591/dbGnKHI5BL.json" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
 
-        <!-- Recipe Modal -->
-        <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="recipeModalLabel">{{ selectedRecipe.title }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img :src="selectedRecipe.image" class="img-fluid mb-3" alt="Recipe Image">
-                        
-                        <h6>Ingredients:</h6>
-                        <ul class="list-group mb-4">
-                            <li v-for="ingredient in selectedRecipe.extendedIngredients" :key="ingredient.id" class="list-group-item">
-                                {{ ingredient.original }}
-                            </li>
-                        </ul>
-                        
-                        <h6>Instructions:</h6>
-                        <div v-html="selectedRecipe.instructions"></div>
-                    </div>
-                </div>
-            </div>
+        <!-- Right Section: Clean, Minimalist White Background with Text Content -->
+        <div class="col-md-6 right-section text-center text-md-start p-5">
+            <p class="lead text-dark">
+                Enter your ingredients, and discover a variety of recipe ideas tailored to what you have in your kitchen. Save time, reduce food waste, and explore over <strong>thousands of recipes</strong> available on our platform.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<!-- Enhanced Call-to-Action Section with Text Above Animation -->
+<section class="container-fluid py-5">
+    <div class="row align-items-center">
+        <!-- Left Section: Clean Text Content with White Background -->
+        <div class="col-md-6 left-second-section text-center text-md-start p-5">
+            <p class="second-lead text-dark">
+                Enter your ingredients, and discover a variety of recipes tailored to what you have in your kitchen. Save time, reduce food waste, and explore our curated collection of delicious dishes.
+            </p>
+            <!-- Call-to-Action Button -->
+            <a href="recipe-drag.html" class="btn btn-lg second-btn-primary mt-3">Start Searching</a>
         </div>
 
-        <!-- No Recipes Found Modal -->
-        <div class="modal fade" id="noRecipesModal" tabindex="-1" aria-labelledby="noRecipesModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="noRecipesModalLabel">No Recipes Found</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>No recipes found. Please try different ingredients.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Empty Input Modal -->
-        <div class="modal fade" id="emptyInputModal" tabindex="-1" aria-labelledby="emptyInputModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="emptyInputModalLabel">Input Required</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please enter at least one ingredient.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+        <!-- Right Section: Brown Background with Text Above Animation -->
+        <div class="col-md-6 right-second-section d-flex flex-column justify-content-start align-items-center">
+            <h2 class="second-display-5 text-light">
+                <span>Ready to Unleash</span><br>
+                <span>Your Inner Chef ?</span>
+            </h2>
+            <p class="lead">
+                <span>Search with the ingredients you have and</span><br>
+                <span>discover amazing recipes tailored just for you!</span>
+            </p>
+            <!-- Animation Container with White Border -->
+            <div class="second-animation-wrapper mt-4">
+                <div class="second-animation-container">
+                    <iframe src="https://lottie.host/embed/00701df2-6978-4d33-9b88-c267dca923f8/sm4w1Hqkj7.json" class="second-animation" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Import Axios, Vue, and Bootstrap JS -->
+<!-- Footer -->
+<footer class="py-3 my-4">
+    <hr>
+    <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
+    <ul class="nav justify-content-center mb-3">
+        <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted">Play</a></li>
+        <li class="nav-item"><a href="marketplace.html" class="nav-link px-2 text-muted">Food Donation Drives</a></li>
+    </ul>
+</footer>
+
+
+    <!-- Import Vue, Axios, and Bootstrap JS -->
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- Import JS -->
-    <script src="recipe-finder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

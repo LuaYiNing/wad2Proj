@@ -1,95 +1,169 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
 
+/* === Global Styles === */
 body {
-  background-color: #f1ead1;
-}
-
-.navbar {
-  height: 100px;
-  font-family: 'Lustria', serif;
-  font-size: large;
-  padding: 5px;
-}
-
-h1 {
-  font-size: xx-large;
+  background-color: #f9f5f0;
   font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  margin: 20px;
 }
 
+/* === Main Title Styles === */
+.main-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4a4a4a;
+}
 
-.shelf {
-  background-color: #6e3c0bb7;
-  border: solid black 1px;
-  padding: 10px;
+/* === Info Icon Styling === */
+.info-icon {
+  font-size: 1.2rem;
+  color: #8b634d;
+  cursor: pointer;
+}
+
+/* === Search Box Section === */
+.search-box-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  align-items: stretch; /* Ensure input and button have the same height */
+  gap: 0;
+}
+
+/* Search Input Styling */
+.search-input {
+  flex: 1;
+  padding: 15px;
+  border: 2px solid #c49b66;
+  border-radius: 30px 0 0 30px;
+  font-size: 1rem;
+  color: #8b634d;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 56px; /* Explicit height to match the button */
+}
+
+/* Search Button Styling */
+.btn-search {
+  padding: 0 20px;
+  background-color: #c49b66;
+  color: #fff;
+  border: 2px solid #c49b66;
+  border-radius: 0 30px 30px 0;
+  font-size: 1.2rem;
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 200px; 
-}
-
-.ingredient {
-  flex: 1 1 80px; 
-  min-width: 60px;
-  max-width: 120px;
-  aspect-ratio: 1 / 1; 
-  background-size: cover;
-  background-position: center;
   cursor: pointer;
-  border-radius: 5px;
+  height: 56px; /* Match the height of the input box */
+  transition: background-color 0.3s ease-in-out;
 }
 
-@media (min-width: 768px) {
-  .ingredient {
-    flex-basis: 100px;
-    min-width: 80px;
-    max-width: 150px;
-  }
+.btn-search:hover {
+  background-color: #a17d60;
 }
 
-@media (min-width: 992px) {
-  .ingredient {
-    flex-basis: 120px;
-    min-width: 100px;
-  }
-}
 
-.search-area {
+/* === Ingredient Shelves Section === */
+.ingredient-shelves {
   padding: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between ingredient shelves */
   justify-content: center;
-  min-height: 220px; 
 }
 
-.search-box {
-  width: 100%;
-  max-width: 400px;
-  height: 150px;
-  border: 2px solid #333;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 1.5em;
-  color: #555;
+/* Ingredient Box Styling */
+.shelf {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
 }
 
+/* Ingredient Item Styling */
+.ingredient {
+  width: 70px; /* Reduced width for smaller size */
+  height: 70px; /* Reduced height for smaller size */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.ingredient:hover {
+  transform: scale(1.05);
+}
+
+/* === Recipe Card Section === */
 .recipe-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
-#searchRecipeBtn, #fullRecipeBtn {
-  color: white;
-  background-color: rgba(0, 100, 0, 0.403);
-  font-family: 'Poppins', sans-serif;
-  border: none;
+/* Recipe Card Title */
+.card-title {
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  text-align: center;
+  font-family: 'Lustria', serif;
 }
 
-.modal img {
-  max-height: 300px;
-  object-fit: cover;
+/* === Tooltip Styling === */
+[data-bs-toggle="tooltip"] {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #8b634d;
+}
+
+/* Footer Styling */
+
+footer p {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+footer .nav-link {
+  color: #6c757d;
+  transition: color 0.2s ease-in-out;
+}
+
+footer .nav-link:hover {
+  color: #a17d60;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  /* Adjust search input and button for smaller screens */
+  .search-box-container {
+    max-width: 90%;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .btn-search {
+    font-size: 1rem;
+  }
+
+  /* Smaller ingredient size for mobile */
+  .ingredient {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Adjust recipe card spacing */
+  .recipe-card {
+    margin-bottom: 15px;
+  }
+
+  /* Footer font size adjustment */
+  footer p {
+    font-size: 0.8rem;
+  }
 }
