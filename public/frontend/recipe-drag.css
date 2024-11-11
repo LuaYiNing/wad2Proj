@@ -1,17 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
 
-/* === Global Styles === */
 body {
-  background-color: #f9f5f0;
-  font-family: 'Poppins', sans-serif;
+  background-color: #f1ead1;
 }
 
 .navbar {
-  height: 100px;
   font-family: 'Lustria', serif;
   font-size: large;
-  padding: 5px;
+  padding: 20px;
 }
 
 h1 {
@@ -26,6 +23,130 @@ h1 {
   background-color: #6e3c0bb7;
   border: solid black 1px;
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; 
+}
+
+.ingredient {
+  flex: 1 1 80px; 
+  min-width: 60px;
+  max-width: 120px;
+  aspect-ratio: 1 / 1; 
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .ingredient {
+    flex-basis: 100px;
+    min-width: 80px;
+    max-width: 150px;
+  }
+}
+
+@media (min-width: 992px) {
+  .ingredient {
+    flex-basis: 120px;
+    min-width: 100px;
+  }
+}
+
+.search-area {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px; 
+}
+
+.search-box {
+  width: 100%;
+  max-width: 400px;
+  height: 150px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 1.5em;
+  color: #555;
+}
+
+.recipe-card {
+  margin-bottom: 20px;
+}
+
+#searchRecipeBtn, #fullRecipeBtn {
+  color: white;
+  background-color: rgba(0, 100, 0, 0.403);
+  font-family: 'Poppins', sans-serif;
+  border: none;
+}
+
+.modal img {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+
+/* === Global Styles === */
+body {
+  background-color: #f9f5f0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* === Main Title Styles === */
+.main-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+
+/* === Info Icon Styling === */
+.info-icon {
+  font-size: 1.2rem;
+  color: #8b634d;
+  cursor: pointer;
+}
+
+/* === Search Box Section === */
+.search-box-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch; /* Ensure input and button have the same height */
+  gap: 0;
+}
+
+/* Search Input Styling */
+.search-input {
+  flex: 1;
+  padding: 15px;
+  border: 2px solid #c49b66;
+  border-radius: 30px 0 0 30px;
+  font-size: 1rem;
+  color: #8b634d;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 56px; /* Explicit height to match the button */
+}
+
+/* Search Button Styling */
+.btn-search {
+  padding: 0 20px;
+  background-color: #c49b66;
+  color: #fff;
+  border: 2px solid #c49b66;
+  border-radius: 0 30px 30px 0;
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
