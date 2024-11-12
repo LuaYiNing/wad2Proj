@@ -166,6 +166,11 @@
     </ul>
 </footer>
 
+    <script> //passing username to the nav bar 
+        const userName = localStorage.getItem('userName') || 'User';
+        document.getElementById('userName').innerText = userName;
+    </script>
+
 
     <!-- Import Vue, Axios, and Bootstrap JS -->
     <script src="https://unpkg.com/vue@3"></script>
