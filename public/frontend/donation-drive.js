@@ -252,13 +252,44 @@ function formatOpeningHours(weekdayText) {
 // Add predefined Food Box locations
 function addFoodBoxLocations(markerIcons) {
     const foodBoxLocations = [
-        { name: "Food Box - Hougang Mall", lat: 1.3713, lng: 103.8932, address: "90 Hougang Avenue 10, Singapore 538766", timing: "10am to 10pm" },
-        { name: "Food Box - Causeway Point", lat: 1.4360, lng: 103.7854, address: "1 Woodlands Square, Singapore 738099", timing: "11am to 10pm" },
-        { name: "Food Box - Compass One Mall", lat: 1.3925, lng: 103.8959, address: "1 Sengkang Square, Singapore 545078", timing: "10am to 10pm" },
-        { name: "Food Box - NorthPoint City", lat: 1.4292, lng: 103.8368, address: "930 Yishun Avenue 2, Singapore 769098", timing: "11am to 10pm" },
-        { name: "Food Box - Waterway Point", lat: 1.4067, lng: 103.9022, address: "83 Punggol Central, Singapore 828761", timing: "10am to 10pm" },
-        { name: "Food Box - Yew Tee Point", lat: 1.3972, lng: 103.7470, address: "21 Choa Chu Kang North 6, Singapore 689578", timing: "10am to 10pm" },
+        // Shopping Malls
+        { name: "Hougang Mall (Level 3 behind Customer Service Counter)", lat: 1.3713, lng: 103.8932, address: "90 Hougang Avenue 10, Singapore 538766", timing: "10am to 10pm" },
+        { name: "Causeway Point (Customer Service at Level 2)", lat: 1.4360, lng: 103.7854, address: "1 Woodlands Square, Singapore 738099", timing: "11am to 10pm" },
+        { name: "Compass One Mall (Level 1 between Giordano and Polar Puffs & Cakes)", lat: 1.3925, lng: 103.8959, address: "1 Sengkang Square, Singapore 545078", timing: "10am to 10pm" },
+        { name: "NorthPoint City (Customer Service at North Wing, Level 2)", lat: 1.4292, lng: 103.8368, address: "930 Yishun Avenue 2, Singapore 769098", timing: "11am to 10pm" },
+        { name: "Waterway Point (Customer Service at East Wing, Level 1, in front of Andersen’s Ice Cream)", lat: 1.4067, lng: 103.9022, address: "83 Punggol Central, Singapore 828761", timing: "10am to 10pm" },
+        { name: "Yew Tee Point (Customer Service Counter at Level 1)", lat: 1.3972, lng: 103.7470, address: "21 Choa Chu Kang North 6, Singapore 689578", timing: "10am to 10pm" },
+    
+        // Central & South Bank Box Locations
+        { name: "Alexandra Point (Information Counter at Basement 1)", lat: 1.2841, lng: 103.8020, address: "438 Alexandra Road, Singapore 119958", timing: "11am to 9pm" },
+        { name: "Alexandra Technopark (Blk B @ Level 1, Opposite Childcare Centre)", lat: 1.2860, lng: 103.8000, address: "438B Alexandra Road, Singapore 119968", timing: "11am to 9pm" },
+        { name: "Frasers Cuppage (Information Counter at Level 1)", lat: 1.3005, lng: 103.8417, address: "51 Cuppage Road #01-06A, Singapore 229469", timing: "9am to 10pm" },
+        { name: "Frasers Tower (Beside Ya Kun Kaya Toast at Level 2)", lat: 1.2786, lng: 103.8490, address: "182 Cecil St, Singapore 069547", timing: "9am to 6pm" },
+        { name: "Pan Pacific Serviced Suites Beach Road", lat: 1.3008, lng: 103.8605, address: "7500B Beach Road, Singapore 199592", timing: "Not specified" },
+        { name: "SCC Straits Ote Ltd (Cross Street Exchange)", lat: 1.2840, lng: 103.8475, address: "18 Cross Street, Singapore 048423", timing: "9am to 6pm" },
+    
+        // East Bank Box Locations
+        { name: "Century Square (Level 3 Information Counter)", lat: 1.3524, lng: 103.9426, address: "2 Tampines Central 5, Singapore 529509", timing: "10am to 10pm" },
+        { name: "EastPoint Mall (Customer Service at Level 2)", lat: 1.3432, lng: 103.9534, address: "3 Simei Street, Singapore 528833", timing: "10am to 10pm" },
+        { name: "Tampines 1 (Basement 1 Customer Counter)", lat: 1.3544, lng: 103.9440, address: "10 Tampines Central 1, Singapore 529536", timing: "10am to 10pm" },
+        { name: "White Sands Mall (Level 2 Customer Service Counter)", lat: 1.3727, lng: 103.9490, address: "1 Pasir Ris Central Street 3, Singapore 518457", timing: "10am to 10pm" },
+    
+        // Supermarkets
+        { name: "Cold Storage (Great World City Entrance)", lat: 1.2931, lng: 103.8324, address: "1 Kim Seng Promenade, #B1-139, Singapore 237994", timing: "10am to 10pm" },
+        { name: "Cold Storage (Jelita Shopping Centre Entrance)", lat: 1.3125, lng: 103.7832, address: "293 Holland Rd, #01-01, Singapore 278628", timing: "10am to 10pm" },
+        { name: "CS Fresh (The Star Vista)", lat: 1.3068, lng: 103.7890, address: "1 Vista Exchange Green #B1-02 & 35/36, Singapore 138617", timing: "10am to 10pm" },
+        { name: "Giant Hypermarket (Suntec City Entrance)", lat: 1.2936, lng: 103.8570, address: "3 Temasek Blvd, #B1-154/155/156, Singapore 038983", timing: "9am to 10pm" },
+        { name: "Cold Storage (One North Entrance)", lat: 1.2990, lng: 103.7872, address: "1 Fusionopolis Way, B2-03 One North Connexis, Singapore 138632", timing: "10am to 10pm" },
+    
+        // West Bank Box Locations
+        { name: "Giant Hypermarket (IMM Entrance)", lat: 1.3340, lng: 103.7460, address: "2 Jurong East Street 21, #01-100, Singapore 609601", timing: "9am to 10pm" },
+        { name: "Giant Hypermarket (Pioneer Mall Entrance)", lat: 1.3476, lng: 103.7050, address: "Blk 638 #03-01, Jurong West Street 61, Singapore 640638", timing: "9am to 10pm" },
+        { name: "CS Fresh (Guthrie House)", lat: 1.3251, lng: 103.7961, address: "1 Fifth Ave, Guthrie House #01-05, Singapore 268802", timing: "10am to 10pm" },
+    
+        // Special Locations
+        { name: "The Foodbank Singapore (Level 1 Reception Roller Cage / Level 3 Warehouse)", lat: 1.3080, lng: 103.7605, address: "218 Pandan Loop @ XPACE, Singapore 128408", timing: "10am to 6pm (Mon to Fri)" }
     ];
+    
 
     foodBoxLocations.forEach((location) => {
         location.type = 'foodBox';
@@ -390,5 +421,75 @@ function updateSearchResults(filteredLocations) {
 
         driveList.appendChild(listItem);
     });
+}
+
+function showNearbyLocations() {
+    // Check if the browser supports Geolocation
+    if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser.");
+        return;
+    }
+
+    // Get the user's current location
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+            const userLocation = new google.maps.LatLng(userLat, userLng);
+
+            // Define a maximum distance (in meters) for "nearby" locations
+            const maxDistance = 3000; // 3 km
+
+            // Filter locations based on the distance to the user's location
+            const nearbyLocations = allLocations.filter(({ location }) => {
+                const markerLocation = new google.maps.LatLng(location.lat, location.lng);
+                const distance = google.maps.geometry.spherical.computeDistanceBetween(userLocation, markerLocation);
+                return distance <= maxDistance;
+            });
+
+            // Update the map and list with nearby locations
+            updateMapMarkers(nearbyLocations);
+            updateSearchResults(nearbyLocations);
+
+            // Pan the map to the user's current location
+            map.panTo(userLocation);
+            map.setZoom(14);
+
+            // Optionally, add a marker for the user's location
+            new google.maps.Marker({
+                position: userLocation,
+                map: map,
+                title: "You are here",
+                icon: {
+                    url: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                },
+            });
+        },
+        (error) => {
+            console.error("Error getting location:", error);
+            alert("Unable to retrieve your location.");
+        }
+    );
+}
+
+function showAllMarkers() {
+    // Reset all filters and show all markers
+    markers.forEach(marker => {
+        marker.setMap(map);
+    });
+
+    updateList('all');
+
+    // Create a new bounds object
+    const bounds = new google.maps.LatLngBounds();
+
+    // Extend bounds to include all markers' positions
+    markers.forEach(marker => {
+        bounds.extend(marker.getPosition());
+    });
+
+    // Fit the map to show all markers
+    map.fitBounds(bounds);
 }
 

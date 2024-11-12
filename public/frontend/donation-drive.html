@@ -47,7 +47,7 @@
         <div class="container text-center text-white">
             <h1 class="hero-heading">Join Our Food Donation Movement</h1>
             <p class="hero-subtitle">Help reduce food waste and support communities in need. Discover food banks, community fridges, and food boxes near you.</p>
-            <a href="#mapSection" class="btn btn-primary btn-lg">Explore Locations</a>
+            <a href="#mapSection" class="btn btn-lg" style="background-color: #a17d60; color: white; border: none; padding: 1.0rem;">Explore Locations</a>
         </div>
     </section>
 
@@ -95,9 +95,11 @@
                 
                 <!-- Filter Buttons -->
                 <div class="btn-group w-100 mb-4">
-                    <button class="btn btn-outline-primary w-33" onclick="filterMarkers('foodBank')">Food Banks</button>
-                    <button class="btn btn-outline-success w-33" onclick="filterMarkers('communityFridge')">Community Fridges</button>
-                    <button class="btn btn-outline-danger w-33" onclick="filterMarkers('foodBox')">Food Boxes</button>
+                    <button class="btn btn-outline-primary w-10" onclick="filterMarkers('foodBank')">Food Banks</button>
+                    <button class="btn btn-outline-success w-10" onclick="filterMarkers('communityFridge')">Community Fridges</button>
+                    <button class="btn btn-outline-danger w-20" onclick="filterMarkers('foodBox')">Food Boxes</button>
+                    <button class="btn btn-outline-info w-15" onclick="showNearbyLocations()">Nearby Me</button>
+                    <button class="btn btn-outline-warning w-15" onclick="showAllMarkers()">Show All</button>
                 </div>
 
                 <!-- Location List -->
@@ -134,7 +136,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places,geometry&callback=initMap"></script>
     <script src="donation-drive.js"></script>
 </body>
 
