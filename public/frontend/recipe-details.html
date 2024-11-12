@@ -11,43 +11,43 @@
     </head>
 <body>
 
-<!-- Nav Bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="awareness-hub.html">Food Hero</a>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home.html">Food Hero</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="home.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="recipe-finder.html">Recipe Finder</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href='http://wad2games.s3-website.us-east-2.amazonaws.com'>Play</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href='donation-drive.html'>Donation Drives</a>
-            </li>
-        </ul>
-    </div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="recipe-finder.html">Recipe Finder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='http://wad2games.s3-website.us-east-2.amazonaws.com'>Play</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='donation-drive.html'>Donation Drives</a>
+                </li>
+            </ul>
+        </div>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="profile.html" id="userName"></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.html">Log Out</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html" id="userName"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
 
 <div class="container mt-5">
@@ -66,7 +66,9 @@
         <div class="d-flex justify-content-center align-items-center gap-3 mt-2">
             <span><i class="fas fa-clock"></i> <span id="recipe-time"></span> Minutes</span>
             <span><i class="fas fa-user-friends"></i> <span id="recipe-servings"></span> Servings</span>
-            <button id="save-recipe-btn" class="btn btn-save-recipe"><i class="fas fa-heart"></i> Save Recipe</button>
+            <button id="save-recipe-btn" class="btn btn-save-recipe" @click="saveRecipe">
+                <i class="fas fa-heart"></i> Save Recipe
+            </button>
         </div>
     </div>
 
@@ -104,7 +106,9 @@
 </footer>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="recipe-details.js"></script>
+<script type="module" src="recipe-details.js"></script>
+<script type="module" src="saveRecipe.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
