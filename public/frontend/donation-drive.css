@@ -1,56 +1,253 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-.navbar{
-    font-family: 'Lustria', serif;
-    font-size: large;
+/* === Global Styles === */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f1ead1;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* === Navbar Styles === */
+.navbar {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand,
+.nav-link {
+    color: #333 !important;
+}
+
+.navbar .nav-link:hover {
+    color: #007bff !important;
+}
+
+/* === Hero Section Styles === */
+.hero-section {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('images/fooddonationimpact.png') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    color: #fff;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-heading {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    animation: slideInDown 1.2s ease-in-out;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    line-height: 1.5;
+    animation: slideInUp 1.2s ease-in-out;
+}
+
+.btn-primary {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* === Intro Card Section === */
+.info-card {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.card-body {
     padding: 20px;
 }
 
-/* Hero Section */
-.carousel-item {
-    height: 500px;
-    object-fit: cover;
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
 }
 
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    border-radius: 10px;
+.card-text {
+    color: #666;
 }
 
-/* Map Section */
-#map {
-    width: 100%;
-    height: 600px;
-    border-radius: 10px;
+/* === Map & Sidebar Section === */
+#mapSection {
+    padding: 40px;
+    background-color: #f9fafc;
 }
 
-#driveList {
-    max-height: 600px;
+.map-container {
+    height: 80vh;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-height: 85vh;
     overflow-y: auto;
 }
 
+.sidebar h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.sidebar .btn-group-vertical .btn {
+    border-radius: 50px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.sidebar .btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.sidebar .btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.sidebar .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.sidebar .btn:hover {
+    background-color: #f0f2f5;
+}
+
+#searchInput {
+    border-radius: 50px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+}
+
+/* === List Group Item === */
 .list-group-item {
     cursor: pointer;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
     transition: background-color 0.2s;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .list-group-item:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f2f5;
 }
 
-/* Footer Styling */
+/* === Footer Styles === */
+footer {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
 footer p {
     font-size: 0.9rem;
     color: #6c757d;
-  }
-  
-  footer .nav-link {
+}
+
+footer .nav-link {
     color: #6c757d;
-    transition: color 0.2s ease-in-out;
-  }
-  
-  footer .nav-link:hover {
-    color: #a17d60;
-  }
+    transition: color 0.2s;
+}
+
+footer .nav-link:hover {
+    color: #007bff;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .info-card {
+        margin-bottom: 20px;
+    }
+
+    .map-container {
+        height: 60vh;
+    }
+
+    .sidebar h4 {
+        font-size: 1.4rem;
+    }
+}
