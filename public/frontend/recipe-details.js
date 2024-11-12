@@ -62,7 +62,7 @@ const app = Vue.createApp({
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const apiKey = '63c647af7eea43e0888673ad3e7e5221';
+    const apiKey = '';
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipeId');
 
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Equipment
         const equipmentList = document.getElementById('equipment-list');
-        equipmentList.innerHTML = '63c647af7eea43e0888673ad3e7e5221'; // Clear existing content
+        equipmentList.innerHTML = ''; // Clear existing content
         const equipmentResponse = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/equipmentWidget.json`, {
             params: { apiKey }
         });

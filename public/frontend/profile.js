@@ -12,7 +12,7 @@ const app = Vue.createApp({
     },
     methods: {
         async getSavedRecipeDetails() {
-            const apiKey = '63c647af7eea43e0888673ad3e7e5221'; 
+            const apiKey = ''; 
             const savedRecipesRef = collection(db, `users/${localStorage.getItem('userUID')}/savedRecipes`);
 
             try {
