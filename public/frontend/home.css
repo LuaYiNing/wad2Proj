@@ -42,7 +42,7 @@
 
 
 .section {
-    height: 200vh;
+    height: 100vh;
     width: 100%;
     background-color: #f1ead1;
     background-size: cover;
@@ -55,7 +55,21 @@
 
 }
 .section2 {
-    height: 200vh;
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.impact-section{
+    height: 160vh;
     width: 100%;
     background-color: #ffffff;
     background-size: cover;
