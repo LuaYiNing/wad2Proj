@@ -22,7 +22,18 @@
     font-family: 'Lustria', serif;
     font-size: large;
     padding: 20px;
-  }
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand,
+.nav-link {
+    color: #333 !important;
+}
+
+.navbar .nav-link:hover {
+    color: #007bff !important;
+}
 
 
 .Heading {
@@ -98,6 +109,7 @@
 .Heading-2{
     font-size: x-large;
     font-weight: 600;
+    text-align: center;
 }
 .Text-2{
     font-size: medium;
