@@ -5,10 +5,16 @@ const allLocations = [];
 // Attach functions to the global window object
 window.initMap = initMap;
 window.filterMarkers = filterMarkers;
+window.showNearbyLocations = showNearbyLocations;
+window.showAllMarkers = showAllMarkers;
+window.searchLocations = searchLocations;
 
 function initMap() {
+    // Singapore's lat and lng
+    const singaporeCenter = { lat: 1.3521, lng: 103.8198 };
+
     map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 1.3521, lng: 103.8198 },
+        center: singaporeCenter,
         zoom: 12,
     });
 
@@ -27,16 +33,62 @@ function initMap() {
         },
     };
 
+    // Limit searches to Singapore (within a 15km radius)
     fetchFoodBankLocations(markerIcons);
-    fetchCommunityFridgeLocations(markerIcons);
     addFoodBoxLocations(markerIcons);
+
+    // Load GeoJSON file for Community Fridges
+    loadGeoJSON('communityfridges.geojson', markerIcons);
 }
 
+// Function to load GeoJSON file for community fridges
+function loadGeoJSON(geojsonFilePath, markerIcons) {
+    fetch(geojsonFilePath)
+        .then(response => response.json())
+        .then(geojsonData => {
+            // Loop through the GeoJSON features and create markers for each community fridge
+            geojsonData.features.forEach(feature => {
+                const name = feature.properties.Name;
+                const description = feature.properties.description || 'No description available';
+                const coordinates = feature.geometry.coordinates;
+                const lat = coordinates[1];
+                const lng = coordinates[0];
+
+                // Create marker for each community fridge
+                createCommunityFridgeMarker(name, lat, lng, description, markerIcons);
+            });
+        })
+        .catch(error => {
+            console.error("Error loading GeoJSON file:", error);
+        });
+}
+
+// Function to create a marker for Community Fridge
+function createCommunityFridgeMarker(name, lat, lng, description, markerIcons) {
+    const marker = new google.maps.Marker({
+        position: { lat, lng },
+        map: map,
+        title: name,
+        icon: markerIcons.communityFridge,
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+        content: `<h6>${name}</h6><p>${description}</p><p>Location: ${lat}, ${lng}</p>`,
+    });
+
+    marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+    });
+
+    markers.push(marker);
+}
+
+// Fetch Food Bank locations
 function fetchFoodBankLocations(markerIcons) {
     const service = new google.maps.places.PlacesService(map);
     const request = {
-        location: { lat: 1.3521, lng: 103.8198 },
-        radius: 15000,
+        location: { lat: 1.3521, lng: 103.8198 }, // Singapore's center
+        radius: 15000, // 15 km radius
         query: 'food bank',
         type: ['establishment', 'point_of_interest'],
     };
@@ -44,8 +96,8 @@ function fetchFoodBankLocations(markerIcons) {
     service.textSearch(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             results.forEach((place) => {
-                // Filter out irrelevant results based on the name
-                if (!isIrrelevantPlace(place.name)) {
+                // Ensure no "Community Fridge" places are added to the Food Bank list
+                if (!isIrrelevantPlace(place.name, 'foodBank')) {
                     getPlaceDetails(place, 'foodBank', markerIcons);
                 }
             });
@@ -55,26 +107,44 @@ function fetchFoodBankLocations(markerIcons) {
     });
 }
 
-// Helper function to filter out irrelevant places
-function isIrrelevantPlace(name) {
+// Helper function to filter out irrelevant places (excluding Community Fridges for the right category)
+function isIrrelevantPlace(name, type) {
     const irrelevantKeywords = ['Recipe', 'Corner', 'Restaurant', 'Bar', 'Cafe'];
+    const excludedFoodBankPlaces = [
+        "Indian Recipe Corner", // Exclude "Indian Recipe Corner" from Food Banks
+    ];
+
+    const excludedCommunityFridges = [
+        "Community Fridge",  // Exclude all community fridges from Food Banks
+        "Woodlands Community Fridge", // Specifically excluding this from Food Banks
+    ];
+
+    if (type === 'foodBank') {
+        // For Food Bank, exclude "Community Fridge" places
+        return excludedFoodBankPlaces.some((place) => name.includes(place)) ||
+            excludedCommunityFridges.some((place) => name.includes(place));
+    }
+
+    // Allow Community Fridges to show up in their own category
     return irrelevantKeywords.some((keyword) => name.includes(keyword));
 }
-
 
 // Fetch Community Fridge locations dynamically
 function fetchCommunityFridgeLocations(markerIcons) {
     const service = new google.maps.places.PlacesService(map);
     const request = {
-        location: { lat: 1.3521, lng: 103.8198 },
-        radius: 15000,
+        location: { lat: 1.3521, lng: 103.8198 }, // Singapore's center
+        radius: 15000, // 15 km radius
         query: 'community fridge',
     };
 
     service.textSearch(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             results.forEach((place) => {
-                getPlaceDetails(place, 'communityFridge', markerIcons);
+                // Ensure "Community Fridge" locations are categorized properly as Community Fridges
+                if (!isIrrelevantPlace(place.name, 'communityFridge')) {
+                    getPlaceDetails(place, 'communityFridge', markerIcons);
+                }
             });
         } else {
             console.error('Error fetching Community Fridge locations:', status);
@@ -100,6 +170,7 @@ function getPlaceDetails(place, type, markerIcons) {
                 timing: openingHours,
                 type: type,
             };
+            // Ensure the location is added only once and is correctly categorized
             createMarker(location, markerIcons);
             addToList(location);
         } else {
@@ -110,20 +181,24 @@ function getPlaceDetails(place, type, markerIcons) {
 
 // Function to add location to the side list
 function addToList(location) {
-    const driveList = document.getElementById('driveList');
-    const listItem = document.createElement('li');
-    listItem.classList.add('list-group-item');
-    listItem.innerHTML = `<strong>${location.name}</strong><br>${location.address}<br><small>Timing: ${location.timing}</small>`;
+    // Check for duplicates by comparing name and type
+    if (!allLocations.some(({ location: loc }) => loc.name === location.name && loc.type === location.type)) {
+        allLocations.push({ location, marker: null });
+        
+        const driveList = document.getElementById('driveList');
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        listItem.innerHTML = `<strong>${location.name}</strong><br>${location.address}<br><small>Timing: ${location.timing}</small>`;
 
-    // Add click event to pan to the location on the map
-    listItem.addEventListener('click', () => {
-        map.panTo({ lat: location.lat, lng: location.lng });
-        map.setZoom(14);
-    });
+        // Add click event to pan to the location on the map
+        listItem.addEventListener('click', () => {
+            map.panTo({ lat: location.lat, lng: location.lng });
+            map.setZoom(14);
+        });
 
-    driveList.appendChild(listItem);
+        driveList.appendChild(listItem);
+    }
 }
-
 
 // Format opening hours
 function formatOpeningHours(weekdayText) {
@@ -133,17 +208,18 @@ function formatOpeningHours(weekdayText) {
 // Add predefined Food Box locations
 function addFoodBoxLocations(markerIcons) {
     const foodBoxLocations = [
-        { name: "Hougang Mall", lat: 1.3713, lng: 103.8932, address: "90 Hougang Avenue 10, Singapore 538766", timing: "10am to 10pm" },
-        { name: "Causeway Point", lat: 1.4360, lng: 103.7854, address: "1 Woodlands Square, Singapore 738099", timing: "11am to 10pm" },
-        { name: "Compass One Mall", lat: 1.3925, lng: 103.8959, address: "1 Sengkang Square, Singapore 545078", timing: "10am to 10pm" },
-        { name: "NorthPoint City", lat: 1.4292, lng: 103.8368, address: "930 Yishun Avenue 2, Singapore 769098", timing: "11am to 10pm" },
-        { name: "Waterway Point", lat: 1.4067, lng: 103.9022, address: "83 Punggol Central, Singapore 828761", timing: "10am to 10pm" },
-        { name: "Yew Tee Point", lat: 1.3972, lng: 103.7470, address: "21 Choa Chu Kang North 6, Singapore 689578", timing: "10am to 10pm" },
+        { name: "Food Box - Hougang Mall", lat: 1.3713, lng: 103.8932, address: "90 Hougang Avenue 10, Singapore 538766", timing: "10am to 10pm" },
+        { name: "Food Box - Causeway Point", lat: 1.4360, lng: 103.7854, address: "1 Woodlands Square, Singapore 738099", timing: "11am to 10pm" },
+        { name: "Food Box - Compass One Mall", lat: 1.3925, lng: 103.8959, address: "1 Sengkang Square, Singapore 545078", timing: "10am to 10pm" },
+        { name: "Food Box - NorthPoint City", lat: 1.4292, lng: 103.8368, address: "930 Yishun Avenue 2, Singapore 769098", timing: "11am to 10pm" },
+        { name: "Food Box - Waterway Point", lat: 1.4067, lng: 103.9022, address: "83 Punggol Central, Singapore 828761", timing: "10am to 10pm" },
+        { name: "Food Box - Yew Tee Point", lat: 1.3972, lng: 103.7470, address: "21 Choa Chu Kang North 6, Singapore 689578", timing: "10am to 10pm" },
     ];
 
     foodBoxLocations.forEach((location) => {
         location.type = 'foodBox';
         createMarker(location, markerIcons);
+        addToList(location);
     });
 }
 
@@ -177,16 +253,67 @@ function filterMarkers(type) {
             marker.setMap(null);
         }
     });
+
+    updateList(type);
 }
 
-// Toggle Sidebar on Mobile
-const sidebar = document.querySelector('.sidebar');
-const toggleBtn = document.createElement('button');
-toggleBtn.classList.add('sidebar-toggle-btn');
-toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
-document.body.appendChild(toggleBtn);
+// Update the list based on the selected filter
+function updateList(type) {
+    const driveList = document.getElementById('driveList');
+    driveList.innerHTML = '';
 
-toggleBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-});
+    const filteredLocations = allLocations.filter(({ location }) => {
+        return type === 'all' || location.type === type;
+    });
 
+    filteredLocations.forEach(({ location }) => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        listItem.innerHTML = `<strong>${location.name}</strong><br>${location.address}<br><small>Timing: ${location.timing}</small>`;
+        listItem.addEventListener('click', () => {
+            map.panTo({ lat: location.lat, lng: location.lng });
+            map.setZoom(14);
+        });
+        driveList.appendChild(listItem);
+    });
+
+    if (!driveList.hasChildNodes()) {
+        const message = document.createElement("p");
+        message.textContent = "No results found.";
+        message.classList.add("text-muted", "text-center", "mt-3");
+        driveList.appendChild(message);
+    }
+}
+
+// Search locations based on the search query
+function searchLocations(query) {
+    const filteredLocations = allLocations.filter(({ location }) => {
+        return location.name.toLowerCase().includes(query.toLowerCase()) || location.address.toLowerCase().includes(query.toLowerCase());
+    });
+
+    updateSearchResults(filteredLocations);
+}
+
+// Update the search results in the list
+function updateSearchResults(filteredLocations) {
+    const driveList = document.getElementById('driveList');
+    driveList.innerHTML = '';
+
+    filteredLocations.forEach(({ location }) => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        listItem.innerHTML = `<strong>${location.name}</strong><br>${location.address}<br><small>Timing: ${location.timing}</small>`;
+        listItem.addEventListener('click', () => {
+            map.panTo({ lat: location.lat, lng: location.lng });
+            map.setZoom(14);
+        });
+        driveList.appendChild(listItem);
+    });
+
+    if (!driveList.hasChildNodes()) {
+        const message = document.createElement("p");
+        message.textContent = "No results found.";
+        message.classList.add("text-muted", "text-center", "mt-3");
+        driveList.appendChild(message);
+    }
+}
