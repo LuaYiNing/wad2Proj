@@ -5,14 +5,16 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background-color: #f1ead1;
 }
 
 .bodyContent {
-  background: linear-gradient(#fdb572ab, #fdb5721a);
   display: flex;
   flex-flow: column;
   height: 100%;
+  justify-content: center;
 }
+
 
 .navbar {
   font-family: 'Lustria', serif;
