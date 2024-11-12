@@ -112,9 +112,15 @@
 
     <!-- header -->
     <div class="fullscreen">
-        <div class="container-fluid header d-flex align-items-center justify-content-center">
-            <div class="row">
-                <div class="col-8">
+        <section class="container-fluid py-4">
+            <div class="row align-items-center">
+                <!-- Left Section: pic-->
+                <div class="col-md-6 d-flex flex-column justify-content-start">
+                    <img src="images/hunger.png">
+                </div>
+
+                <!-- Right Section: text -->
+                <div class="col-md-6 text-center text-md-start p-5">
                     <p class="Heading">
                         Nearly <span id="important">one in 11 people</span> around the world go to bed hungry every
                         night
@@ -125,124 +131,128 @@
                         and play our interactive games to be a <span id="important">Food Hero</span>!
                     </p>
                 </div>
-                <div class="col-4">
-                </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- chart -->
-    <div class="container-fluid section fade-in">
-        <div class="row">
-            <div class="col-4">
-                <p class="Heading-2">
-                    A Glimpse into Global Hunger Crisis
-                </p>
-                <p class="Text-2">
-                    Discover the staggering numbers of people
-                    facing severe food insecurity across countries worldwide.
-                    Explore the regions most impacted by this urgent crisis.
-                </p>
+    <div class="section fade-in">
+        <section class="container-fluid py-4">
+            <div class="row align-items-center">
+                <div class="col-md-4 d-flex flex-column justify-content-start">
+                    <p class="Heading-2">
+                        A Glimpse into Global Hunger Crisis
+                    </p>
+                    <p class="Text-2">
+                        Discover the staggering numbers of people
+                        facing severe food insecurity across countries worldwide.
+                        Explore the regions most impacted by this urgent crisis.
+                    </p>
 
-                <span id="source">
-                    Source:<a
-                        href="https://www.fsinplatform.org/sites/default/files/resources/files/GRFC2024-MYU-en.pdf">
-                        2024 Global Report on Food Crises</a>
-                </span>
+                    <span id="source">
+                        Source:<a
+                            href="https://www.fsinplatform.org/sites/default/files/resources/files/GRFC2024-MYU-en.pdf">
+                            2024 Global Report on Food Crises</a>
+                    </span>
+                </div>
 
-            </div>
-            <div class="col-8">
-                <div>
-                    <h6 class="text-center">Increase in # of people facing high levels of acute food insecurity between
-                        peak 2023 and mid 2024 ( Millions )</h6>
-                    <br>
-                    <canvas id="barChart"></canvas>
-                    <br>
-                    <h5 class="Text-2">From 2023 peak to mid 2024, there has been an increase of at least 1 million
-                        people facing high
-                        levels
-                        of acute food insecurity in countries like Yemen, Ethiopia, Myanmar, Sudan, Nigeria, Malawi,
-                        Zimbabwe, and Chad.
-                    </h5>
+                <div class="col-md-8 text-center text-md-start p-5">
+                    <div>
+                        <h6 class="text-center">Increase in # of people facing high levels of acute food insecurity
+                            between
+                            peak 2023 and mid 2024 ( Millions )</h6>
+                        <br>
+                        <canvas id="barChart"></canvas>
+                        <br>
+                        <h5 class="Text-2">From 2023 peak to mid 2024, there has been an increase of at least 1 million
+                            people facing high
+                            levels
+                            of acute food insecurity in countries like Yemen, Ethiopia, Myanmar, Sudan, Nigeria, Malawi,
+                            Zimbabwe, and Chad.
+                        </h5>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Understanding IPC Scale -->
-    <div class="container-fluid section2 fade-in">
-        <div class="row">
-            <div class="col-8 p-5">
-                <p class="Heading-2 justify-content-center">
-                <div id="ipcCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <!-- Slide 1: IPC Phase 1 -->
-                        <div class="carousel-item active">
-                            <div class="d-flex flex-column justify-content-center align-items-center text-success">
-                                <h3>Phase 1: Minimal</h3>
-                                <p>Households are able to meet essential food and non-food needs without engaging in
-                                    unsustainable coping strategies.</p>
+    <div class="section2 fade-in">
+        <section class="container-fluid py-4">
+            <div class="row align-items-center">
+                <div class="col-md-8 d-flex flex-column justify-content-start">
+                    <p class="Heading-2 justify-content-center">
+                    <div id="ipcCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Slide 1: IPC Phase 1 -->
+                            <div class="carousel-item active">
+                                <div class="d-flex flex-column justify-content-center align-items-center text-success">
+                                    <h3>Phase 1: Minimal</h3>
+                                    <p>Households are able to meet essential food and non-food needs without engaging in
+                                        unsustainable coping strategies.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 2: IPC Phase 2 -->
+                            <div class="carousel-item">
+                                <div class="d-flex flex-column justify-content-center align-items-center text-warning">
+                                    <h3>Phase 2: Stressed</h3>
+                                    <p>Households have minimally adequate food consumption but are unable to afford some
+                                        essential non-food expenditures without using crisis strategies.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 3: IPC Phase 3 -->
+                            <div class="carousel-item">
+                                <div
+                                    class="d-flex flex-column justify-content-center align-items-center text-warning-emphasis">
+                                    <h3>Phase 3: Crisis</h3>
+                                    <p>Households face food consumption gaps with high acute malnutrition,
+                                        or are only able to meet minimum needs through crisis coping strategies.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 4: IPC Phase 4 -->
+                            <div class="carousel-item">
+                                <div class="d-flex flex-column justify-content-center align-items-center text-danger">
+                                    <h3>Phase 4: Emergency</h3>
+                                    <p>Households experience large food consumption gaps resulting in
+                                        very high acute malnutrition or extreme loss of livelihood assets.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 5: IPC Phase 5 -->
+                            <div class="carousel-item">
+                                <div
+                                    class="d-flex flex-column justify-content-center align-items-center text-danger-emphasis">
+                                    <h3>Phase 5: Catastrophe / Famine</h3>
+                                    <p>Households face an extreme lack of food, with starvation, death, destitution,
+                                        and very critical levels of acute malnutrition.</p>
+                                </div>
                             </div>
                         </div>
-                        <!-- Slide 2: IPC Phase 2 -->
-                        <div class="carousel-item">
-                            <div class="d-flex flex-column justify-content-center align-items-center text-warning">
-                                <h3>Phase 2: Stressed</h3>
-                                <p>Households have minimally adequate food consumption but are unable to afford some
-                                    essential non-food expenditures without using crisis strategies.</p>
-                            </div>
-                        </div>
-                        <!-- Slide 3: IPC Phase 3 -->
-                        <div class="carousel-item">
-                            <div
-                                class="d-flex flex-column justify-content-center align-items-center text-warning-emphasis">
-                                <h3>Phase 3: Crisis</h3>
-                                <p>Households face food consumption gaps with high acute malnutrition,
-                                    or are only able to meet minimum needs through crisis coping strategies.</p>
-                            </div>
-                        </div>
-                        <!-- Slide 4: IPC Phase 4 -->
-                        <div class="carousel-item">
-                            <div class="d-flex flex-column justify-content-center align-items-center text-danger">
-                                <h3>Phase 4: Emergency</h3>
-                                <p>Households experience large food consumption gaps resulting in
-                                    very high acute malnutrition or extreme loss of livelihood assets.</p>
-                            </div>
-                        </div>
-                        <!-- Slide 5: IPC Phase 5 -->
-                        <div class="carousel-item">
-                            <div
-                                class="d-flex flex-column justify-content-center align-items-center text-danger-emphasis">
-                                <h3>Phase 5: Catastrophe / Famine</h3>
-                                <p>Households face an extreme lack of food, with starvation, death, destitution,
-                                    and very critical levels of acute malnutrition.</p>
-                            </div>
-                        </div>
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#ipcCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#ipcCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <!-- Carousel Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#ipcCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#ipcCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    </p>
                 </div>
-                </p>
+
+                <div class="col-md-4 text-center text-md-start p-5">
+                    <p class="Heading-2">
+                        Decoding the IPC Acute Food Insecurity Classification: Understanding the Global Hunger Scale
+                    </p>
+                    <p class="Text-2">
+                        Use our interactive carousel to navigate through phases of food insecurity and gain a deeper
+                        understanding of global food challenges.
+                    </p>
+                </div>
             </div>
-            <div class="col-4 p-1">
-                <p class="Heading-2">
-                    Decoding the IPC Acute Food Insecurity Classification: Understanding the Global Hunger Scale
-                </p>
-                <p class="Text-2">
-                    Use our interactive carousel to navigate through phases of food insecurity and gain a deeper
-                    understanding of global food challenges.
-                </p>
-            </div>
-        </div>
+        </section>
     </div>
 
 
@@ -286,9 +296,8 @@
         </div>
     </div>
 
-    <!-- impacts of food insecurity - redo -->
-
-    <div id="app" class="container-fluid section2 fade-in">
+    <!-- impacts of food insecurity -->
+    <div id="app" class="container-fluid impact-section fade-in">
         <div class="row">
             <div class="col-12 align-items-center">
                 <p class="Heading-2">
