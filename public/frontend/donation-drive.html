@@ -12,17 +12,28 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <a class="navbar-brand" href="login.html">Food Hero</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home.html">Food Hero</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="recipe-finder.html">Recipe Finder</a></li>
-                <li class="nav-item"><a class="nav-link" href="play.html">Play</a></li>
-                <li class="nav-item"><a class="nav-link active" href="donation-drive.html">Donation Drives</a></li>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="recipe-finder.html">Recipe Finder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='http://wad2games.s3-website.us-east-2.amazonaws.com'>Play</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href='donation-drive.html'>Donation Drives</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
@@ -114,6 +125,11 @@
             </ul>
         </div>
     </footer>
+
+    <script> //passing username to the nav bar 
+        const userName = localStorage.getItem('userName') || 'User';
+        document.getElementById('userName').innerText = userName;
+    </script>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

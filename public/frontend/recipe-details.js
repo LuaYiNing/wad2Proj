@@ -1,5 +1,10 @@
+import { saveRecipe } from './saveRecipe.js';
+
+const userName = localStorage.getItem('userName') || 'User';
+document.getElementById('userName').innerText = userName;
+
 document.addEventListener("DOMContentLoaded", async () => {
-    const apiKey = '';
+    const apiKey = '1e82a8d269304c3683a7624d3205ac76';
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipeId');
 
@@ -71,9 +76,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                 stepDiv.innerHTML = `<strong>Step ${step.number}:</strong> ${step.step}`;
                 instructionsList.appendChild(stepDiv);
             });
+
         }
-    } catch (error) {
-        console.error("Error fetching recipe details:", error);
-        alert("Failed to fetch recipe details. Please try again later.");
-    }
+
+        // Event handler for sabving recipe 
+
+        document.getElementById('save-recipe-btn').addEventListener('click', () => saveRecipe(recipeId))
+
+} catch (error) {
+    console.error("Error fetching recipe details:", error);
+    alert("Failed to fetch recipe details. Please try again later.");
+}
+
+    
 });
