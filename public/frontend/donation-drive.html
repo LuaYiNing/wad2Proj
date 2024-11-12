@@ -12,7 +12,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="awareness-hub.html">Food Hero</a>
+        <a class="navbar-brand" href="home.html">Food Hero</a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,13 +25,13 @@
                     <a class="nav-link" href="home.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="recipe-finder.html">Recipe Finder</a>
+                    <a class="nav-link"  href="recipe-finder.html">Recipe Finder</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href='http://wad2games.s3-website.us-east-2.amazonaws.com'>Play</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='donation-drive.html'>Donation Drives</a>
+                    <a class="nav-link active" aria-current="page" href='donation-drive.html'>Donation Drives</a>
                 </li>
             </ul>
         </div>
@@ -102,6 +102,11 @@
             <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a></li>
         </ul>
     </footer>
+
+    <script> //passing username to the nav bar 
+        const userName = localStorage.getItem('userName') || 'User';
+        document.getElementById('userName').innerText = userName;
+    </script>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

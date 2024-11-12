@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz</title>
+        <!-- Import Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="quiz.css">
+    </head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home.html">Food Hero</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="recipe-finder.html">Recipe Finder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href='http://wad2games.s3-website.us-east-2.amazonaws.com'>Play</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='donation-drive.html'>Donation Drives</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html" id="userName">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="bodyContent">
+        <div class="quiz-info">
+            <div id="score">Score: 0</div>
+            <div id="question"></div>
+        </div>
+        <div id="gameContainer">
+            <div id="categoryScreen">
+                <h1>Food Waste Awareness Quiz</h1>
+                <button class="category-btn" onclick="startQuiz('general')">General Food Waste</button>
+                <button class="category-btn" onclick="startQuiz('video1')">Hidden Cost of Food Waste</button>
+                <button class="category-btn" onclick="startQuiz('video2')">Turn the Tables on Food Waste</button>
+                <button class="category-btn" onclick="startQuiz('video3')">Food Expiration Dates</button>
+            </div>
+
+            <div id="completionScreen" style="display: none;">
+                <h1>Quiz Complete!</h1>
+                <div id="finalScore"></div>
+                <button class="action-btn" onclick="retryQuiz()">Try Again</button>
+                <button class="action-btn" onclick="showCategoryScreen()">Back to Categories</button>
+            </div>
+
+            <div id="feedbackModal">
+                <div class="result"></div>
+                <div class="points"></div>
+                <button id="nextButton" onclick="game.handleNextQuestion()">Next Question</button>
+            </div>
+            
+            <canvas id="gameCanvas"></canvas>
+            
+            <button id="backButton" onclick="showCategoryScreen()" style="display: none;">Back to Categories</button>
+        </div>
+    </div>
+    <script src="quiz.js"></script>
+
+    <!-- bootstrap js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

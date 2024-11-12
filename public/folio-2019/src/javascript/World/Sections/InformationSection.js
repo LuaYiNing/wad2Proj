@@ -101,7 +101,7 @@ export default class InformationSection
             //     labelTexture: this.resources.items.informationContactLinkedinLabelTexture
             // },
             {
-                href: 'https://wad2project-db.web.app/frontend/login.html',
+                href: 'https://wad2project-db.web.app/frontend/quiz.html',
                 labelTexture: this.resources.items.informationContactMailLabelTexture
             }
         ]

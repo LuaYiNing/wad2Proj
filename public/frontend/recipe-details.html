@@ -11,9 +11,9 @@
     </head>
 <body>
 
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="home.html">Food Hero</a>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home.html">Food Hero</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,11 +99,16 @@
     <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
     <ul class="nav justify-content-center mb-3">
         <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="recipe-drag.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
-        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted">Play</a></li>
-        <li class="nav-item"><a href="marketplace.html" class="nav-link px-2 text-muted">Food Donation Drives</a></li>
+        <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
+        <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com" class="nav-link px-2 text-muted">Play</a></li>
+        <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a></li>
     </ul>
 </footer>
+
+<script> //passing username to the nav bar 
+    const userName = localStorage.getItem('userName') || 'User';
+    document.getElementById('userName').innerText = userName;
+</script>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="module" src="recipe-details.js"></script>
