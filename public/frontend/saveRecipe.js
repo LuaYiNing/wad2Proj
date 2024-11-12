@@ -11,10 +11,8 @@ export async function saveRecipe(recipeId, recipeData) {
     }
 
     try {
-        // Reference to the user's specific recipe document
         const recipeRef = doc(db, `users/${user.uid}/savedRecipes`, recipeId);
 
-        // Save the recipe data to the user's profile in Firestore
         await setDoc(recipeRef, {
             id: recipeId,
             ...recipeData,
@@ -22,7 +20,7 @@ export async function saveRecipe(recipeId, recipeData) {
         });
 
         console.log(`Recipe ID ${recipeId} saved to the user's profile in Firestore!`);
-        alert("Recipe saved successfully!");
+
     } catch (error) {
         console.error("Error saving recipe to Firestore:", error);
         alert("Failed to save recipe. Please try again.");

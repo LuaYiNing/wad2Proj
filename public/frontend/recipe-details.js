@@ -1,10 +1,68 @@
-import { saveRecipe } from './saveRecipe.js';
+import { collection, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+import { db } from '../backend/firebase/firebase.js';
 
 const userName = localStorage.getItem('userName') || 'User';
 document.getElementById('userName').innerText = userName;
 
+const app = Vue.createApp({
+    data() {
+        return {
+            isSaved: false,
+            recipeId: null,
+        };
+    },
+    async mounted() {
+        // Get recipeId from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        this.recipeId = urlParams.get('recipeId');
+
+        if (!this.recipeId) {
+            alert("Invalid recipe ID.");
+            return;
+        }
+
+        // Check if recipe is already saved
+        await this.checkIfRecipeIsSaved();
+    },
+    methods: {
+        async checkIfRecipeIsSaved() {
+            try {
+                const savedRecipesRef = collection(db, `users/${localStorage.getItem('userUID')}/savedRecipes`);
+                const querySnapshot = await getDocs(savedRecipesRef);
+                const recipeIDs = querySnapshot.docs.map(doc => doc.id);
+
+                // Check if the current recipeId is in the saved recipe list
+                this.isSaved = recipeIDs.includes(this.recipeId);
+            } catch (error) {
+                console.error("Error checking if recipe is saved:", error);
+            }
+        },
+        async saveRecipe() {
+            if (this.isSaved) {
+                console.log("Recipe is already saved.");
+                return;
+            }
+
+            try { // save to firebase
+                const recipeRef = doc(db, `users/${localStorage.getItem('userUID')}/savedRecipes`, this.recipeId);
+                await setDoc(recipeRef, {
+                    id: this.recipeId,
+                    savedAt: new Date().toISOString(),
+                });
+
+                this.isSaved = true;
+
+            } catch (error) {
+                console.error("Error saving recipe:", error);
+                alert("Failed to save recipe. Please try again later.");
+            }
+        }
+    }
+}).mount('#app');
+
+
 document.addEventListener("DOMContentLoaded", async () => {
-    const apiKey = '1e82a8d269304c3683a7624d3205ac76';
+    const apiKey = '63c647af7eea43e0888673ad3e7e5221';
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipeId');
 
@@ -41,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Equipment
         const equipmentList = document.getElementById('equipment-list');
-        equipmentList.innerHTML = ''; // Clear existing content
+        equipmentList.innerHTML = '63c647af7eea43e0888673ad3e7e5221'; // Clear existing content
         const equipmentResponse = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/equipmentWidget.json`, {
             params: { apiKey }
         });
@@ -78,15 +136,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
         }
+    } catch (error) {
+        console.error("Error fetching recipe details:", error);
+        alert("Failed to fetch recipe details. Please try again later.");
+    }
 
-        // Event handler for sabving recipe 
 
-        document.getElementById('save-recipe-btn').addEventListener('click', () => saveRecipe(recipeId))
-
-} catch (error) {
-    console.error("Error fetching recipe details:", error);
-    alert("Failed to fetch recipe details. Please try again later.");
-}
-
-    
 });
+

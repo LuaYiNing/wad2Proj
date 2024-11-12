@@ -1,19 +1,22 @@
 <!-- recipe-details.html -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Recipe Details</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="recipe-details.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="recipe-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
 <body>
 
-<!-- Nav Bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home.html">Food Hero</a>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home.html">Food Hero</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,70 +53,69 @@
     </nav>
 
 
-<div class="container mt-5">
-    <!-- Back Button -->
-    <button onclick="window.history.back()" class="btn btn-outline-secondary mb-4">
-        <i class="fas fa-arrow-left"></i> Back
-    </button>
+    <div class="container mt-5">
+        <!-- Back Button -->
+        <button onclick="window.history.back()" class="btn btn-outline-secondary mb-4">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
 
-    <!-- Hero Section with Blurred Background Overlay -->
-    <div class="hero-section text-center position-relative">
-        <div class="blurred-background" id="blurred-background" style="background-image: url('');"></div>
-        <div class="thumbnail-container">
-            <img id="recipe-image" class="recipe-image" alt="Recipe Image">
-        </div>
-        <h1 id="recipe-title" class="recipe-title mt-3"></h1>
-        <div class="d-flex justify-content-center align-items-center gap-3 mt-2">
-            <span><i class="fas fa-clock"></i> <span id="recipe-time"></span> Minutes</span>
-            <span><i class="fas fa-user-friends"></i> <span id="recipe-servings"></span> Servings</span>
-            <button id="save-recipe-btn" class="btn btn-save-recipe" @click="saveRecipe">
+        <!-- Hero Section with Blurred Background Overlay -->
+        <div class="hero-section text-center position-relative" id="app">
+            <div class="blurred-background" id="blurred-background" style="background-image: url('');"></div>
+            <div class="thumbnail-container">
+                <img id="recipe-image" class="recipe-image" alt="Recipe Image">
+            </div>
+            <h1 id="recipe-title" class="recipe-title mt-3"></h1>
+            <div class="d-flex justify-content-center align-items-center gap-3 mt-2">
+                <span><i class="fas fa-clock"></i> <span id="recipe-time"></span> Minutes</span>
+                <span><i class="fas fa-user-friends"></i> <span id="recipe-servings"></span> Servings</span>
+                <!-- <button id="save-recipe-btn" class="btn btn-save-recipe" @click="saveRecipe">
                 <i class="fas fa-heart"></i> Save Recipe
+            </button> -->
+            <button class="save-recipe-btn btn" :class="{ 'btn-save-recipe': !isSaved, 'btn-saved': isSaved }" @click="saveRecipe">
+                <i class="fas fa-heart"></i> 
+                {{ isSaved ? 'Saved' : 'Save Recipe' }}
             </button>
+            </div>
+        </div>
+
+        <!-- Ingredients and Equipment Section -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h3><i class="fas fa-carrot"></i> Ingredients</h3>
+                <ul id="ingredients-list" class="list-group"></ul>
+            </div>
+            <div class="col-md-6">
+                <h3><i class="fas fa-tools"></i> Equipment</h3>
+                <ul id="equipment-list" class="list-group"></ul>
+            </div>
+        </div>
+
+        <!-- Instructions Section -->
+        <div class="mt-5">
+            <h3><i class="fas fa-list"></i> Instructions</h3>
+            <div id="instructions-list"></div>
         </div>
     </div>
 
-    <!-- Ingredients and Equipment Section -->
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h3><i class="fas fa-carrot"></i> Ingredients</h3>
-            <ul id="ingredients-list" class="list-group"></ul>
-        </div>
-        <div class="col-md-6">
-            <h3><i class="fas fa-tools"></i> Equipment</h3>
-            <ul id="equipment-list" class="list-group"></ul>
-        </div>
-    </div>
+    <!-- Footer -->
+    <footer class="py-3 my-4">
+        <hr>
+        <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
+        <ul class="nav justify-content-center mb-3">
+            <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
+            <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com"
+                    class="nav-link px-2 text-muted">Play</a></li>
+            <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a>
+            </li>
+        </ul>
+    </footer>
 
-    <!-- Instructions Section -->
-    <div class="mt-5">
-        <h3><i class="fas fa-list"></i> Instructions</h3>
-        <div id="instructions-list"></div>
-    </div>
-</div>
-
-        
-
-<!-- Footer -->
-<footer class="py-3 my-4">
-    <hr>
-    <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
-    <ul class="nav justify-content-center mb-3">
-        <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
-        <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com" class="nav-link px-2 text-muted">Play</a></li>
-        <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a></li>
-    </ul>
-</footer>
-
-<script> //passing username to the nav bar 
-    const userName = localStorage.getItem('userName') || 'User';
-    document.getElementById('userName').innerText = userName;
-</script>
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="module" src="recipe-details.js"></script>
-<script type="module" src="saveRecipe.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="recipe-details.js"></script>
+    <script type="module" src="saveRecipe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

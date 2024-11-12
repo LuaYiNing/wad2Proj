@@ -94,6 +94,10 @@
     background-color: #8b634d;
     color:white;
 }
+.btn-saved {
+    color: black; 
+}
+
 
 /* Ingredients, Equipment, and Instructions Styling */
 h3 {
