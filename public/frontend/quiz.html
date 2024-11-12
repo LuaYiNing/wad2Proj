@@ -50,7 +50,7 @@
             </ul>
         </div>
     </nav>
-    <div class="bodyContent">
+    <div class="container-fluid py-4 bodyContent">
         <div class="quiz-info">
             <div id="score">Score: 0</div>
             <div id="question"></div>
@@ -82,7 +82,26 @@
             <button id="backButton" onclick="showCategoryScreen()" style="display: none;">Back to Categories</button>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="py-3 my-4">
+        <hr>
+        <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
+        <ul class="nav justify-content-center mb-3">
+            <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
+            <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com" class="nav-link px-2 text-muted">Play</a></li>
+            <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a>
+            </li>
+        </ul>
+    </footer>
+    
     <script src="quiz.js"></script>
+
+    <script> //passing username to the nav bar 
+        const userName = localStorage.getItem('userName') || 'User';
+        document.getElementById('userName').innerText = userName;
+    </script>
 
     <!-- bootstrap js-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
