@@ -336,36 +336,59 @@ function updateList(type) {
         driveList.appendChild(message);
     }
 }
+function updateMapMarkers(filteredLocations) {
+    // Hide all markers
+    markers.forEach(marker => marker.setMap(null));
 
-// Search locations based on the search query
+    // Show only the markers that match the search results
+    filteredLocations.forEach(({ marker }) => {
+        marker.setMap(map);
+    });
+}
+
 function searchLocations(query) {
+    if (query.trim() === "") {
+        // If the search query is empty, show all markers
+        filterMarkers('all');
+        updateList('all');
+        return;
+    }
+
     const filteredLocations = allLocations.filter(({ location }) => {
-        return location.name.toLowerCase().includes(query.toLowerCase()) || location.address.toLowerCase().includes(query.toLowerCase());
+        return location.name.toLowerCase().includes(query.toLowerCase()) ||
+               location.address.toLowerCase().includes(query.toLowerCase());
     });
 
+    updateMapMarkers(filteredLocations);
     updateSearchResults(filteredLocations);
 }
+
+
 
 // Update the search results in the list
 function updateSearchResults(filteredLocations) {
     const driveList = document.getElementById('driveList');
     driveList.innerHTML = '';
 
-    filteredLocations.forEach(({ location }) => {
-        const listItem = document.createElement('li');
-        listItem.classList.add('list-group-item');
-        listItem.innerHTML = `<strong>${location.name}</strong><br>${location.address}<br><small>Timing: ${location.timing}</small>`;
-        listItem.addEventListener('click', () => {
-            map.panTo({ lat: location.lat, lng: location.lng });
-            map.setZoom(14);
-        });
-        driveList.appendChild(listItem);
-    });
-
-    if (!driveList.hasChildNodes()) {
+    if (filteredLocations.length === 0) {
         const message = document.createElement("p");
         message.textContent = "No results found.";
         message.classList.add("text-muted", "text-center", "mt-3");
         driveList.appendChild(message);
+        return;
     }
+
+    filteredLocations.forEach(({ location }) => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        listItem.innerHTML = `<strong>${location.name}</strong><br>${location.address}<br><small>Timing: ${location.timing}</small>`;
+        
+        listItem.addEventListener('click', () => {
+            map.panTo({ lat: location.lat, lng: location.lng });
+            map.setZoom(14);
+        });
+
+        driveList.appendChild(listItem);
+    });
 }
+
