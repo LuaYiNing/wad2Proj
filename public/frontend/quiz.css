@@ -8,14 +8,6 @@ body {
   background-color: #f1ead1;
 }
 
-.bodyContent {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-  justify-content: center;
-}
-
-
 .navbar {
   font-family: 'Lustria', serif;
   font-size: large;
