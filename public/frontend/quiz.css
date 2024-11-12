@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.bodyContent {
+  background: linear-gradient(#fdb572ab, #fdb5721a);
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.navbar {
+  font-family: 'Lustria', serif;
+  font-size: large;
+  padding: 20px;
+}
+
+#gameContainer {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  background: #f0f9ff;
+  margin: auto auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  font-family: system-ui;
+}
+
+#gameCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.quiz-info {
+  position: relative;
+  margin: auto auto;
+  color: #1e40af;
+}
+
+#score {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#categoryScreen,
+#completionScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f0f9ff;
+}
+
+.category-btn,
+.action-btn {
+  margin: 10px;
+  padding: 15px 30px;
+  font-size: 18px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.category-btn:hover,
+.action-btn:hover #nextButton:hover {
+  background: #2563eb;
+}
+
+#backButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background: #64748b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#feedbackModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  text-align: center;
+  display: none;
+  z-index: 1;
+}
+
+#feedbackModal .result {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#feedbackModal .points {
+  font-size: 18px;
+  color: #059669;
+  margin-bottom: 15px;
+}
+
+#nextButton {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
