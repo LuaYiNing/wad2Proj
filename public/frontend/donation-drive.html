@@ -103,6 +103,11 @@
         </ul>
     </footer>
 
+    <script> //passing username to the nav bar 
+        const userName = localStorage.getItem('userName') || 'User';
+        document.getElementById('userName').innerText = userName;
+    </script>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
