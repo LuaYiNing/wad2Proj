@@ -89,11 +89,11 @@ export default class InformationSection
         // Options
         this.links.options = [
             {
-                href: 'https://twitter.com/bruno_simon/',
+                href: 'https://wad2project-db.web.app/frontend/home.html',
                 labelTexture: this.resources.items.informationContactTwitterLabelTexture
             },
             {
-                href: 'https://github.com/brunosimon/',
+                href: 'https://wad2project-db.web.app/frontend/recipe-finder.html',
                 labelTexture: this.resources.items.informationContactGithubLabelTexture
             },
             // {
@@ -101,7 +101,7 @@ export default class InformationSection
             //     labelTexture: this.resources.items.informationContactLinkedinLabelTexture
             // },
             {
-                href: 'mailto:simon.bruno.77@gmail.com',
+                href: 'https://wad2project-db.web.app/frontend/login.html',
                 labelTexture: this.resources.items.informationContactMailLabelTexture
             }
         ]
