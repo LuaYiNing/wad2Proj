@@ -27,7 +27,8 @@ body {
 
 #gameContainer {
   position: relative;
-  width: 800px;
+  width: 70%;
+  max-width: 800px;
   height: 600px;
   background: #f0f9ff;
   margin: auto auto;
@@ -45,7 +46,7 @@ body {
 
 .quiz-info {
   position: relative;
-  margin: auto auto;
+  margin: 10px auto 20px;
   color: #1e40af;
 }
 
