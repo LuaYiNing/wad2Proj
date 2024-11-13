@@ -47,7 +47,7 @@ body {
 .quiz-info {
   position: relative;
   margin: 10px auto 20px;
-  color: #1e40af;
+  color: #436A4D;
 }
 
 #score {
@@ -66,7 +66,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background: #f0f9ff; */
 }
 
 .category-btn,
