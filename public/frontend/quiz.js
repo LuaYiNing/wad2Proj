@@ -129,7 +129,7 @@ const quizData = {
 };
 
 let game = null;
-
+const quizInfo = document.querySelector('.quiz-info');
 class QuizGame {
   constructor(category) {
     this.canvas = document.getElementById('gameCanvas');
@@ -217,6 +217,7 @@ class QuizGame {
   }
   
   handleNextQuestion() {
+    quizInfo.style.display = 'block';
     document.getElementById('feedbackModal').style.display = 'none';
     this.answeredCurrentQuestion = false;
 
@@ -230,6 +231,7 @@ class QuizGame {
   }
 
   showCompletion() {
+    resetQuizInfo();
     document.getElementById('gameCanvas').style.display = 'none';
     document.getElementById('backButton').style.display = 'none';
     document.getElementById('completionScreen').style.display = 'flex';
@@ -356,6 +358,7 @@ class QuizGame {
 }
 
 function showCategoryScreen() {
+  resetQuizInfo();
   document.getElementById('categoryScreen').style.display = 'flex';
   document.getElementById('gameCanvas').style.display = 'none';
   document.getElementById('backButton').style.display = 'none';
@@ -368,6 +371,7 @@ function showCategoryScreen() {
 }
 
 function startQuiz(category) {
+  quizInfo.style.display = 'block';
   document.getElementById('categoryScreen').style.display = 'none';
   document.getElementById('gameCanvas').style.display = 'block';
   document.getElementById('backButton').style.display = 'block';
@@ -383,11 +387,15 @@ function startQuiz(category) {
 }
 
 function retryQuiz() {
+  quizInfo.style.display = 'block';
   document.getElementById('completionScreen').style.display = 'none';
   document.getElementById('gameCanvas').style.display = 'block';
   document.getElementById('backButton').style.display = 'block';
   startQuiz(game.category);
 }
-
+function resetQuizInfo() {
+  quizInfo.style.display = 'none';
+  this.score = 0;
+}
 // Show category screen initially
 showCategoryScreen();
