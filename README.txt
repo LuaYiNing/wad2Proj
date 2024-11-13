@@ -1,4 +1,5 @@
 URL to Food Hero: https://wad2project-db.web.app/frontend/login.html
+
 Login details (You can also create your own account through the google account option or registration link)
 Username: bob@gmail.com
 Password: bob@gmail.com

@@ -44,6 +44,7 @@ body {
     transition: transform 0.3s ease-in-out;
     background-color: #fff;
     margin-bottom: 20px;
+    height: 100%;
 }
 
 .info-card:hover {
@@ -51,7 +52,7 @@ body {
 }
 
 .card-img-top {
-    height: 220px;
+    height: auto;
     object-fit: cover;
     border-bottom: 1px solid #ddd;
 }
