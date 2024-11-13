@@ -5,30 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container">
-    <!-- CHARACTER PART -->
-    <div class="image-container">
-      <img src="images/food-element.png" alt="Food Element" class="food-element">
-    </div>
-    <!-- LOGIN PART -->
-    <div class="login-container">
-      <h1>Are you ready to be a Food Hero?</h1>
-      <form id="login-form">
-        <div class="input-group">
-          <input type="text" id="login-email" placeholder="Enter your Email" required>
+  <div class="container-fluid">
+    <div class="row vh-100 align-items-center">
+      <!-- CHARACTER PART (Image) - Only visible on lg (≥992px) and larger screens -->
+      <div class="col-md-6 d-none d-lg-flex justify-content-center align-items-center image-container">
+        <img src="images/food-element.png" alt="Food Element" class="food-element">
+      </div>
+
+      <!-- LOGIN PART -->
+      <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center">
+        <div class="login-container text-center p-4">
+          <h1>Are you ready to be a Food Hero?</h1>
+          <form id="login-form">
+            <div class="input-group mb-3">
+              <input type="text" id="login-email" class="form-control" placeholder="Enter your Email" required>
+            </div>
+            <div class="input-group mb-3">
+              <input type="password" id="login-password" class="form-control" placeholder="Enter your Password" required>
+            </div>
+            <p id="login-message" style="color: red;"></p>
+            <button type="submit" class="btn btn-primary btn-block mb-2">Take me there!</button>
+            <button id="google-signin" type="button" class="btn google-btn btn-block mb-2">Login with Google</button>
+          </form>
+          <p>No Account? <a href="./register.html">Register here</a></p>
         </div>
-        <div class="input-group">
-          <input type="password" id="login-password" placeholder="Enter your Password" required>
-        </div>
-        <p id="login-message" style="color: red;"></p>
-        <button type="submit" class="btn">Take me there!</button>
-        <button id="google-signin" type="button" class="btn google-btn">Login with Google</button>
-      </form>
-      <p>No Account? <a href="./register.html">Register here</a></p>
+      </div>
     </div>
   </div>
+
   <script type="module" src="../backend/firebase/firebase.js"></script>
   <script type="module" src="../backend/user/login.js"></script>
 </body>
