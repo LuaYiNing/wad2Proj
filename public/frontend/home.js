@@ -1,29 +1,7 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getFunctions, httpsCallable } from '../backend/firebase/functions/index.js';
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBU748EuZFpFfCDiSyAE_xUxjyUKpj-FC4",
-    authDomain: "wad2project-db.firebaseapp.com",
-    projectId: "wad2project-db",
-    storageBucket: "wad2project-db.appspot.com",
-    messagingSenderId: "837532266674",
-    appId: "1:837532266674:web:27dd5c3d29c8592bd499ab",
-    measurementId: "G-4D4QFGPX67"
-};
-
-// Initialize Firebase app and functions
-const app = initializeApp(firebaseConfig);
-const functions = getFunctions(app);
-
-// Define the callable function to get API keys
-const getDataFromMultipleApis = httpsCallable(functions, 'getDatafromAPIs');
-
-// Function to fetch news data using the API key retrieved from Firebase
 async function fetchNewsData() {
-  try {
-    const response = await getDataFromMultipleApis();
-    const apiKey = response.data.data1; // Adjust this if `dataFromApi1` is not the API key
+  const apiKey = 'm4BloEFuNj1BwjjqNzYmOUm0iIHUPyh5ztuZJcLc'; 
 
+  try {
     const newsResponse = await axios.get(
       `https://api.thenewsapi.com/v1/news/all?language=en&search=food+wastage|food+insecurity&api_token=${apiKey}`
     );
