@@ -6,6 +6,7 @@ body {
   height: 100%;
   margin: 0;
   background-color: #f1ead1;
+  font-family: 'Lustria', serif;
 }
 
 .navbar {
@@ -35,7 +36,7 @@ body {
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Lustria', serif;
 }
 
 #gameCanvas {
