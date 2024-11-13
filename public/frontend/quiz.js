@@ -8,7 +8,8 @@ const quizData = {
           { text: "33%", correct: true, x: 200, y: 100 },
           { text: "15%", correct: false, x: 400, y: 100 },
           { text: "50%", correct: false, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "About 33% of all food produced globally is wasted, which has significant environmental and economic impacts."
       },
       {
         question: "Which sector contributes most to food waste?",
@@ -16,7 +17,8 @@ const quizData = {
           { text: "Restaurants", correct: false, x: 200, y: 100 },
           { text: "Households", correct: true, x: 400, y: 100 },
           { text: "Farms", correct: false, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "Households contribute the most to food waste due to over-purchasing, improper storage, and lack of awareness."
       },
       {
         question: "How much money is lost annually due to food waste?",
@@ -24,7 +26,8 @@ const quizData = {
           { text: "$500B", correct: false, x: 200, y: 100 },
           { text: "$750B", correct: false, x: 400, y: 100 },
           { text: "$1T", correct: true, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "Food waste costs the global economy nearly $1 trillion every year."
       }
     ]
   },
@@ -37,7 +40,8 @@ const quizData = {
           { text: "Plan ahead", correct: false, x: 200, y: 100 },
           { text: "Store properly", correct: false, x: 400, y: 100 },
           { text: "All options", correct: true, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "To reduce food waste, individuals should plan meals, store food properly, and avoid over-purchasing."
       },
       {
         question: "How much food is lost in developing countries?",
@@ -45,7 +49,8 @@ const quizData = {
           { text: "20%", correct: false, x: 200, y: 100 },
           { text: "40%", correct: true, x: 400, y: 100 },
           { text: "60%", correct: false, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "In developing countries, about 40% of food is lost due to poor infrastructure, lack of storage facilities, and inefficient supply chains."
       },
       {
         question: "What percentage of fruits and vegetables are wasted?",
@@ -53,7 +58,8 @@ const quizData = {
           { text: "25%", correct: false, x: 200, y: 100 },
           { text: "35%", correct: false, x: 400, y: 100 },
           { text: "45%", correct: true, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "Around 45% of all fruits and vegetables produced globally are wasted, often due to aesthetic standards and spoilage."
       }
     ]
   },
@@ -66,7 +72,8 @@ const quizData = {
           { text: "Overbuying", correct: false, x: 200, y: 100 },
           { text: "Poor storage", correct: false, x: 400, y: 100 },
           { text: "All reasons", correct: true, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "Food waste is caused by a combination of overbuying, poor storage, and not using food before it expires."
       },
       {
         question: "Which action category doesn't reduce waste?",
@@ -74,7 +81,8 @@ const quizData = {
           { text: "Prevent", correct: false, x: 200, y: 100 },
           { text: "Store", correct: true, x: 400, y: 100 },
           { text: "Donate", correct: false, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "While storing food properly is important, it is not categorized as a proactive action to reduce waste compared to prevention or donation."
       },
       {
         question: "What's the first step in preventing food waste?",
@@ -82,7 +90,8 @@ const quizData = {
           { text: "Planning", correct: true, x: 200, y: 100 },
           { text: "Storage", correct: false, x: 400, y: 100 },
           { text: "Recycling", correct: false, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "Planning meals in advance helps prevent over-purchasing, which is a key step in reducing food waste."
       }
     ]
   },
@@ -94,7 +103,8 @@ const quizData = {
         answers: [
           { text: "True", correct: false, x: 200, y: 100 },
           { text: "False", correct: true, x: 400, y: 100 }
-        ]
+        ],
+        explanation: "'Best by' dates are indicators of quality, not safety. Food can often still be consumed after this date."
       },
       {
         question: "What does 'Best by' date indicate?",
@@ -102,7 +112,8 @@ const quizData = {
           { text: "Safety", correct: false, x: 200, y: 100 },
           { text: "Quality", correct: true, x: 400, y: 100 },
           { text: "Expiration", correct: false, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "'Best by' dates indicate the peak quality of a product, not its safety."
       },
       {
         question: "Which date label is about food safety?",
@@ -110,14 +121,15 @@ const quizData = {
           { text: "Best by", correct: false, x: 200, y: 100 },
           { text: "Use by", correct: true, x: 400, y: 100 },
           { text: "Sell by", correct: false, x: 600, y: 100 }
-        ]
+        ],
+        explanation: "'Use by' dates are the only labels that relate to food safety, especially for perishable items."
       }
     ]
   }
 };
 
 let game = null;
-
+const quizInfo = document.querySelector('.quiz-info');
 class QuizGame {
   constructor(category) {
     this.canvas = document.getElementById('gameCanvas');
@@ -184,15 +196,28 @@ class QuizGame {
     const modal = document.getElementById('feedbackModal');
     const result = modal.querySelector('.result');
     const points = modal.querySelector('.points');
-
+    const explanationEl = modal.querySelector('.explanation');
+  
+    // Get the explanation of the current question
+    const currentQuestion = this.questions[this.currentQuestionIndex];
+    const explanation = currentQuestion.explanation;
+  
+    // Set the result text based on whether the answer was correct or not
     result.textContent = correct ? 'Correct!' : 'Wrong!';
     result.style.color = correct ? '#059669' : '#dc2626';
+  
+    // Set the points awarded
     points.textContent = correct ? '+100 points' : '+0 points';
-
+  
+    // Display the explanation
+    explanationEl.textContent = explanation;
+  
+    // Show the modal
     modal.style.display = 'block';
   }
-
+  
   handleNextQuestion() {
+    quizInfo.style.display = 'block';
     document.getElementById('feedbackModal').style.display = 'none';
     this.answeredCurrentQuestion = false;
 
@@ -206,6 +231,7 @@ class QuizGame {
   }
 
   showCompletion() {
+    resetQuizInfo();
     document.getElementById('gameCanvas').style.display = 'none';
     document.getElementById('backButton').style.display = 'none';
     document.getElementById('completionScreen').style.display = 'flex';
@@ -332,6 +358,7 @@ class QuizGame {
 }
 
 function showCategoryScreen() {
+  resetQuizInfo();
   document.getElementById('categoryScreen').style.display = 'flex';
   document.getElementById('gameCanvas').style.display = 'none';
   document.getElementById('backButton').style.display = 'none';
@@ -344,6 +371,7 @@ function showCategoryScreen() {
 }
 
 function startQuiz(category) {
+  quizInfo.style.display = 'block';
   document.getElementById('categoryScreen').style.display = 'none';
   document.getElementById('gameCanvas').style.display = 'block';
   document.getElementById('backButton').style.display = 'block';
@@ -359,11 +387,15 @@ function startQuiz(category) {
 }
 
 function retryQuiz() {
+  quizInfo.style.display = 'block';
   document.getElementById('completionScreen').style.display = 'none';
   document.getElementById('gameCanvas').style.display = 'block';
   document.getElementById('backButton').style.display = 'block';
   startQuiz(game.category);
 }
-
+function resetQuizInfo() {
+  quizInfo.style.display = 'none';
+  this.score = 0;
+}
 // Show category screen initially
 showCategoryScreen();
