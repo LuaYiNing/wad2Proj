@@ -22,6 +22,16 @@ body{
   color: #007bff !important;
 }
 
+
+.recipe-header {
+  color: #8b634d; /* Deep teal color */
+  font-weight: bold;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  letter-spacing: 1px; /* Slight spacing for better readability */
+  margin-bottom: 2rem;
+}
+
 .recipe-section{
     height: 100vh;
     width: 100%;
@@ -30,6 +40,8 @@ body{
     background-position: center;
 
 }
+
+
 
 /* Updated Recipe Card Section */
 .recipe-card {
