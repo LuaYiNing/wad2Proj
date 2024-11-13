@@ -1,48 +1,56 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
+import { getFunctions, httpsCallable } from '../backend/firebase/functions/index.js';
 
-const apiKey = ''; // Replace with your actual API key
+const firebaseConfig = {
+    apiKey: "AIzaSyBU748EuZFpFfCDiSyAE_xUxjyUKpj-FC4",
+    authDomain: "wad2project-db.firebaseapp.com",
+    projectId: "wad2project-db",
+    storageBucket: "wad2project-db.appspot.com",
+    messagingSenderId: "837532266674",
+    appId: "1:837532266674:web:27dd5c3d29c8592bd499ab",
+    measurementId: "G-4D4QFGPX67"
+};
 
-axios.get("https://api.thenewsapi.com/v1/news/all?language=en&search=food+wastage|food+insecurity&api_token=" + apiKey)
-    .then(response => {
-        console.log(response.data);
-        let newsArr = response.data.data;
+// Initialize Firebase app and functions
+const app = initializeApp(firebaseConfig);
+const functions = getFunctions(app);
 
-        let news1 = newsArr[0];
-        console.log(news1);
-        let title1 = news1.title;
-        let url1 = news1.url;
-        let a1 = document.createElement('a');
-        a1.setAttribute('href', url1);
-        a1.innerText = title1;
-        document.getElementById('news1Title').appendChild(a1);
-        let desc1 = news1.description;
-        document.getElementById('news1Desc').innerText = desc1;
-        let pic1URL = news1.image_url;
-        document.getElementById('news1Img').src = pic1URL;
+// Define the callable function to get API keys
+const getDataFromMultipleApis = httpsCallable(functions, 'getDatafromAPIs');
 
-        let news2 = newsArr[1];
-        let title2 = news2.title;
-        let url2 = news2.url;
-        let a2 = document.createElement('a');
-        a2.setAttribute('href', url2);
-        a2.innerText = title2;
-        document.getElementById('news2Title').appendChild(a2);
-        let desc2 = news2.description;
-        document.getElementById('news2Desc').innerText = desc2;
-        let pic2URL = news2.image_url;
-        document.getElementById('news2Img').src = pic2URL;
+// Function to fetch news data using the API key retrieved from Firebase
+async function fetchNewsData() {
+  try {
+    const response = await getDataFromMultipleApis();
+    const apiKey = response.data.data1; // Adjust this if `dataFromApi1` is not the API key
 
-        let news3 = newsArr[2];
-        let title3 = news3.title;
-        let url3 = news3.url;
-        let a3 = document.createElement('a');
-        a3.setAttribute('href', url3);
-        a3.innerText = title3;
-        document.getElementById('news3Title').appendChild(a3);
-        let desc3 = news3.description;
-        document.getElementById('news3Desc').innerText = desc3;
-        let pic3URL = news3.image_url;
-        document.getElementById('news3Img').src = pic3URL;
-    })
-    .catch(error => {
-        console.log(error.message);
+    const newsResponse = await axios.get(
+      `https://api.thenewsapi.com/v1/news/all?language=en&search=food+wastage|food+insecurity&api_token=${apiKey}`
+    );
+
+    const newsArr = newsResponse.data.data;
+
+    const newsElements = [
+      { title: 'news1Title', desc: 'news1Desc', img: 'news1Img', news: newsArr[0] },
+      { title: 'news2Title', desc: 'news2Desc', img: 'news2Img', news: newsArr[1] },
+      { title: 'news3Title', desc: 'news3Desc', img: 'news3Img', news: newsArr[2] },
+    ];
+
+    newsElements.forEach((element) => {
+      const newsItem = element.news;
+      if (newsItem) {
+        const a = document.createElement('a');
+        a.setAttribute('href', newsItem.url);
+        a.innerText = newsItem.title;
+        document.getElementById(element.title).appendChild(a);
+
+        document.getElementById(element.desc).innerText = newsItem.description;
+        document.getElementById(element.img).src = newsItem.image_url;
+      }
     });
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+}
+
+fetchNewsData();

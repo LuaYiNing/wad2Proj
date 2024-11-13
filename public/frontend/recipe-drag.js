@@ -55,11 +55,10 @@ const app = Vue.createApp({
             if (this.inputIngredients.toLowerCase().includes(ingredient.toLowerCase())) {
                 this.showSoftAlert(`${ingredient} is already added.`);
             } else {
-                // Add the ingredient, with a comma if it's not the first one
+                this.inputIngredients = this.inputIngredients.replace(/,\s*$/, '');
                 this.inputIngredients += this.inputIngredients ? `, ${ingredient}` : ingredient;
             }
         },
-        
         // Function to show a soft alert
         showSoftAlert(message) {
             const alertElement = document.getElementById('softAlert');
@@ -81,7 +80,7 @@ const app = Vue.createApp({
                 return;
             }
 
-            const apiKey = ""; // Replace with your actual API key
+            const apiKey = "1e82a8d269304c3683a7624d3205ac76"; // Replace with your actual API key
             try {
                 const ingredients = this.inputIngredients.split(',').map(ingredient => ingredient.trim()).join(',');
                 const response = await axios.get('https://api.spoonacular.com/recipes/findByIngredients', {
@@ -122,7 +121,7 @@ const app = Vue.createApp({
             window.location.href = `recipe-details.html?recipeId=${recipeId}`;
         },
         async getRecipeDetails(recipeId) {
-            const apiKey = ''; // Replace with actual API key
+            const apiKey = '1e82a8d269304c3683a7624d3205ac76'; // Replace with actual API key
             try {
                 const response = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information`, {
                     params: { apiKey: apiKey }
