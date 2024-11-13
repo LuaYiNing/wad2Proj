@@ -24,12 +24,13 @@ body{
 
 
 .recipe-header {
+  text-align: center;
   color: #8b634d; /* Deep teal color */
   font-weight: bold;
   font-size: 3.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   letter-spacing: 1px; /* Slight spacing for better readability */
-  margin-bottom: 2rem;
+  margin: 2rem;
 }
 
 .recipe-section{
