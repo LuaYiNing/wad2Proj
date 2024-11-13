@@ -27,7 +27,8 @@ body {
 
 #gameContainer {
   position: relative;
-  width: 800px;
+  width: 70%;
+  max-width: 800px;
   height: 600px;
   background: #f0f9ff;
   margin: auto auto;
@@ -79,6 +80,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
+  z-index: 1;
 }
 
 .category-btn:hover,
