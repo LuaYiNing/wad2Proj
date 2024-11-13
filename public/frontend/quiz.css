@@ -27,8 +27,7 @@ body {
 
 #gameContainer {
   position: relative;
-  width: 70%;
-  max-width: 800px;
+  width: 800px;
   height: 600px;
   background: #f0f9ff;
   margin: auto auto;

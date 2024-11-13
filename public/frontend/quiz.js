@@ -130,22 +130,6 @@ const quizData = {
 
 let game = null;
 const quizInfo = document.querySelector('.quiz-info');
-function resizeCanvas() {
-  const canvas = document.getElementById('gameCanvas');
-  const containerWidth = canvas.parentElement.clientWidth;
-  
-  // Update canvas size
-  canvas.style.width = containerWidth + 'px';
-  
-  // Update canvas internal dimensions
-  canvas.width = containerWidth;
-}
-
-// Call on load
-resizeCanvas();
-
-// Update when window resizes
-window.addEventListener('resize', resizeCanvas);
 class QuizGame {
   constructor(category) {
     this.canvas = document.getElementById('gameCanvas');
@@ -159,9 +143,9 @@ class QuizGame {
     this.correctAnswers = 0;
 
     // Set canvas size
-    resizeCanvas();
+    this.canvas.width = 800;
     this.canvas.height = 600;
-    
+
     // Game state
     this.ball = {
       x: this.canvas.width / 2,
