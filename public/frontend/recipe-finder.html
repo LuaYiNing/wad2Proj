@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="home.html">Food Hero</a>
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,20 +39,22 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.html" id="userName">Profile</a>
+                    <a class="nav-link" href="profile.html" id="userName"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Log Out</a>
+                    <a class="nav-link" href="login.html" id="logoutLink">Log Out</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <!-- Slideshow (Carousel) with Indicators -->
-    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000" data-bs-pause="false">
+    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000"
+        data-bs-pause="false">
         <!-- Indicators -->
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
@@ -93,80 +95,91 @@
         </button>
     </div>
 
-<!-- Introduction Section -->
-<section class="container-fluid py-4">
-    <div class="row align-items-center">
-        <!-- Left Section: Find Recipes Effortlessly -->
-        <div class="col-md-6 left-section d-flex flex-column justify-content-start">
-            <div class="text-white text-center mb-3">
-                <h2 class="display-5">Find Recipes Effortlessly</h2>
-                <p class="lead">Find the recipe that best fits your ingredients.</p>
+    <!-- Introduction Section -->
+    <section class="container-fluid py-4">
+        <div class="row align-items-center">
+            <!-- Left Section: Find Recipes Effortlessly -->
+            <div class="col-md-6 left-section d-flex flex-column justify-content-start">
+                <div class="text-white text-center mb-3">
+                    <h2 class="display-5">Find Recipes Effortlessly</h2>
+                    <p class="lead">Find the recipe that best fits your ingredients.</p>
+                </div>
+                <!-- Recipe Book Animation  -->
+                <div class="animation-wrapper mx-auto mb-0">
+                    <div class="animation-container">
+                        <iframe src="https://lottie.host/embed/27eeb957-8749-40d7-9b84-8a8545d3b591/dbGnKHI5BL.json"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
-            <!-- Recipe Book Animation  -->
-            <div class="animation-wrapper mx-auto mb-0">
-                <div class="animation-container">
-                    <iframe src="https://lottie.host/embed/27eeb957-8749-40d7-9b84-8a8545d3b591/dbGnKHI5BL.json" allowfullscreen></iframe>
+
+            <!-- Right Section: Explain what is recipe finder feature -->
+            <div class="col-md-6 right-section text-center text-md-start p-5">
+                <p class="lead text-dark">
+                    Discover a smarter way to use up ingredients you already have at home and reduce food waste. Just
+                    enter your ingredients, and our Recipe Finder will suggest recipes tailored to your kitchen
+                    supplies.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- CTA section -->
+    <section class="container-fluid py-4">
+        <div class="row align-items-center">
+            <!-- Left Section: Explain the step by step guidance feature for recipe finder -->
+            <div class="col-md-6 left-second-section text-center text-md-start p-5">
+                <p class="second-lead text-dark">
+                    Follow easy, step-by-step instructions, complete with visuals of the ingredients and equipment
+                    needed – making it simple to cook confidently, even if it’s your first time.
+                </p>
+                <!-- Call-to-Action Button -->
+                <a href="recipe-drag.html" class="btn btn-lg second-btn-primary mt-3">Start Searching for Recipes!</a>
+            </div>
+
+            <!-- Right Section: Explain guided recipe feature -->
+            <div class="col-md-6 right-second-section d-flex flex-column justify-content-start align-items-center">
+                <h2 class="second-display-5 text-light">
+                    <span>Ready to Unleash</span><br>
+                    <span>Your Inner Chef ?</span>
+                </h2>
+                <p class="lead">
+                    <span>Search with the ingredients you have and</span><br>
+                    <span>discover amazing recipes tailored just for you!</span>
+                </p>
+                <!-- Chef Animation -->
+                <div class="second-animation-wrapper mt-4">
+                    <div class="second-animation-container">
+                        <iframe src="https://lottie.host/embed/00701df2-6978-4d33-9b88-c267dca923f8/sm4w1Hqkj7.json"
+                            class="second-animation" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Right Section: Explain what is recipe finder feature -->
-        <div class="col-md-6 right-section text-center text-md-start p-5">
-            <p class="lead text-dark">
-                Discover a smarter way to use up ingredients you already have at home and reduce food waste. Just enter your ingredients, and our Recipe Finder will suggest recipes tailored to your kitchen supplies.
-            </p>
-        </div>
-    </div>
-
-</section>
-
-<!-- CTA section -->
-<section class="container-fluid py-4">
-    <div class="row align-items-center">
-        <!-- Left Section: Explain the step by step guidance feature for recipe finder -->
-        <div class="col-md-6 left-second-section text-center text-md-start p-5">
-            <p class="second-lead text-dark">
-                Follow easy, step-by-step instructions, complete with visuals of the ingredients and equipment needed – making it simple to cook confidently, even if it’s your first time.
-            </p>
-            <!-- Call-to-Action Button -->
-            <a href="recipe-drag.html" class="btn btn-lg second-btn-primary mt-3">Start Searching for Recipes!</a>
-        </div>
-
-        <!-- Right Section: Explain guided recipe feature -->
-        <div class="col-md-6 right-second-section d-flex flex-column justify-content-start align-items-center">
-            <h2 class="second-display-5 text-light">
-                <span>Ready to Unleash</span><br>
-                <span>Your Inner Chef ?</span>
-            </h2>
-            <p class="lead">
-                <span>Search with the ingredients you have and</span><br>
-                <span>discover amazing recipes tailored just for you!</span>
-            </p>
-            <!-- Chef Animation -->
-            <div class="second-animation-wrapper mt-4">
-                <div class="second-animation-container">
-                    <iframe src="https://lottie.host/embed/00701df2-6978-4d33-9b88-c267dca923f8/sm4w1Hqkj7.json" class="second-animation" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-3 my-4">
-    <hr>
-    <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
-    <ul class="nav justify-content-center mb-3">
-        <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
-        <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com" class="nav-link px-2 text-muted">Play</a></li>
-        <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a></li>
-    </ul>
-</footer>
+    <!-- Footer -->
+    <footer class="py-3 my-4">
+        <hr>
+        <p class="text-center text-muted">&copy; 2024 G7T4. All rights reserved.</p>
+        <ul class="nav justify-content-center mb-3">
+            <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
+            <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com"
+                    class="nav-link px-2 text-muted">Play</a></li>
+            <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a>
+            </li>
+        </ul>
+    </footer>
 
     <script> //passing username to the nav bar 
         const userName = localStorage.getItem('userName') || 'User';
         document.getElementById('userName').innerText = userName;
+        if (userName === 'User') {
+            document.getElementById('logoutLink').style.display = 'none';
+            document.getElementById('userName').style.display = 'none';
+        }
     </script>
 
 

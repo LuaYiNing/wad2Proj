@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // Set the username from localStorage or default to 'User'
 const userName = localStorage.getItem('userName') || 'User';
 document.getElementById('userName').innerText = userName;
+if (userName === 'User') {
+    document.getElementById('logoutLink').style.display = 'none';
+    document.getElementById('userName').style.display = 'none';
+}
 
 const app = Vue.createApp({
     data() {

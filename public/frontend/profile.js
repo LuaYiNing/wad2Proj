@@ -3,6 +3,10 @@ import { db } from '../backend/firebase/firebase.js';
 
 const userName = localStorage.getItem('userName') || 'User';
 document.getElementById('userName').innerText = userName;
+if (userName === 'User') {
+    document.getElementById('logoutLink').style.display = 'none';
+    document.getElementById('userName').style.display = 'none';
+}
 
 const app = Vue.createApp({
     data() {

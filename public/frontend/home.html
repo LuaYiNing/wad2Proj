@@ -52,10 +52,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.html" id="userName">Profile</a>
+                    <a class="nav-link" href="profile.html" id="userName"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Log Out</a>
+                    <a class="nav-link" href="login.html" id="logoutLink">Log Out</a>
                 </li>
             </ul>
         </div>
@@ -78,7 +78,8 @@
                     </p>
                     <p class="Title">
                         Explore our website to learn more about food insecurity around the world,
-                        find recipes with your leftovers, play our interactive games and find out about donation drive locations
+                        find recipes with your leftovers, play our interactive games and find out about donation drive
+                        locations
                         to be a <span id="important">Food Hero</span>!
                     </p>
                 </div>
@@ -326,15 +327,12 @@
         <ul class="nav justify-content-center mb-3">
             <li class="nav-item"><a href="home.html" class="nav-link px-2 text-muted">Home</a></li>
             <li class="nav-item"><a href="recipe-finder.html" class="nav-link px-2 text-muted">Recipe Finder</a></li>
-            <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com" class="nav-link px-2 text-muted">Play</a></li>
+            <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com"
+                    class="nav-link px-2 text-muted">Play</a></li>
             <li class="nav-item"><a href="donation-drive.html" class="nav-link px-2 text-muted">Food Donation Drives</a>
             </li>
         </ul>
     </footer>
-
-
-
-
 
 
     <script>
@@ -506,6 +504,10 @@
     <script> //passing username to the nav bar 
         const userName = localStorage.getItem('userName') || 'User';
         document.getElementById('userName').innerText = userName;
+        if (userName === 'User') {
+            document.getElementById('logoutLink').style.display = 'none';
+            document.getElementById('userName').style.display = 'none';
+        }
     </script>
 
     <script> // to handle scolling animation
