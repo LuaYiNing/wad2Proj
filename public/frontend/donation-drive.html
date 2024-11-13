@@ -14,7 +14,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="home.html">Food Hero</a>
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,7 @@
                     <a class="nav-link" href="home.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="recipe-finder.html">Recipe Finder</a>
+                    <a class="nav-link" href="recipe-finder.html">Recipe Finder</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href='http://wad2games.s3-website.us-east-2.amazonaws.com'>Play</a>
@@ -35,10 +35,16 @@
                     <a class="nav-link active" aria-current="page" href='donation-drive.html'>Donation Drives</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="profile.html" id="userName">Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Log Out</a></li>
-            </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html" id="userName"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" id="logoutLink">Log Out</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -46,8 +52,10 @@
     <section class="hero-section d-flex align-items-center justify-content-center">
         <div class="container text-center text-white">
             <h1 class="hero-heading">Join Our Food Donation Movement</h1>
-            <p class="hero-subtitle">Help reduce food waste and support communities in need. Discover food banks, community fridges, and food boxes near you.</p>
-            <a href="#mapSection" class="btn btn-lg" style="background-color: #a17d60; color: white; border: none; padding: 1.0rem;">Explore Locations</a>
+            <p class="hero-subtitle">Help reduce food waste and support communities in need. Discover food banks,
+                community fridges, and food boxes near you.</p>
+            <a href="#mapSection" class="btn btn-lg"
+                style="background-color: #a17d60; color: white; border: none; padding: 1.0rem;">Explore Locations</a>
         </div>
     </section>
 
@@ -90,13 +98,15 @@
             <!-- Sidebar (Filter and List) -->
             <div class="col-lg-4 p-4 sidebar">
                 <h4 class="text-center">Explore Locations</h4>
-                <input type="text" id="searchInput" class="form-control mb-4" placeholder="Search locations..." oninput="searchLocations(this.value)">
+                <input type="text" id="searchInput" class="form-control mb-4" placeholder="Search locations..."
+                    oninput="searchLocations(this.value)">
 
-                
+
                 <!-- Filter Buttons -->
                 <div class="btn-group w-100 mb-4">
                     <button class="btn btn-outline-primary w-10" onclick="filterMarkers('foodBank')">Food Banks</button>
-                    <button class="btn btn-outline-success w-10" onclick="filterMarkers('communityFridge')">Community Fridges</button>
+                    <button class="btn btn-outline-success w-10" onclick="filterMarkers('communityFridge')">Community
+                        Fridges</button>
                     <button class="btn btn-outline-danger w-20" onclick="filterMarkers('foodBox')">Food Boxes</button>
                     <button class="btn btn-outline-info w-15" onclick="showNearbyLocations()">Nearby Me</button>
                     <button class="btn btn-outline-warning w-15" onclick="showAllMarkers()">Show All</button>
@@ -123,7 +133,8 @@
             <ul class="nav justify-content-center">
                 <li class="nav-item"><a href="home.html" class="nav-link text-muted">Home</a></li>
                 <li class="nav-item"><a href="recipe-finder.html" class="nav-link text-muted">Recipe Finder</a></li>
-                <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com" class="nav-link text-muted">Play</a></li>
+                <li class="nav-item"><a href="http://wad2games.s3-website.us-east-2.amazonaws.com"
+                        class="nav-link text-muted">Play</a></li>
                 <li class="nav-item"><a href="donation-drive.html" class="nav-link text-muted">Donation Drives</a></li>
             </ul>
         </div>
@@ -132,11 +143,16 @@
     <script> //passing username to the nav bar 
         const userName = localStorage.getItem('userName') || 'User';
         document.getElementById('userName').innerText = userName;
+        if (userName === 'User') {
+            document.getElementById('logoutLink').style.display = 'none';
+            document.getElementById('userName').style.display = 'none';
+        }
     </script>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyC-ynSU_DB7KZFByMuAS6e9piMhNm3rtVI&libraries=places,geometry&callback=initMap"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key= AIzaSyC-ynSU_DB7KZFByMuAS6e9piMhNm3rtVI&libraries=places,geometry&callback=initMap"></script>
     <script src="donation-drive.js"></script>
 </body>
 

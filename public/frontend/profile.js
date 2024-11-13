@@ -3,6 +3,10 @@ import { db } from '../backend/firebase/firebase.js';
 
 const userName = localStorage.getItem('userName') || 'User';
 document.getElementById('userName').innerText = userName;
+if (userName === 'User') {
+    document.getElementById('logoutLink').style.display = 'none';
+    document.getElementById('userName').style.display = 'none';
+}
 
 const app = Vue.createApp({
     data() {
@@ -12,7 +16,7 @@ const app = Vue.createApp({
     },
     methods: {
         async getSavedRecipeDetails() {
-            const apiKey = '1e82a8d269304c3683a7624d3205ac76'; 
+            const apiKey = '4ae32a1cd7b348968c58f3b0d9cf8ada'; 
             const savedRecipesRef = collection(db, `users/${localStorage.getItem('userUID')}/savedRecipes`);
 
             try {
