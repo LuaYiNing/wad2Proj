@@ -7,12 +7,13 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image: url('images/bg-image.png');
+    background-color: #f1ead1;
 }
 
-.container {
+.container-fluid {
     display: flex;
-    height: 80vh;
+    height: 100vh;
+    background-color: #f1ead1;
 }
 
 .image-container {
@@ -86,11 +87,11 @@ input {
     border: none;
     outline: none;
     flex: 1;
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 16px;
 }
 
-.btn {
+.log-inButton {
     background-color: #436A4D;
     color: #fff;
     border: none;
@@ -100,18 +101,25 @@ input {
     cursor: pointer;
     transition: background-color 0.5s;
     margin-top: 10px;
-    width: 100%;
-    max-width: 300px;
+    width: 60%;
 }
 
-.btn:hover {
+.log-inButton:hover {
     background-color: #ffffff;
     color: #436A4D
 }
 
 .google-btn {
     background-color: #db4437;
-    /* Google Red */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    margin-top: 10px;
+    width: 60%;
 }
 
 .google-btn:hover {
@@ -124,6 +132,7 @@ a {
     text-decoration: none; 
     transition: color 0.3s ease, border-bottom 0.3s ease; 
     border-bottom: 2px solid transparent;
+    padding: 2px;
 }
 
 a:hover {
@@ -131,3 +140,5 @@ a:hover {
     border-bottom: 2px solid #35593B; 
     text-decoration: none; 
 }
+
+
