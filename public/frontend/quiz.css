@@ -6,7 +6,7 @@ body {
   height: 100%;
   margin: 0;
   background-color: #f1ead1;
-  font-family: 'Lustria', serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .navbar {
@@ -25,6 +25,17 @@ body {
 .navbar .nav-link:hover {
   color: #007bff !important;
 }
+
+.quiz-header {
+  color: #8b634d; /* Deep teal color */
+  font-weight: bold;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  letter-spacing: 1px; /* Slight spacing for better readability */
+  margin-bottom: 2rem;
+}
+
+
 /* === Intro Card Section === */
 .info-card {
     border-radius: 20px;
@@ -53,6 +64,7 @@ body {
     font-size: 1.4rem;
     font-weight: 600;
     color: #333;
+    font-family: 'Poppins', sans-serif;
 }
 
 .card-text {
@@ -67,7 +79,7 @@ body {
   overflow: hidden;
   /* border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); */
-  font-family: 'Lustria', serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 #gameCanvas {
