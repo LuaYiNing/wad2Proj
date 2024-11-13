@@ -130,6 +130,31 @@ const quizData = {
 
 let game = null;
 const quizInfo = document.querySelector('.quiz-info');
+// Get the canvas and its container
+const canvas = document.getElementById('gameCanvas');
+const container = canvas.parentElement;
+
+// Function to resize canvas
+function resizeCanvas() {
+  const containerWidth = container.clientWidth;
+  // Calculate height based on 4:3 aspect ratio
+  // const height = containerWidth * (600 / 800);
+
+  // Update canvas size
+  canvas.style.width = containerWidth + 'px';
+  // canvas.style.height = height + 'px';
+
+  // Update canvas internal dimensions
+  canvas.width = containerWidth;
+  canvas.height = 600;
+}
+
+// Call on load
+resizeCanvas();
+
+// Update when window resizes
+window.addEventListener('resize', resizeCanvas);
+
 class QuizGame {
   constructor(category) {
     this.canvas = document.getElementById('gameCanvas');
@@ -143,8 +168,9 @@ class QuizGame {
     this.correctAnswers = 0;
 
     // Set canvas size
-    this.canvas.width = 800;
-    this.canvas.height = 600;
+    // this.canvas.width = 800;
+    // this.canvas.height = 600;
+    resizeCanvas();   
 
     // Game state
     this.ball = {
@@ -197,25 +223,25 @@ class QuizGame {
     const result = modal.querySelector('.result');
     const points = modal.querySelector('.points');
     const explanationEl = modal.querySelector('.explanation');
-  
+
     // Get the explanation of the current question
     const currentQuestion = this.questions[this.currentQuestionIndex];
     const explanation = currentQuestion.explanation;
-  
+
     // Set the result text based on whether the answer was correct or not
     result.textContent = correct ? 'Correct!' : 'Wrong!';
     result.style.color = correct ? '#059669' : '#dc2626';
-  
+
     // Set the points awarded
     points.textContent = correct ? '+100 points' : '+0 points';
-  
+
     // Display the explanation
     explanationEl.textContent = explanation;
-  
+
     // Show the modal
     modal.style.display = 'block';
   }
-  
+
   handleNextQuestion() {
     quizInfo.style.display = 'block';
     document.getElementById('feedbackModal').style.display = 'none';
@@ -273,15 +299,16 @@ class QuizGame {
     const currentQuestion = this.questions[this.currentQuestionIndex];
 
     // Display the question text
-    let questionText = `${currentQuestion.question}<br>`;
+    questionEl.innerText = `${currentQuestion.question}`;
 
     // Display the options with A, B, C labels
     const optionLabels = ['A', 'B', 'C'];
     currentQuestion.answers.forEach((answer, index) => {
-      questionText += `<div>${optionLabels[index]}. ${answer.text}</div>`;
+      let div = document.createElement("div");
+      div.innerText = `${optionLabels[index]}. ${answer.text}`;
+      questionEl.appendChild(div);
     });
 
-    questionEl.innerHTML = questionText;
   }
 
 
