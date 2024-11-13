@@ -53,7 +53,7 @@
 
 
 .section {
-    height: 100vh;
+    height: 110vh;
     width: 100%;
     background-color: #f1ead1;
     background-size: cover;
@@ -80,7 +80,7 @@
 }
 
 .impact-section{
-    height: 160vh;
+    height: 200vh;
     width: 100%;
     background-color: #ffffff;
     background-size: cover;
