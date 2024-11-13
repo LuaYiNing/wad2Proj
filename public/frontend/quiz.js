@@ -387,6 +387,7 @@ function startQuiz(category) {
 }
 
 function retryQuiz() {
+  resetQuizInfo();
   quizInfo.style.display = 'block';
   document.getElementById('completionScreen').style.display = 'none';
   document.getElementById('gameCanvas').style.display = 'block';
