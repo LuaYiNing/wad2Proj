@@ -142,11 +142,35 @@ function resizeCanvas() {
 
   // Update canvas size
   canvas.style.width = containerWidth + 'px';
-  // canvas.style.height = height + 'px';
+
 
   // Update canvas internal dimensions
   canvas.width = containerWidth;
-  canvas.height = 600;
+  let height = 600
+  if (containerWidth < 768) {
+    height = 400;
+  }
+
+  // Update canvas size
+  canvas.style.width = containerWidth + 'px';
+  canvas.style.height = height + 'px';
+
+  // Update canvas internal dimensions
+  canvas.width = containerWidth;
+  canvas.height = height;
+
+  // Calculate new scale factors
+  // scaleX = containerWidth / ORIGINAL_WIDTH;
+  // scaleY = height / ORIGINAL_HEIGHT;
+
+  // Update ball properties
+  // updateBallProperties();
+
+  // // Update target dimensions
+  // updateTargetDimensions();
+
+  // Redraw everything
+  // draw();
 }
 
 // Call on load
@@ -155,6 +179,41 @@ resizeCanvas();
 // Update when window resizes
 window.addEventListener('resize', resizeCanvas);
 
+// Function to update ball properties based on scale
+function updateBallProperties() {
+  // Scale ball position
+  ball.x = originalBall.x * scaleX;
+  ball.y = originalBall.y * scaleY;
+  ball.radius = originalBall.radius * ((scaleX + scaleY) / 2);
+  ball.dx = originalBall.dx * scaleX;
+  ball.dy = originalBall.dy * scaleY;
+  ball.speed = originalBall.speed * ((scaleX + scaleY) / 2);
+}
+
+// Function to update target dimensions based on scale
+function updateTargetDimensions() {
+  currentTargetDimensions.width = originalTargetDimensions.width * scaleX;
+  currentTargetDimensions.height = originalTargetDimensions.height * scaleY;
+
+  // If there's a current target, update its position
+  if (currentTarget) {
+    currentTarget.x *= scaleX;
+    currentTarget.y *= scaleY;
+    currentTarget.width = currentTargetDimensions.width;
+    currentTarget.height = currentTargetDimensions.height;
+  }
+}
+
+// Function to generate new target with proper margins
+function generateTarget() {
+  const margin = currentTargetDimensions.width;
+  return {
+    x: margin + Math.random() * (canvas.width - 2 * margin),
+    y: margin + Math.random() * (canvas.height - 2 * margin),
+    width: currentTargetDimensions.width,
+    height: currentTargetDimensions.height
+  };
+}
 class QuizGame {
   constructor(category) {
     this.canvas = document.getElementById('gameCanvas');
@@ -170,7 +229,7 @@ class QuizGame {
     // Set canvas size
     // this.canvas.width = 800;
     // this.canvas.height = 600;
-    resizeCanvas();   
+    resizeCanvas();
 
     // Game state
     this.ball = {
@@ -333,10 +392,20 @@ class QuizGame {
 
     const currentQuestion = this.questions[this.currentQuestionIndex];
     const optionLabels = ['A', 'B', 'C'];
+    const containerWidth = this.canvas.width;
+    const startY = 150; // Fixed Y position for all answers
+    const radius = 30; // Radius of the circles
+
+    // Calculate the spacing between each answer dynamically based on container width
+    const totalAnswers = currentQuestion.answers.length;
+    const spacingX = containerWidth / (totalAnswers + 1);
 
     currentQuestion.answers.forEach((answer, index) => {
+      // Calculate the X position dynamically based on spacing
+      answer.x = spacingX * (index + 1);
+      answer.y = startY;
       this.ctx.beginPath();
-      this.ctx.arc(answer.x, answer.y, 30, 0, Math.PI * 2);
+      this.ctx.arc(answer.x, answer.y, radius, 0, Math.PI * 2);
 
       // Use neutral color before answer, show correct/incorrect after
       this.ctx.fillStyle = this.answeredCurrentQuestion ?
