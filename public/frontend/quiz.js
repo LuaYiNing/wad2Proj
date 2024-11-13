@@ -159,18 +159,7 @@ function resizeCanvas() {
   canvas.width = containerWidth;
   canvas.height = height;
 
-  // Calculate new scale factors
-  // scaleX = containerWidth / ORIGINAL_WIDTH;
-  // scaleY = height / ORIGINAL_HEIGHT;
-
   // Update ball properties
-  // updateBallProperties();
-
-  // // Update target dimensions
-  // updateTargetDimensions();
-
-  // Redraw everything
-  // draw();
 }
 
 // Call on load
@@ -178,42 +167,6 @@ resizeCanvas();
 
 // Update when window resizes
 window.addEventListener('resize', resizeCanvas);
-
-// Function to update ball properties based on scale
-function updateBallProperties() {
-  // Scale ball position
-  ball.x = originalBall.x * scaleX;
-  ball.y = originalBall.y * scaleY;
-  ball.radius = originalBall.radius * ((scaleX + scaleY) / 2);
-  ball.dx = originalBall.dx * scaleX;
-  ball.dy = originalBall.dy * scaleY;
-  ball.speed = originalBall.speed * ((scaleX + scaleY) / 2);
-}
-
-// Function to update target dimensions based on scale
-function updateTargetDimensions() {
-  currentTargetDimensions.width = originalTargetDimensions.width * scaleX;
-  currentTargetDimensions.height = originalTargetDimensions.height * scaleY;
-
-  // If there's a current target, update its position
-  if (currentTarget) {
-    currentTarget.x *= scaleX;
-    currentTarget.y *= scaleY;
-    currentTarget.width = currentTargetDimensions.width;
-    currentTarget.height = currentTargetDimensions.height;
-  }
-}
-
-// Function to generate new target with proper margins
-function generateTarget() {
-  const margin = currentTargetDimensions.width;
-  return {
-    x: margin + Math.random() * (canvas.width - 2 * margin),
-    y: margin + Math.random() * (canvas.height - 2 * margin),
-    width: currentTargetDimensions.width,
-    height: currentTargetDimensions.height
-  };
-}
 class QuizGame {
   constructor(category) {
     this.canvas = document.getElementById('gameCanvas');
@@ -227,8 +180,6 @@ class QuizGame {
     this.correctAnswers = 0;
 
     // Set canvas size
-    // this.canvas.width = 800;
-    // this.canvas.height = 600;
     resizeCanvas();
 
     // Game state
@@ -423,12 +374,14 @@ class QuizGame {
     });
 
     // Draw the ball
+    // this.ball.x = this.canvas.width / 2;
+    // this.ball.y = this.canvas.height - 40;
     this.ctx.beginPath();
     this.ctx.arc(this.ball.x, this.ball.y, this.ball.radius, 0, Math.PI * 2);
     this.ctx.fillStyle = this.ball.color;
     this.ctx.fill();
     this.ctx.closePath();
-
+    
     // Draw the aim line
     if (!this.ball.shooting && !this.answeredCurrentQuestion) {
       this.ctx.beginPath();
