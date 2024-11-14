@@ -66,7 +66,7 @@ const app = Vue.createApp({
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const apiKey = '4ae32a1cd7b348968c58f3b0d9cf8ada';
+    const apiKey = '561b166841b04cf992a20edc3d2579ed';
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipeId');
 

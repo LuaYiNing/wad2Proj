@@ -25,7 +25,7 @@ const app = Vue.createApp({
                 return;
             }
   
-            const apiKey = '4ae32a1cd7b348968c58f3b0d9cf8ada'; // Replace with your actual API key
+            const apiKey = '561b166841b04cf992a20edc3d2579ed'; // Replace with your actual API key
             try {
                 const response = await axios.get('https://api.spoonacular.com/recipes/findByIngredients', {
                     params: {
@@ -46,7 +46,7 @@ const app = Vue.createApp({
             }
         },
         async getRecipeDetails(recipeId) {
-            const apiKey = '4ae32a1cd7b348968c58f3b0d9cf8ada'; // Replace with your actual API key
+            const apiKey = '561b166841b04cf992a20edc3d2579ed'; // Replace with your actual API key
             try {
                 const response = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information`, {
                     params: {
